@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using IndieLINY.Singleton;
+using MyBox;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInventory))]

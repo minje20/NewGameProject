@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: f442021c503d4a4478edf53b01c4385b, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 1686906c1d4cd004c80a1ad4acd942bc, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 1686906c1d4cd004c80a1ad4acd942bc,
+    type: 3}
   m_SortingOrder: 0
 --- !u!114 &3016745513391805317
 MonoBehaviour:
@@ -74,6 +75,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f0f4db1ba56be4e8ffec11fa54f0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryData: {fileID: 11400000, guid: d5c06697b2f2d2541b6fdc6872baf69d, type: 2}
+  _inventoryData: {fileID: 11400000, guid: 13aaf427615cbc14da3c64b454a8d07c, type: 2}
   _slots: []
-  _testItem: {fileID: 11400000, guid: e6995d1f2e2fb6244a8c4d0e806d1fee, type: 2}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxInventoryUI))]
@@ -34,7 +35,6 @@ public class BoxInventory : Inventory
     {
         SetInventory();
     }
-
     #endregion
 
 

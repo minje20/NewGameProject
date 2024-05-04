@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public abstract class Inventory : MonoBehaviour
 {
-    [SerializeField] protected InventoryData _inventoryData;
-    [SerializeField] protected Slot[] _slots;
+    [field: SerializeField, InitializationField, MustBeAssigned] protected InventoryData _inventoryData;
+    [HideInInspector][SerializeField] protected Slot[] _slots;
     
     protected InventoryUI _inventoryUI;
 
