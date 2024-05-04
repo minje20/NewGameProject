@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596eaa5e877b51c4e8cfc6f3e1a4bb99, type: 3}
   m_Name: SampleControllData
   m_EditorClassIdentifier: 
-  _movementSpeed: 2
+  _movementSpeed: 3
   _maxHealth: 15
