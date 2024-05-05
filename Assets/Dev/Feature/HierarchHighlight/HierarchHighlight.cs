@@ -48,9 +48,26 @@ public class HierarchyHighlight
         }
 
         item = _preset.Items?.FirstOrDefault(x =>
-            string.IsNullOrEmpty(x.TargetObjectName) == false && x.TargetObjectName == obj.name
-            );
+        {
+            if (x.UsePrefab)
+            {
+                if (x.TargetPrefab == null) return false;
+                
+                var originPrefabA =
+                    UnityEditor.PrefabUtility.GetCorrespondingObjectFromOriginalSource(obj) as GameObject;
+                var originPrefabB =
+                    UnityEditor.PrefabUtility.GetCorrespondingObjectFromOriginalSource(x.TargetPrefab) as GameObject;
+                
+                if (originPrefabA == null || originPrefabB == null) return false;
 
+                return originPrefabA == originPrefabB;
+            }
+            else
+            {
+                return string.IsNullOrEmpty(x.TargetObjectName) == false && x.TargetObjectName == obj.name;
+            }
+        });
+        
         return item != null;
     }
 

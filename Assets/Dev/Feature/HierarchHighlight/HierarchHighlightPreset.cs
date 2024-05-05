@@ -3,35 +3,27 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using MyBox;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 [Serializable]
 public class HierarchHighlightPresetItem
 {
-    [SerializeField] private bool _usePrefabName;
-    [field: SerializeField, ConditionalField(nameof(_usePrefabName), true)]
+    [FormerlySerializedAs("_usePrefabName")] [SerializeField] private bool _usePrefab;
+    [field: SerializeField, ConditionalField(nameof(_usePrefab), true)]
     private string _targetObjectName;
-    [field: SerializeField, ConditionalField(nameof(_usePrefabName)), MustBeAssigned]
+    [field: SerializeField, ConditionalField(nameof(_usePrefab)), MustBeAssigned]
     private GameObject _targetPrefab;
     
     [SerializeField] private Color _backgroundColor = Color.white;
     [SerializeField] private Color _textColor = Color.white;
     [SerializeField] private Texture2D _icon = null;
 
-    public string TargetObjectName
-    {
-        get
-        {
-            if (_usePrefabName)
-            {
-                return _targetPrefab != null ? _targetPrefab.name : string.Empty;
-            }
-            else
-            {
-                return _targetObjectName;
-            }
-        }
-    }
+    public string TargetObjectName => _targetObjectName;
+
+    public bool UsePrefab => _usePrefab;
+
+    public GameObject TargetPrefab => _targetPrefab;
 
     public Color BackgroundColor => _backgroundColor;
 
