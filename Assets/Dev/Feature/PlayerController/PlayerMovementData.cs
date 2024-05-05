@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "IndieLINY/Data/Player", fileName = "PlayerControllerData")]
+[CreateAssetMenu(menuName = "IndieLINY/Data/Player/MovementData", fileName = "SampleMovementData")]
 
-public class PlayerControllerData : ScriptableObject
+public class PlayerMovementData : ScriptableObject
 {
     [field: SerializeField, Foldout("이동 관련 설정"), OverrideLabel("이동속도(m/s)")]
     private float _movementSpeed;
