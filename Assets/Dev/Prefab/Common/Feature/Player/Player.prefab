@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementData: {fileID: 11400000, guid: 64c859bd8a0f4ea4a93271cf6d610077, type: 2}
   _rigidbody: {fileID: 458866105575828371}
+  _animator: {fileID: 3469422858296594887}
 --- !u!54 &458866105575828371
 Rigidbody:
   m_ObjectHideFlags: 0
