@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rectOffset: {x: 20, y: 1}
   _list:
-  - _usePrefabName: 0
+  - _usePrefab: 1
     _targetObjectName: Player
-    _targetPrefab: {fileID: 0}
+    _targetPrefab: {fileID: 828418061268387261, guid: 2163deb2c7b92f94fbdc8a1be00476d6,
+      type: 3}
     _backgroundColor: {r: 1, g: 0.31760997, b: 0.31760997, a: 1}
     _textColor: {r: 0, g: 0, b: 0, a: 1}
     _icon: {fileID: 0}
-  - _usePrefabName: 1
+  - _usePrefab: 1
     _targetObjectName: 
     _targetPrefab: {fileID: 5752271023960345246, guid: 0b6d474f1e85179489e809a5a4d4da7f,
       type: 3}
