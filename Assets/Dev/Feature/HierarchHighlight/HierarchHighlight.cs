@@ -11,7 +11,7 @@ public class HierarchyHighlight
 {
     private static HierarchHighlightPreset _preset;
 
-    private const string PATH = "Assets/Dev/Data/HierarchyHighlight/";
+    private const string PATH = "Assets/Dev/Data/Common/HierarchyHighlight/";
     private const string FILE_NAME = "Preset.asset";
 
     static HierarchyHighlight()
