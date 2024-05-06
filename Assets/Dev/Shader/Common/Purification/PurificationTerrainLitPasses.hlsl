@@ -144,10 +144,6 @@ float _BlendFactor;
 float _BlendRadius;
 float4 _OriginPosition;
 
-float Remap(float x, float a, float b, float c, float d) {
-    return c + (x - a) * (d-c) /(a-b);
-}
-
 void SplatmapMix(float3 positionWS, float4 uvMainAndLM, float4 uvSplat01, float4 uvSplat23, inout half4 splatControl, out half weight, out half4 mixedDiffuse, out half4 defaultSmoothness, inout half3 mixedNormal)
 {
     half4 diffAlbedo[4];
@@ -159,9 +155,7 @@ void SplatmapMix(float3 positionWS, float4 uvMainAndLM, float4 uvSplat01, float4
     diffAlbedo[3] = SAMPLE_TEXTURE2D(_Splat3, sampler_Splat0, uvSplat23.zw);
 
     float dis = distance(positionWS.xz, _OriginPosition.xz);
-
     float t = dis - _BlendRadius;
-
     t = saturate(t);
 
     blendAbedo[0] = SAMPLE_TEXTURE2D(_Splat0Blend, sampler_Splat0Blend, uvSplat01.xy);
