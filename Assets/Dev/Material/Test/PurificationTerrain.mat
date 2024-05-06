@@ -121,7 +121,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat1Blend:
-        m_Texture: {fileID: 2800000, guid: 774c0d53a21dffb4882d9f3ea2c841ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: b764a81937a5cda48a11a55b76693f9f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat2:
@@ -163,7 +163,7 @@ Material:
     - _Blend: 0
     - _BlendFactor: 0.82
     - _BlendModePreserveSpecular: 1
-    - _BlendRadius: 97.2
+    - _BlendRadius: 44.7
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0

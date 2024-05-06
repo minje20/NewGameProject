@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 643210655}
   - component: {fileID: 643210654}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PurificationController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,8 +507,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Material: {fileID: 2100000, guid: 4b44fc8b68d962241823cf4ec5eab9c5, type: 2}
   BlendFactor: 0.82
-  BlendRadius: 25.3
-  OriginPosition: {x: 3.47, y: 0.05, z: -12.05}
+  BlendRadius: 21.5
+  Origin: {fileID: 1376045654}
   RenderList:
   - {fileID: 1127351907}
   - {fileID: 1877907354}
@@ -516,7 +516,7 @@ MonoBehaviour:
   - {fileID: 150329614}
   - {fileID: 494320601}
   _splat0: {fileID: 2800000, guid: 3683a8968e104eb41a2df59f8262cceb, type: 3}
-  _splat1: {fileID: 2800000, guid: 774c0d53a21dffb4882d9f3ea2c841ff, type: 3}
+  _splat1: {fileID: 2800000, guid: b764a81937a5cda48a11a55b76693f9f, type: 3}
   _splat2: {fileID: 2800000, guid: 7780a09fdb9a524499f398dab7e1fb6e, type: 3}
   _splat3: {fileID: 2800000, guid: fc2f7c7b1d3c9754cb789e56989d2ea4, type: 3}
 --- !u!4 &643210655
@@ -660,6 +660,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.011712074, g: 1, b: 0, a: 1}
     - _Origin: {r: 3.47, g: 0.05, b: -12.05, a: 0}
+    - _OriginPosition: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1127351905
@@ -953,6 +954,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.011712074, g: 1, b: 0, a: 1}
     - _Origin: {r: 3.47, g: 0.05, b: -12.05, a: 0}
+    - _OriginPosition: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1376045650
@@ -1188,6 +1190,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.011712074, g: 1, b: 0, a: 1}
     - _Origin: {r: 3.47, g: 0.05, b: -12.05, a: 0}
+    - _OriginPosition: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!21 &1516581437
@@ -1316,6 +1319,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.011712074, g: 1, b: 0, a: 1}
     - _Origin: {r: 3.47, g: 0.05, b: -12.05, a: 0}
+    - _OriginPosition: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!21 &1726620805
@@ -1444,6 +1448,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.011712074, g: 1, b: 0, a: 1}
     - _Origin: {r: 3.47, g: 0.05, b: -12.05, a: 0}
+    - _OriginPosition: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1801674228
