@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public PlayerMove MoveStrategy { get; private set; }
     public PlayerVisual VisualStrategy { get; private set; }
     public PlayerStateTranslator Translator { get; private set; }
+    public PlayerCollector Collector { get; private set; }
     #endregion
 
     private void Awake()
@@ -35,9 +36,11 @@ public class PlayerController : MonoBehaviour
         MoveStrategy = gameObject.AddComponent<PlayerMove>();
         VisualStrategy = gameObject.AddComponent<PlayerVisual>();
         Translator = gameObject.AddComponent<PlayerStateTranslator>();
+        Collector = gameObject.AddComponent<PlayerCollector>();
         
         MoveStrategy.Init(this);
         VisualStrategy.Init(this);
         Translator.Init(this);
+        Collector.Init(this);
     }
 }

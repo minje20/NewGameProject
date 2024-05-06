@@ -53,6 +53,15 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Collect"",
+                    ""type"": ""Button"",
+                    ""id"": ""5bb6e3fe-0e7f-46c4-84ab-0423b6fde981"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
                     ""action"": ""BuilderMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""109f2777-561c-45fb-acf6-4c913737fc3a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""WinPCScheme"",
+                    ""action"": ""Collect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -160,6 +180,7 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         m_PlayerControl_Movement = m_PlayerControl.FindAction("Movement", throwIfNotFound: true);
         m_PlayerControl_Sprint = m_PlayerControl.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerControl_BuilderMode = m_PlayerControl.FindAction("BuilderMode", throwIfNotFound: true);
+        m_PlayerControl_Collect = m_PlayerControl.FindAction("Collect", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,6 +245,7 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_Movement;
     private readonly InputAction m_PlayerControl_Sprint;
     private readonly InputAction m_PlayerControl_BuilderMode;
+    private readonly InputAction m_PlayerControl_Collect;
     public struct PlayerControlActions
     {
         private @DefaultKeymap m_Wrapper;
@@ -231,6 +253,7 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerControl_Movement;
         public InputAction @Sprint => m_Wrapper.m_PlayerControl_Sprint;
         public InputAction @BuilderMode => m_Wrapper.m_PlayerControl_BuilderMode;
+        public InputAction @Collect => m_Wrapper.m_PlayerControl_Collect;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,6 +272,9 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
             @BuilderMode.started += instance.OnBuilderMode;
             @BuilderMode.performed += instance.OnBuilderMode;
             @BuilderMode.canceled += instance.OnBuilderMode;
+            @Collect.started += instance.OnCollect;
+            @Collect.performed += instance.OnCollect;
+            @Collect.canceled += instance.OnCollect;
         }
 
         private void UnregisterCallbacks(IPlayerControlActions instance)
@@ -262,6 +288,9 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
             @BuilderMode.started -= instance.OnBuilderMode;
             @BuilderMode.performed -= instance.OnBuilderMode;
             @BuilderMode.canceled -= instance.OnBuilderMode;
+            @Collect.started -= instance.OnCollect;
+            @Collect.performed -= instance.OnCollect;
+            @Collect.canceled -= instance.OnCollect;
         }
 
         public void RemoveCallbacks(IPlayerControlActions instance)
@@ -293,5 +322,6 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnBuilderMode(InputAction.CallbackContext context);
+        void OnCollect(InputAction.CallbackContext context);
     }
 }

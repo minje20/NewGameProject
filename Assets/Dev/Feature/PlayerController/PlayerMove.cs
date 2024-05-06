@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour, IPlayerStrategy
     private Animator _animator;
     private static readonly int HashMovement = Animator.StringToHash("F_Movement");
 
+    
     public void Init(PlayerController controller)
     {
         _movementData = controller.MovementData;
@@ -27,7 +28,7 @@ public class PlayerMove : MonoBehaviour, IPlayerStrategy
         _movementAction = InputManager.Actions.Movement;
     }
     
-    public void Move()
+    public void OnMove()
     {
         var input = _movementAction.ReadValue<Vector2>();
         
@@ -42,5 +43,12 @@ public class PlayerMove : MonoBehaviour, IPlayerStrategy
         _rigidbody.velocity = dir;
 
         _animator.SetFloat(HashMovement, dir.magnitude);
+    }
+
+    public void ResetVelocity()
+    {
+        _rigidbody.velocity = Vector3.zero;
+
+        _animator.SetFloat(HashMovement, 0f);
     }
 }
