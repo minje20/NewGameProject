@@ -9,7 +9,7 @@ public class PurificationBlender : MonoBehaviour
     public Material Material;
     [Range(0f, 1f)] public float BlendFactor = 0f;
     public float BlendRadius = 0f;
-    public Vector3 OriginPosition;
+    public Transform Origin;
 
     public List<MeshRenderer> RenderList;
 
@@ -31,13 +31,13 @@ public class PurificationBlender : MonoBehaviour
     {
         this.Material.SetFloat("_BlendFactor", BlendFactor);
         this.Material.SetFloat("_BlendRadius", BlendRadius);
-        this.Material.SetVector("_OriginPosition", OriginPosition);
+        this.Material.SetVector("_OriginPosition", Origin.position);
 
         foreach (MeshRenderer renderer in RenderList)
         {
             //this.Material.SetFloat("_BlendFactor", BlendFactor);
            renderer.material.SetFloat("_BlendRadius", BlendRadius);
-           renderer.material.SetVector("_OriginPosition", OriginPosition);
+           renderer.material.SetVector("_OriginPosition", Origin.position);
         }
     }
 }
