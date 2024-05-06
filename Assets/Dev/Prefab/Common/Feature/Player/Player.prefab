@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8072715992339997079}
   - component: {fileID: 8829747773067277392}
   - component: {fileID: 458866105575828371}
+  - component: {fileID: 9102143608837054229}
+  - component: {fileID: 2462762409989509847}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -76,6 +78,39 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!114 &9102143608837054229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828418061268387261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"PlayerController","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"PlayerController,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 8829747773067277392}
+--- !u!114 &2462762409989509847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828418061268387261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: b5af98244c2a3664a9e44b4d591ce202, type: 2}
 --- !u!1 &5639675367382837910
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +207,7 @@ Animator:
   m_GameObject: {fileID: 5639675367382837910}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dd799a7950361e245b8b7e239bff747e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 26d6e85038c9fa148b5b5dfe03b84e33, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -224,8 +259,8 @@ MonoBehaviour:
   translator:
     autoReset: 1
     useCustomMixMode: 1
-    layerMixModes: 01000000
-    layerBlendModes: 01000000
+    layerMixModes: 0100000001000000
+    layerBlendModes: 0100000002000000
   updateTiming: 1
 --- !u!136 &7706744154481138911
 CapsuleCollider:
