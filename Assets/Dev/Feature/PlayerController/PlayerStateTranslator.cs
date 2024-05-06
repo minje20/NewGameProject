@@ -89,10 +89,8 @@ public class InputActionUnit : Unit
         {
             case EInputType.Trigger:
                 return action.triggered ? _outputSuccess : null; 
-                break;
             case EInputType.Pressed:
                 return action.IsPressed() ? _outputSuccess : null;
-                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
