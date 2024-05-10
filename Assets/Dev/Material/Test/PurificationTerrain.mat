@@ -163,7 +163,7 @@ Material:
     - _Blend: 0
     - _BlendFactor: 0.82
     - _BlendModePreserveSpecular: 1
-    - _BlendRadius: 66
+    - _BlendRadius: 97.2
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
