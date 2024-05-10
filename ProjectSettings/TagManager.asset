@@ -42,3 +42,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background1
+    uniqueID: 256946593
+    locked: 0
+  - name: Background2
+    uniqueID: 2930916257
+    locked: 0
+  - name: Background3
+    uniqueID: 3908058017
+    locked: 0
+  - name: Background4
+    uniqueID: 3345732463
+    locked: 0
+  - name: Desk
+    uniqueID: 865340259
+    locked: 0
+  - name: DeskItem
+    uniqueID: 2108816507
+    locked: 0
