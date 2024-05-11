@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using JetBrains.Annotations;
 using MyBox;
 using UnityEngine;
@@ -77,34 +78,35 @@ public class NpcController : MonoBehaviour
     public List<Npc> GetNpcAll()
         => _createdNpcDict.Values.ToList();
 
-    public void SetNpcPosition(List<Npc> npcList)
+    public void SetNpcPosition(List<Npc> npcList, bool isAnimating)
     {
         if (npcList == null || npcList.Count == 0) return;
         if (_slots == null || _slots.Count == 0) return;
         
-        int slotIndex = 0;
         int npcIndex = 0;
+
+        npcList = npcList.Where(x => x != null).ToList();
 
         for (int i = 0; i < _slots.Count; i++)
         {
             Npc npc = null;
             
-            do
-            {
-                npc = npcList[npcIndex];
-
-                if (npc == null)
-                {
-                    npcIndex++;
-
-                    if (npcIndex > npcList.Count) return;
-                }
-            } while (npc == null);
+            if (npcIndex >= npcList.Count) return;
+            npc = npcList[npcIndex++];
             
-            Transform slot = _slots[slotIndex];
+            if (npc == null) return;
+            
+            Transform slot = _slots[i];
             Debug.Assert(slot);
 
-            npc.transform.position = slot.position;
+            if (isAnimating)
+            {
+                npc.transform.DOMove(slot.position, _animationData.NpcMoveToSlotSpeed);
+            }
+            else
+            {
+                npc.transform.position = slot.position;
+            }
         }
     }
 }

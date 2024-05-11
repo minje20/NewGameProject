@@ -46,4 +46,24 @@ public class NpcControllerTest : MonoBehaviour
         }
         return _npcKey;
     }
+
+    [SerializeField] private List<string> _npcKeyList;
+
+    [ButtonMethod]
+    public void ShowNpcList()
+    {
+        if (_controller == false || Application.isPlaying == false) return;
+
+        List<Npc> npcs = new List<Npc>();
+
+        foreach (var key in _npcKeyList)
+        {
+            var npc = _controller.AddNpc(key);
+            npcs.Add(npc);
+
+            npc.AnimateFadein();
+        }
+        
+        _controller.SetNpcPosition(npcs, false);
+    }
 }
