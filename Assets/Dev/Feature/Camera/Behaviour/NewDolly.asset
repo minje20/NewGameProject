@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ab1379680e9614f81c12b586e53371, type: 3}
   m_Name: NewDolly
   m_EditorClassIdentifier: 
+  _closerDistance: 0.01
   _statePairs:
   - Location: Visitor
     Position: 0
   - Location: MakingCocktail
     Position: 1
-  _DEBUG_target_state: Visitor

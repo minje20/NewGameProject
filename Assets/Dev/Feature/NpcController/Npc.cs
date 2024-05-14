@@ -7,8 +7,11 @@ using UnityEngine;
 
 public class Npc : MonoBehaviour
 {
-    public NpcData NpcData { get; private set; }
-    public NpcAnimationData AniData { get; private set; }
+    private NpcCreationParameter _creationParameter;
+    public NpcData NpcData => _creationParameter.NpcData;
+    public NpcAnimationData AniData => _creationParameter.AnimationData;
+
+    public NpcSlot Slot => _creationParameter.Slot;
 
     private SpriteRenderer _renderer;
 
@@ -19,9 +22,8 @@ public class Npc : MonoBehaviour
             Debug.LogWarning($"이미 존재하는 npc({NpcData.Key})를 초기화하였습니다.");
             return;
         }
-        
-        NpcData = parameter.NpcData;
-        AniData = parameter.AnimationData;
+
+        _creationParameter = parameter;
 
         _renderer = GetComponent<SpriteRenderer>();
         
@@ -34,7 +36,7 @@ public class Npc : MonoBehaviour
 
         _renderer.color = AniData.FadeoutColor;
         return _renderer.DOColor(AniData.FadeinColor, AniData.FadeinSpeed)
-            .AsyncWaitForCompletion().AsUniTask();
+            .AsyncWaitForCompletion().AsUniTask().WithCancellation(GlobalCancelation.PlayMode);
     }
     public UniTask AnimateFadeout()
     {
@@ -42,6 +44,6 @@ public class Npc : MonoBehaviour
 
         _renderer.color = AniData.FadeinColor;
         return _renderer.DOColor(AniData.FadeoutColor, AniData.FadeinSpeed)
-            .AsyncWaitForCompletion().AsUniTask();
+            .AsyncWaitForCompletion().AsUniTask().WithCancellation(GlobalCancelation.PlayMode);
     }
 }

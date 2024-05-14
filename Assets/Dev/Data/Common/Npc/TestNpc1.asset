@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestNpc1
   m_EditorClassIdentifier: 
   _key: TEST_NPC_1
-  _defaultSprite: {fileID: 21300000, guid: b3fe61402160fae41b0929f7ce41e6fe, type: 3}
+  _defaultSprite: {fileID: 21300000, guid: 65761a9b739213249a95e5790232921c, type: 3}
   _sprites: []
-  _scale: {x: 2, y: 2, z: 2}
+  _scale: {x: 1, y: 1, z: 1}

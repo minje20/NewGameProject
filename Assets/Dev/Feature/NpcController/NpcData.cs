@@ -27,7 +27,7 @@ public class NpcData: ScriptableObject
     public static NpcData CreateErrorData(string key = "")
     {
         var data = ScriptableObject.CreateInstance<NpcData>();
-        data._key = "ERROR_" + key;
+        data._key = key;
         data._sprites = new List<Sprite>();
         data._defaultSprite = null;
 

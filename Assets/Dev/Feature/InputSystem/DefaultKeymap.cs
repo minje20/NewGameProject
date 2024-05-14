@@ -62,6 +62,24 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShakingMiniGameInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""9dd94aa4-44a8-45d1-9612-51c8c02574a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DialogueSkip"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d024a56-b456-4478-bac8-ddaf4c6f4925"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +170,28 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
                     ""action"": ""Collect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a064210b-bcf6-419d-bb76-d811aa971ffe"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""WinPCScheme"",
+                    ""action"": ""ShakingMiniGameInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8432545f-fa34-4943-b0e6-97ca55756fbd"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""WinPCScheme"",
+                    ""action"": ""DialogueSkip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -181,6 +221,8 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         m_PlayerControl_Sprint = m_PlayerControl.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerControl_BuilderMode = m_PlayerControl.FindAction("BuilderMode", throwIfNotFound: true);
         m_PlayerControl_Collect = m_PlayerControl.FindAction("Collect", throwIfNotFound: true);
+        m_PlayerControl_ShakingMiniGameInteraction = m_PlayerControl.FindAction("ShakingMiniGameInteraction", throwIfNotFound: true);
+        m_PlayerControl_DialogueSkip = m_PlayerControl.FindAction("DialogueSkip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -246,6 +288,8 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_Sprint;
     private readonly InputAction m_PlayerControl_BuilderMode;
     private readonly InputAction m_PlayerControl_Collect;
+    private readonly InputAction m_PlayerControl_ShakingMiniGameInteraction;
+    private readonly InputAction m_PlayerControl_DialogueSkip;
     public struct PlayerControlActions
     {
         private @DefaultKeymap m_Wrapper;
@@ -254,6 +298,8 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_PlayerControl_Sprint;
         public InputAction @BuilderMode => m_Wrapper.m_PlayerControl_BuilderMode;
         public InputAction @Collect => m_Wrapper.m_PlayerControl_Collect;
+        public InputAction @ShakingMiniGameInteraction => m_Wrapper.m_PlayerControl_ShakingMiniGameInteraction;
+        public InputAction @DialogueSkip => m_Wrapper.m_PlayerControl_DialogueSkip;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -275,6 +321,12 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
             @Collect.started += instance.OnCollect;
             @Collect.performed += instance.OnCollect;
             @Collect.canceled += instance.OnCollect;
+            @ShakingMiniGameInteraction.started += instance.OnShakingMiniGameInteraction;
+            @ShakingMiniGameInteraction.performed += instance.OnShakingMiniGameInteraction;
+            @ShakingMiniGameInteraction.canceled += instance.OnShakingMiniGameInteraction;
+            @DialogueSkip.started += instance.OnDialogueSkip;
+            @DialogueSkip.performed += instance.OnDialogueSkip;
+            @DialogueSkip.canceled += instance.OnDialogueSkip;
         }
 
         private void UnregisterCallbacks(IPlayerControlActions instance)
@@ -291,6 +343,12 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
             @Collect.started -= instance.OnCollect;
             @Collect.performed -= instance.OnCollect;
             @Collect.canceled -= instance.OnCollect;
+            @ShakingMiniGameInteraction.started -= instance.OnShakingMiniGameInteraction;
+            @ShakingMiniGameInteraction.performed -= instance.OnShakingMiniGameInteraction;
+            @ShakingMiniGameInteraction.canceled -= instance.OnShakingMiniGameInteraction;
+            @DialogueSkip.started -= instance.OnDialogueSkip;
+            @DialogueSkip.performed -= instance.OnDialogueSkip;
+            @DialogueSkip.canceled -= instance.OnDialogueSkip;
         }
 
         public void RemoveCallbacks(IPlayerControlActions instance)
@@ -323,5 +381,7 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnBuilderMode(InputAction.CallbackContext context);
         void OnCollect(InputAction.CallbackContext context);
+        void OnShakingMiniGameInteraction(InputAction.CallbackContext context);
+        void OnDialogueSkip(InputAction.CallbackContext context);
     }
 }

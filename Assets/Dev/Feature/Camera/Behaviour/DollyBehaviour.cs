@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Cinemachine;
+using Cysharp.Threading.Tasks;
 using MyBox;
 using UnityEngine;
 
@@ -15,19 +17,23 @@ public class DollyBehaviour : CameraBehaviour
         public string Location;
         public int Position;
     }
+
+    [field: SerializeField, OverrideLabel("보간이 끝났다가 판단할 거리(미터)")]
+    private float _closerDistance = 0.001f;
     
     [field: SerializeField, Header("DollyPath key-value 설정")]
     private List<DollyPathPair> _statePairs;
     
     private CinemachineTrackedDolly _dolly;
+    private CinemachineVirtualCamera _camera;
 
     public override void Init(CameraController controller)
     {
-        var camera = controller.GetComponent<CinemachineVirtualCamera>();
-        _dolly = camera.GetCinemachineComponent<CinemachineTrackedDolly>();
+        _camera = controller.GetComponent<CinemachineVirtualCamera>();
+        _dolly = _camera.GetCinemachineComponent<CinemachineTrackedDolly>();
     }
     
-    public void Move(string state)
+    public void Move(string state, bool immediately=false)
     {
         if (_statePairs == null) return;
 
@@ -38,21 +44,37 @@ public class DollyBehaviour : CameraBehaviour
             _dolly.m_PathPosition = position;
         }
     }
-
-    [field: SerializeField, DefinedValues(nameof(DEBUG_TargetState))]
-    private string _DEBUG_target_state;
-    private string[] DEBUG_TargetState()
-    {
-        if (_statePairs == null) return new string[] { "Empty" };
-        
-        return _statePairs.Select(x => x.Location).ToArray();
-    }
     
-    [ButtonMethod]
-    private void OnDebugMove()
+    public async UniTask MoveAsync(string state)
     {
-        if (Application.isPlaying == false) return;
-        
-        Move(_DEBUG_target_state);
+        if (_statePairs == null) return;
+
+        var pair = _statePairs.FirstOrDefault(x => x.Location == state);
+        if (pair != null)
+        {
+            int position = pair.Position;
+            _dolly.m_PathPosition = position;
+            Debug.Log(position);
+            
+            await WaitForCameraMoved(position);
+        }
+    }
+
+    private async UniTask WaitForCameraMoved(float next)
+    {
+        while (true)
+        {
+            float distance = Vector3.Distance(
+                _camera.transform.position,
+                _dolly.m_Path.EvaluatePositionAtUnit(next, _dolly.m_PositionUnits)
+            );
+
+            if (distance <= _closerDistance)
+            {
+                return;
+            }
+
+            await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
+        }
     }
 }

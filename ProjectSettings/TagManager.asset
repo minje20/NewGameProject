@@ -63,3 +63,9 @@ TagManager:
   - name: DeskItem
     uniqueID: 2108816507
     locked: 0
+  - name: MiniGame
+    uniqueID: 1290862987
+    locked: 0
+  - name: Dialogue
+    uniqueID: 1141997853
+    locked: 0

@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct NpcCreationParameter
-{
-    public NpcData NpcData;
-    public NpcAnimationData AnimationData;
-}
+
 
 public static class NpcFactory
 {
@@ -20,12 +16,13 @@ public static class NpcFactory
         return npc;
     }
     
-    public static Npc CreateErrorNpcObject(string key = "")
+    public static Npc CreateErrorNpcObject(NpcSlot slot, string key = "")
     {
         var parameter = new NpcCreationParameter()
         {
             AnimationData = NpcAnimationData.CreateErrorData(),
-            NpcData = NpcData.CreateErrorData(key)
+            NpcData = NpcData.CreateErrorData(key),
+            Slot = slot
         };
 
         var npc = CreateCommon(ref parameter);
@@ -44,6 +41,8 @@ public static class NpcFactory
 
         var npc = obj.AddComponent<Npc>();
         npc.gameObject.transform.localScale = parameter.NpcData.Scale;
+        npc.transform.position = parameter.Slot.Transform.position;
+        
         npc.Init(parameter);
         
 
