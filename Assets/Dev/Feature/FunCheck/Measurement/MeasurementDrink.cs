@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class MeasurementDrink : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class MeasurementDrink : MonoBehaviour
     public float _jiggerToDistance;
     public float _scoreIncreasementSpeed;
     public float _scoreIncreasementStartAngle;
+    public int _maxCircleCount = 100;
+    [FormerlySerializedAs("_maxCircleCreationDelay")] public float _circleCreationDelay = 0.16f;
 
     public float _visualizeScoreHeightFactor;
     
@@ -25,8 +28,10 @@ public class MeasurementDrink : MonoBehaviour
     public Transform _drink;
 
     public TMP_Text _text;
+    public GameObject _prefab;
 
-    private Vector3 _backupDrinkPos;
+
+    private Queue<GameObject> _objectQueue = new Queue<GameObject>(100);
     
 
     public static Matrix4x4 GetMatrix(Vector3 position, Vector3 pivot, float angle)
@@ -66,25 +71,9 @@ public class MeasurementDrink : MonoBehaviour
         return m.GetPosition() + Vector3.down * bottleToPivotLength;
     }
     
-    public static (Vector3, Quaternion) GetMeasurementDrinkPosition(
-        Vector3 drinkPos,
-        Vector3 rotationPivot,
-        float angle
-        )
-    {
-        
-        var m = GetMatrix(drinkPos, rotationPivot, angle);
-        
-        return (
-            m.GetPosition(),
-            m.rotation
-        );
-    }
-    
     private void Awake()
     {
         _keyAction = InputManager.Actions.ShakingMiniGameInteraction;
-        _backupDrinkPos = _drink.position;
         
         var originDrinkPos = GetOriginDrinkPosition(
             _jigger.position,
@@ -95,28 +84,70 @@ public class MeasurementDrink : MonoBehaviour
         );
 
         _rPos = originDrinkPos;
-        _measureMatrix = GetMatrix(_backupDrinkPos, _rotationPivot.position, _angle);
+        _drink.position = _rPos;
+        _measureMatrix = GetMatrix(_rPos, _rotationPivot.position, _angle);
     }
 
     private Matrix4x4 _measureMatrix;
     private Vector3 _rPos;
     private float _normalizedScore;
+    private float _t;
+    private float _creationTimer;
     
     private void Update()
     {
         if (_keyAction.IsPressed())
         {
+            _t += _measureSpeed * Time.deltaTime;
+            
             Measure();
-
             CalculateScore();
+            
             _text.text = _normalizedScore.ToString();
         }
         else
         {
+            _t -= _measureSpeed * Time.deltaTime;
             BackToOrigin();
+        }
+        
+        _creationTimer += Time.deltaTime;
+        
+
+        if (_t * _angle >= _scoreIncreasementStartAngle)
+        {
+            if (_creationTimer > _circleCreationDelay)
+            {
+                CreateCircle();
+                _creationTimer = 0f;
+            }
+        }
+
+        if (_t <= 0f)
+        {
+            _t = 0f;
+        }
+        if (_t >= 1f)
+        {
+            _t = 1f;
         }
     }
 
+    private void CreateCircle()
+    {
+        var obj = Instantiate(_prefab);
+        obj.SetActive(true);
+        
+        while (_objectQueue.Count > _maxCircleCount)
+        {
+            var deletionObj = _objectQueue.Dequeue();
+            Destroy(deletionObj);
+        }
+
+        obj.transform.position = _bottle.position;
+        _objectQueue.Enqueue(obj);
+    }
+    
     private void CalculateScore()
     {
         float curAngle = _drink.rotation.eulerAngles.z;
@@ -132,16 +163,17 @@ public class MeasurementDrink : MonoBehaviour
         Vector3 pos = _measureMatrix.GetPosition();
         Quaternion rot = _measureMatrix.rotation;
         
-        _drink.position = Vector3.Lerp(_drink.position, pos, _measureSpeed * Time.deltaTime);
-        _drink.rotation = Quaternion.Lerp(_drink.rotation, rot, _measureSpeed * Time.deltaTime);
+        _drink.position = Vector3.Lerp(_rPos, pos, _t);
+        _drink.rotation = Quaternion.Lerp(Quaternion.identity, rot, _t);
     }
 
     private void BackToOrigin()
     {
-        _drink.position = 
-            Vector3.Lerp(_drink.position, _rPos, _backToOriginSpeed * Time.deltaTime);
-        _drink.rotation = 
-            Quaternion.Lerp(_drink.rotation, Quaternion.identity, _backToOriginSpeed * Time.deltaTime);
+        Vector3 pos = _measureMatrix.GetPosition();
+        Quaternion rot = _measureMatrix.rotation;
+        
+        _drink.position = Vector3.Lerp(_rPos, pos, _t);
+        _drink.rotation = Quaternion.Lerp(Quaternion.identity, rot, _t);
     }
 
     private void OnDrawGizmos()
