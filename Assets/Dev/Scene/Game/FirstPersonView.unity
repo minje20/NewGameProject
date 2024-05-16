@@ -1754,7 +1754,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f82407283f5a6984ca02b1e1480b4292, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.23137255}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5471,7 +5471,7 @@ GameObject:
   - component: {fileID: 1099660812}
   - component: {fileID: 1099660813}
   m_Layer: 0
-  m_Name: jigger_out (1)
+  m_Name: 'jigger_out '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7483,12 +7483,12 @@ MonoBehaviour:
   _angle: 85
   _backToOriginSpeed: 1
   _measureSpeed: 1
-  _jiggerToDistance: 3
+  _jiggerToDistance: 6
   _scoreIncreasementSpeed: 1
   _liquidCreationStartAngle: 85
   _defaultAngle: 50
   _maxCircleCount: 5555
-  _circleCreationDelay: 0
+  _circleCreationDelay: 0.0041
   _endOfRollbackDuration: 1
   _visualizeScoreHeightFactor: 2
   Drink: {fileID: 0}
@@ -8735,12 +8735,12 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.3265243, y: 1.6568317}
-  - {x: -1.3337212, y: 1.4520149}
-  - {x: -0.48743057, y: 0.10195351}
-  - {x: 0.49053192, y: 0.10263634}
-  - {x: 1.275238, y: 1.3241367}
-  - {x: 1.3087764, y: 1.5860958}
+  - {x: -1.3553805, y: 4.275573}
+  - {x: -1.3481503, y: 4.1140404}
+  - {x: -0.4363308, y: 2.085804}
+  - {x: 0.5515747, y: 2.0850544}
+  - {x: 1.4492531, y: 4.1576376}
+  - {x: 1.4433913, y: 4.324379}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -9010,7 +9010,7 @@ GameObject:
   - component: {fileID: 1968214263}
   - component: {fileID: 1968214264}
   m_Layer: 0
-  m_Name: jigger_out
+  m_Name: jigger_full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
