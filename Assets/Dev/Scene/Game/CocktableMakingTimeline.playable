@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Markers:
     m_Objects:
     - {fileID: -8729190341600051444}
---- !u!114 &-7294218998984198555
+--- !u!114 &-6769542622422779659
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,10 +235,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ad80e34bbd0fbe747ba9e5b7339dbf06, type: 3}
   m_Name: Drink Select Optional Marker
-  m_EditorClassIdentifier: Assembly-CSharp::DrinkSelectOptionalMarker
-  m_Time: 1.9166666269302368
+  m_EditorClassIdentifier: 
+  m_Time: 2.25
 --- !u!114 &-6665341144803606982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -758,10 +758,8 @@ MonoBehaviour:
     - {fileID: -2074786531471254250}
     - {fileID: -8312888124061223489}
     - {fileID: -7691350063626353769}
-    - {fileID: -7294218998984198555}
-    - {fileID: -3362575864953968816}
-    - {fileID: -2516631300053569197}
-    - {fileID: -2514653370684998263}
+    - {fileID: -435851174432495436}
+    - {fileID: -6769542622422779659}
 --- !u!114 &-5109727051786968685
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1391,19 +1389,6 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events: []
---- !u!114 &-3362575864953968816
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Drink Select Optional Marker
-  m_EditorClassIdentifier: Assembly-CSharp::DrinkSelectOptionalMarker
-  m_Time: 2.033333333333333
 --- !u!74 &-2979099662576698166
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -3048,32 +3033,6 @@ MonoBehaviour:
   m_Loop: 0
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &-2516631300053569197
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Drink Select Optional Marker
-  m_EditorClassIdentifier: Assembly-CSharp::DrinkSelectOptionalMarker
-  m_Time: 2
---- !u!114 &-2514653370684998263
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Drink Select Optional Marker
-  m_EditorClassIdentifier: Assembly-CSharp::DrinkSelectOptionalMarker
-  m_Time: 2.283333333333333
 --- !u!114 &-2074786531471254250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3086,7 +3045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab81ed6ec4537d4b9496bb34d37e976, type: 3}
   m_Name: Drink Measurement Marker
   m_EditorClassIdentifier: 
-  m_Time: 2.1666666666666665
+  m_Time: 2.0833333333333335
 --- !u!74 &-1067590150184437005
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -4366,6 +4325,19 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   m_PostPlaybackState: 3
+--- !u!114 &-435851174432495436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad80e34bbd0fbe747ba9e5b7339dbf06, type: 3}
+  m_Name: Drink Select Optional Marker
+  m_EditorClassIdentifier: 
+  m_Time: 1.95
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5964,49 +5936,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.2669124407072907
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

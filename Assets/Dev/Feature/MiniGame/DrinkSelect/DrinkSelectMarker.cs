@@ -15,14 +15,6 @@ public class DrinkSelectMarker : Marker, IMiniGameMarker
         => new SelectMiniGameBehaviour(false);
 }
 
-public class DrinkSelectOptionalMarker : Marker, IMiniGameMarker
-{
-    public PropertyName id => "DrinkSelectOptional";
-
-    public IMiniGameBehaviour Create()
-        => new SelectMiniGameBehaviour(true);
-}
-
 public class SelectMiniGameBehaviour: IMiniGameBehaviour
 {
     private bool _optional;
