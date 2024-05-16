@@ -53,43 +53,24 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         var jigger = binder.GetComponentT<Transform>("Jigger");
         var transform = drinkPosition.transform;
 
+        var backupPosition = drinkPosition.transform.position;
+
         if (drinkPosition.Data == false || drinkPosition.Data is NoSelectedDrinkData)
         {
             return;
         }
-        
-        controller.Button.gameObject.SetActive(true);
-        
-        var backupPosition = transform.position;
-        var backupRotation = transform.rotation;
-        
-        
-        var bottlePos = jigger.position + controller.FromJigger;
-        float bottleToPivotLength = Vector3.Distance(drinkPosition.Data.BottlePosition, drinkPosition.Data.RotationPivotPosition);
-        var pivot = bottlePos + Quaternion.AngleAxis(controller.MaxAngle, Vector3.forward) * Vector3.down * bottleToPivotLength;
-        var inverseM = GetInverseMatrix(bottlePos, pivot, controller.MaxAngle);
 
-        transform.position = inverseM.GetPosition() + -drinkPosition.Data.BottlePosition;
-        transform.rotation = inverseM.rotation;
+        controller.Jigger = jigger;
+        controller.Drink = drinkPosition;
+
+        controller.Reset();
+        await controller.Calculate();
         
-        bool pressedStarted = false;
+        controller.Started = true;
 
-        var m = GetMatrix(transform.position, pivot, controller.MaxAngle);
-
-        while (pressedStarted == false || controller.Button.IsPressed)
-        {
-            if (pressedStarted == false && controller.Button.IsPressed)
-            {
-                pressedStarted = true;
-            }
-
-            float t = controller.OnPressed.Value;
-            
-            transform.rotation = Quaternion.Lerp(backupRotation, m.rotation, t);
-            transform.position = Vector3.Lerp(backupPosition, m.GetPosition(), t);
-
-            await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
-        }
+        await UniTask.Delay(6000, DelayType.DeltaTime, PlayerLoopTiming.Update,GlobalCancelation.PlayMode);
+        
+        controller.Started = false;
 
         await UniTask.WhenAll(
             transform.DOMove(backupPosition, controller.EndOfRollbackDuration).AsyncWaitForCompletion().AsUniTask(),
@@ -97,7 +78,6 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         )
         .WithCancellation(GlobalCancelation.PlayMode);
         
-        
-        controller.Button.gameObject.SetActive(false);
+        controller.Reset();
     }
 }

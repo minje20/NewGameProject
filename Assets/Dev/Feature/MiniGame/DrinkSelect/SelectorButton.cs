@@ -10,7 +10,7 @@ public class SelectorButton : MonoBehaviour
     [field: SerializeField, AutoProperty, InitializationField, MustBeAssigned]
     private Button _button;
 
-    [field: SerializeField, InitializationField]
+    [field: SerializeField, InitializationField, DisplayInspector]
     private MiniGameItemData _data;
     public MiniGameItemData Data => _data;
     public Button Button => _button;
