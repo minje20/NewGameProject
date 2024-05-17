@@ -68,7 +68,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         
         controller.Started = true;
 
-        await UniTask.Delay(6000, DelayType.DeltaTime, PlayerLoopTiming.Update,GlobalCancelation.PlayMode);
+        await UniTask.Delay((int)(controller.GameDuration * 1000f), DelayType.DeltaTime, PlayerLoopTiming.Update,GlobalCancelation.PlayMode);
         
         controller.Started = false;
 

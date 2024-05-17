@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 29.666666666666668
+  m_Time: 24.816666666666666
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: fced6e06acf18d44391db1aade486e2d, type: 2}
---- !u!114 &-8189456063676085525
+--- !u!114 &-8270475835867340861
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25,10 +25,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab81ed6ec4537d4b9496bb34d37e976, type: 3}
-  m_Name: Drink Measurement Marker
+  m_Script: {fileID: 11500000, guid: 361291ca24ad23d4b98f74514a3e508e, type: 3}
+  m_Name: Ice Dispenser Marker
   m_EditorClassIdentifier: 
-  m_Time: 6.533333333333333
+  m_Time: 2.05
 --- !u!114 &-7608732550657605341
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,29 +77,6 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects: []
---- !u!114 &-5806359850465879663
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48853ae485fa386428341ac1ea122570, type: 3}
-  m_Name: ControlPlayableAsset
-  m_EditorClassIdentifier: 
-  sourceGameObject:
-    exposedName: 32316ef07f6436c44a1d1049b6e2bf26
-    defaultValue: {fileID: 0}
-  prefabGameObject: {fileID: 0}
-  updateParticle: 1
-  particleRandomSeed: 1748
-  updateDirector: 1
-  updateITimeControl: 1
-  searchHierarchy: 0
-  active: 1
-  postPlayback: 2
 --- !u!114 &-5773936413382220704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,25 +100,13 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects:
-    - {fileID: 791089756787765736}
-    - {fileID: -3693006401005219896}
-    - {fileID: 7484981899580501102}
-    - {fileID: -8189456063676085525}
     - {fileID: -3321300951991797127}
     - {fileID: 3202411304307452586}
---- !u!114 &-3693006401005219896
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab81ed6ec4537d4b9496bb34d37e976, type: 3}
-  m_Name: Drink Measurement Marker
-  m_EditorClassIdentifier: 
-  m_Time: 4.416666666666667
+    - {fileID: -8270475835867340861}
+    - {fileID: 907520382916148455}
+    - {fileID: 2394383570244277050}
+    - {fileID: 8419989755202618045}
+    - {fileID: 905574723839094435}
 --- !u!114 &-3321300951991797127
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd59f329391d8b74b97a2d51f96d9f23, type: 3}
   m_Name: Shaking Marker
   m_EditorClassIdentifier: 
-  m_Time: 11.183333333333334
+  m_Time: 10.966666666666667
 --- !u!114 &-2584291006807080791
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,8 +141,8 @@ MonoBehaviour:
   updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 1
-  postPlayback: 2
+  active: 0
+  postPlayback: 1
 --- !u!114 &-1471261894676837119
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,7 +164,7 @@ MonoBehaviour:
   updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 1
+  active: 0
   postPlayback: 2
 --- !u!114 &11400000
 MonoBehaviour:
@@ -223,7 +188,20 @@ MonoBehaviour:
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: -5773936413382220704}
---- !u!114 &791089756787765736
+--- !u!114 &905574723839094435
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab81ed6ec4537d4b9496bb34d37e976, type: 3}
+  m_Name: Drink Measurement Marker
+  m_EditorClassIdentifier: 
+  m_Time: 7.033333333333333
+--- !u!114 &907520382916148455
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff58544621d737644b376c31c2b5ca46, type: 3}
   m_Name: Drink Select Marker
   m_EditorClassIdentifier: 
-  m_Time: 4.183333333333334
+  m_Time: 4.2
 --- !u!114 &1589857691031623351
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,10 +305,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: T_FirstBatch
   - m_Version: 1
-    m_Start: 8.516666666666666
+    m_Start: 9.583333333333334
     m_ClipIn: 0
     m_Asset: {fileID: 4508490694007318757}
-    m_Duration: 2.416666666666666
+    m_Duration: 1.075544161784153
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1589857691031623351}
     m_EaseInDuration: 0
@@ -396,10 +374,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: T_SAM2Shaking
   - m_Version: 1
-    m_Start: 18.233333333333338
+    m_Start: 17.9588774951175
     m_ClipIn: 0
     m_Asset: {fileID: 6671130514597286231}
-    m_Duration: 6.794156764602906
+    m_Duration: 4.8893226040527225
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1589857691031623351}
     m_EaseInDuration: 0
@@ -535,7 +513,7 @@ MonoBehaviour:
     m_DisplayName: T_Ice2SAM
   m_Markers:
     m_Objects: []
---- !u!114 &3160492716498378155
+--- !u!114 &2394383570244277050
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -544,20 +522,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48853ae485fa386428341ac1ea122570, type: 3}
-  m_Name: ControlPlayableAsset
+  m_Script: {fileID: 11500000, guid: dab81ed6ec4537d4b9496bb34d37e976, type: 3}
+  m_Name: Drink Measurement Marker
   m_EditorClassIdentifier: 
-  sourceGameObject:
-    exposedName: 6426de28b5e150244b669f5e67fc2e41
-    defaultValue: {fileID: 0}
-  prefabGameObject: {fileID: 0}
-  updateParticle: 1
-  particleRandomSeed: 5410
-  updateDirector: 1
-  updateITimeControl: 1
-  searchHierarchy: 0
-  active: 1
-  postPlayback: 2
+  m_Time: 4.433333333333334
 --- !u!114 &3202411304307452586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -570,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd59f329391d8b74b97a2d51f96d9f23, type: 3}
   m_Name: Shaking Marker
   m_EditorClassIdentifier: 
-  m_Time: 14.783333333333333
+  m_Time: 13.966666666666667
 --- !u!114 &4508490694007318757
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,7 +560,7 @@ MonoBehaviour:
   updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 1
+  active: 0
   postPlayback: 2
 --- !u!114 &4869457802107822942
 MonoBehaviour:
@@ -615,7 +583,7 @@ MonoBehaviour:
   updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 1
+  active: 0
   postPlayback: 2
 --- !u!114 &4946925934476779970
 MonoBehaviour:
@@ -663,7 +631,7 @@ MonoBehaviour:
   updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 1
+  active: 0
   postPlayback: 2
 --- !u!114 &6671130514597286231
 MonoBehaviour:
@@ -686,7 +654,7 @@ MonoBehaviour:
   updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 1
+  active: 0
   postPlayback: 2
 --- !u!114 &7179814432341898987
 MonoBehaviour:
@@ -713,7 +681,7 @@ MonoBehaviour:
     m_Start: 3.3
     m_ClipIn: 0
     m_Asset: {fileID: -2584291006807080791}
-    m_Duration: 5.216666666666666
+    m_Duration: 6.283333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7179814432341898987}
     m_EaseInDuration: 0
@@ -779,76 +747,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: M_SelectAndMeasurement
   - m_Version: 1
-    m_Start: 25.027490097936244
-    m_ClipIn: 0
-    m_Asset: {fileID: 3160492716498378155}
-    m_Duration: 2.2225099020637558
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 7179814432341898987}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: M_Garnish
-  - m_Version: 1
-    m_Start: 10.933333333333332
+    m_Start: 10.658877495117487
     m_ClipIn: 0.699999999999994
     m_Asset: {fileID: 8693055973268482345}
     m_Duration: 7.300000000000006
@@ -920,7 +819,7 @@ MonoBehaviour:
     m_Start: 1
     m_ClipIn: 0
     m_Asset: {fileID: -1471261894676837119}
-    m_Duration: 1.5166666666666675
+    m_Duration: 1.4666666666669999
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7179814432341898987}
     m_EaseInDuration: 0
@@ -986,10 +885,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: M_IceMeasurement
   - m_Version: 1
-    m_Start: 27.25
+    m_Start: 22.84820009917022
     m_ClipIn: 0
-    m_Asset: {fileID: -5806359850465879663}
-    m_Duration: 2.416666666666668
+    m_Asset: {fileID: 8270770511685413370}
+    m_Duration: 1.9684665674964457
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7179814432341898987}
     m_EaseInDuration: 0
@@ -1056,7 +955,30 @@ MonoBehaviour:
     m_DisplayName: M_EndOfMaking
   m_Markers:
     m_Objects: []
---- !u!114 &7484981899580501102
+--- !u!114 &8270770511685413370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48853ae485fa386428341ac1ea122570, type: 3}
+  m_Name: ControlPlayableAsset
+  m_EditorClassIdentifier: 
+  sourceGameObject:
+    exposedName: 9d04c256957d41d4db345d660708d7a9
+    defaultValue: {fileID: 0}
+  prefabGameObject: {fileID: 0}
+  updateParticle: 1
+  particleRandomSeed: 1481
+  updateDirector: 1
+  updateITimeControl: 1
+  searchHierarchy: 0
+  active: 1
+  postPlayback: 2
+--- !u!114 &8419989755202618045
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1068,7 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff58544621d737644b376c31c2b5ca46, type: 3}
   m_Name: Drink Select Marker
   m_EditorClassIdentifier: 
-  m_Time: 6.366666666666666
+  m_Time: 6.783333333333333
 --- !u!114 &8693055973268482345
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1090,5 +1012,5 @@ MonoBehaviour:
   updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 1
+  active: 0
   postPlayback: 2

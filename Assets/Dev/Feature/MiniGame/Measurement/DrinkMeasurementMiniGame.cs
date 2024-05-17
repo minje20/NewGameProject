@@ -19,6 +19,10 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
     private InputAction _keyAction;
 
+    public float _gameDuration;
+
+    public float GameDuration => _gameDuration;
+
     public float _angle;
     public float _backToOriginSpeed;
     public float _measureSpeed;
