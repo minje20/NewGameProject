@@ -16,7 +16,6 @@ using UnityEngine.UI;
 
 public class DrinkMeasurementMiniGame : MonoBehaviour
 {
-
     private InputAction _keyAction;
 
     public float _gameDuration;
@@ -44,6 +43,8 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     public float EndOfRollbackDuration => _endOfRollbackDuration;
 
     private Queue<GameObject> _objectQueue = new Queue<GameObject>(100);
+
+    public AsyncReactiveProperty<int> LiquidCount { get; private set; } = new(0);
     
 
     public static Matrix4x4 GetMatrix(Vector3 position, Vector3 pivot, float angle)
@@ -88,6 +89,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         _keyAction = InputManager.Actions.ShakingMiniGameInteraction;
 
         Started = false;
+        LiquidCount.Value = 0;
     }
 
     public UniTask Calculate()
@@ -105,7 +107,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         Drink.transform.position = _rPos;
         _measureMatrix = GetMatrix(_rPos, Drink.RotatingPivotWorldPos, _angle);
         Drink.transform.position = back;
-
+        
         return UniTask.WhenAll(
             Drink.transform.DOMove(Vector3.Lerp(_rPos, _measureMatrix.GetPosition(), _defaultAngle / _angle), 1f).AsyncWaitForCompletion().AsUniTask(),
             Drink.transform.DORotateQuaternion(
@@ -140,6 +142,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         }
 
         _t = 0f;
+        LiquidCount.Value = 0;
     }
     
     private void Update()
@@ -188,6 +191,8 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
         obj.transform.position = Drink.BottleWorldPos;
         _objectQueue.Enqueue(obj);
+                
+        LiquidCount.Value += 1;
     }
     
     private void CalculateScore()

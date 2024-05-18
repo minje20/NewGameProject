@@ -21,35 +21,11 @@ public class DrinkMeasurementMarker : Marker, IMiniGameMarker
 
 public class DrinkMeasurementBehaviour : IMiniGameBehaviour
 {
-    public static Matrix4x4 GetMatrix(Vector3 position, Vector3 pivot, float angle)
-    {
-        Vector3 vector3 = Quaternion.AngleAxis(angle, Vector3.forward) * (position - pivot);
-        position = pivot + vector3;
-        
-        var m =Matrix4x4.TRS(
-            position,
-            Quaternion.Euler(0f, 0f, angle),
-            Vector3.one
-        );
-
-        return m;
-    }
-    public static Matrix4x4 GetInverseMatrix(Vector3 position, Vector3 pivot, float angle)
-    {
-        Vector3 vector3 = Quaternion.AngleAxis(-angle, Vector3.forward) * (position - pivot);
-        position = pivot + vector3;
-        
-        var m =Matrix4x4.TRS(
-            position,
-            Quaternion.identity,
-            Vector3.one
-        );
-        return m;
-    }
     public async UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
         var controller = binder.GetComponentT<DrinkMeasurementMiniGame>("DrinkMeasurement");
         var drinkPosition = binder.GetComponentT<DrinkPosition>("DrinkPosition");
+        var scoreController = binder.GetComponentT<CountLiquidScoreController>("CountLiquidScoreController");
         var jigger = binder.GetComponentT<Transform>("Jigger");
         var transform = drinkPosition.transform;
 
@@ -64,13 +40,29 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         controller.Drink = drinkPosition;
 
         controller.Reset();
+        scoreController.Setup();
+        //TODO: scoreController.ShowLine 더미 코드.
+        scoreController.ShowLine(new Vector3(-0.209999993f,-19.372f,0f));
         await controller.Calculate();
         
         controller.Started = true;
-
-        await UniTask.Delay((int)(controller.GameDuration * 1000f), DelayType.DeltaTime, PlayerLoopTiming.Update,GlobalCancelation.PlayMode);
+        
+        await UniTask.WhenAny(
+            UniTask.Delay((int)(controller.GameDuration * 1000f), DelayType.DeltaTime, PlayerLoopTiming.Update,
+                GlobalCancelation.PlayMode),
+            UniTask.Create(async () =>
+            {
+                while (true)
+                {
+                    int count = await controller.LiquidCount.WaitAsync(GlobalCancelation.PlayMode);
+                    scoreController.SetCount(count);
+                }
+            })
+        );
         
         controller.Started = false;
+        _ = scoreController.DisplayResult().ContinueWith(() => scoreController.Release());
+        
 
         await UniTask.WhenAll(
             transform.DOMove(backupPosition, controller.EndOfRollbackDuration).AsyncWaitForCompletion().AsUniTask(),
