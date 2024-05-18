@@ -1,0 +1,8 @@
+책넘기기.png
+size:749,271
+filter:Linear,Linear
+back
+bounds:2,2,564,267
+offsets:1,1,566,269
+book
+bounds:568,42,179,227

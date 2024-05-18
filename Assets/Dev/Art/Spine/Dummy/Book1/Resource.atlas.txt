@@ -1,0 +1,8 @@
+Resource.png
+size:658,250
+filter:Linear,Linear
+01
+bounds:2,2,474,246
+offsets:1,2,476,249
+02
+bounds:478,22,178,226
