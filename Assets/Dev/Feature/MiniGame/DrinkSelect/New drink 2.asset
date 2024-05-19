@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ed2adf82903d54ba780438b03dd503, type: 3}
   m_Name: New drink 2
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: d7846d8fd573d9d478ecc1d9ba8ac997, type: 3}
-  _bottlePosition: {x: 0, y: 9.02, z: 0}
-  _rotationPivotPosition: {x: 0, y: 0.78, z: 0}
+  _sprite: {fileID: 21300000, guid: 0a1ce6d322b883b418adb01c4f538711, type: 3}
+  _bottlePosition: {x: 0.05, y: 8.87, z: 0}
+  _rotationPivotPosition: {x: 0.05, y: 1.95, z: 0}
