@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6d472d8c7d95bb46ab4d8312d0b7bd0, type: 3}
-  m_Name: TestNpc2
+  m_Name: TestNpc3
   m_EditorClassIdentifier: 
-  _key: TEST_NPC_2
-  _defaultSprite: {fileID: 21300000, guid: f4df30e6064ad1a4b95cb0e0089339f6, type: 3}
+  _key: TEST_NPC_3
+  _defaultSprite: {fileID: 21300000, guid: bcf6d427edf2fbd45aa70839a90c634a, type: 3}
   _sprites: []
   _scale: {x: 1, y: 1, z: 1}
