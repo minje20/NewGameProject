@@ -32,6 +32,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     public int _maxCircleCount = 100;
     public float _circleCreationDelay = 0.16f;
     public float _endOfRollbackDuration;
+    public MiniGameCircleTimer _circleTimer;
 
     public float _visualizeScoreHeightFactor;
 
@@ -131,6 +132,9 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
                 return;
 
             enabled = value;
+            
+            if(enabled)
+                _circleTimer.TimerStart(_gameDuration);
         }
     }
 
@@ -143,6 +147,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
         _t = 0f;
         LiquidCount.Value = 0;
+        _circleTimer.TimerStop();
     }
     
     private void Update()

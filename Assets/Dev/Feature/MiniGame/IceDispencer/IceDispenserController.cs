@@ -25,8 +25,8 @@ public class IceDispenserController : MonoBehaviour
     [SerializeField] private float _creationDistanceFromPosition;
     [SerializeField] private GameObject _icePrefab;
     [SerializeField] private PressedButton _button;
-    [SerializeField] private MiniGameTimer _gameTimer;
     [SerializeField] private IceDispenserPosition _position;
+    [SerializeField] private MiniGameCircleTimer _gameTimer;
 
     [ButtonMethod]
     private void RemoveAll()
@@ -50,13 +50,11 @@ public class IceDispenserController : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        _gameTimer.TargetTime = _gameDuration;
-            
-        _gameTimer.Begin();
+        _gameTimer.TimerStart(_gameDuration);
         StopAllCoroutines();
         StartCoroutine(CoUpdate());
 
-        await UniTask.WaitUntil(()=>_gameTimer.IsBegan == false, PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
+        await UniTask.WaitUntil(()=>_gameTimer.IsBegin == false, PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
     }
     
     public void GameReset()
@@ -68,6 +66,7 @@ public class IceDispenserController : MonoBehaviour
         }
         
         gameObject.SetActive(false);
+        _gameTimer.TimerStop();
     }
     
 
@@ -108,7 +107,7 @@ public class IceDispenserController : MonoBehaviour
     {
         while (true)
         {
-            if (_gameTimer.IsBegan == false)
+            if (_gameTimer.IsBegin == false)
             {
                 yield break;
             }
