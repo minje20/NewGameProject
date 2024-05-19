@@ -26,6 +26,9 @@ public class ShakingMiniGameController : MonoBehaviour
     [SerializeField] private Transform _perfectHitbox;
     [SerializeField] private Transform _normalHitbox;
 
+    [SerializeField] private Bounds _barHitbox;
+    [SerializeField] private Bounds _tipHitbox;
+
     [SerializeField] private TMP_Text _resultMessageText;
 
     [SerializeField] private float _tipMovementSpeed = 1f;
@@ -35,8 +38,8 @@ public class ShakingMiniGameController : MonoBehaviour
 
     public Bounds PerfectHitBoxBound => new Bounds(_perfectHitbox.position, _perfectHitbox.lossyScale);
     public Bounds NormalHitBoxBound => new Bounds(_normalHitbox.position, _normalHitbox.lossyScale);
-    public Bounds TipHitBoxBound => new Bounds(_tip.position, _tip.lossyScale);
-    public Bounds BarHitBoxBound => new Bounds(_bar.position, _bar.lossyScale);
+    public Bounds TipHitBoxBound => new Bounds(_tip.position + _tipHitbox.center, _tipHitbox.size);
+    public Bounds BarHitBoxBound => new Bounds(_barHitbox.center + _bar.transform.position, _barHitbox.size);
 
     public bool IsStarted { get; private set; }
 
@@ -82,19 +85,19 @@ public class ShakingMiniGameController : MonoBehaviour
                 if (NormalHitBoxBound.Intersects(TipHitBoxBound))
                 {
                     rank = EShakingResult.PerfectHit;
-                    _resultMessageText.text = "Hit!";
+                    _resultMessageText.text = "Good!";
                     break;
                 }
 
                 rank = EShakingResult.Failure;
-                _resultMessageText.text = "Fail!";
+                _resultMessageText.text = "Bad!";
                 break;
             }
 
             if (BarHitBoxBound.Intersects(TipHitBoxBound) == false)
             {
                 rank = EShakingResult.Failure;
-                _resultMessageText.text = "Fail!";
+                _resultMessageText.text = "Bad!";
                 break;
             }
             
@@ -124,6 +127,7 @@ public class ShakingMiniGameController : MonoBehaviour
         Gizmos.DrawWireCube(PerfectHitBoxBound.center, PerfectHitBoxBound.size);
         Gizmos.DrawWireCube(NormalHitBoxBound.center, NormalHitBoxBound.size);
         Gizmos.DrawWireCube(TipHitBoxBound.center, TipHitBoxBound.size);
+        Gizmos.DrawWireCube(BarHitBoxBound.center, BarHitBoxBound.size);
 
         var tipPivotPosition = _hitboxPivot.position;
         Gizmos.DrawLine(
