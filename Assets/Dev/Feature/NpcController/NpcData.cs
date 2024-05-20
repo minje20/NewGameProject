@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using MyBox;
+using Spine.Unity;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "IndieLINY/Npc/Data", fileName = "New npc data")]
@@ -11,6 +12,8 @@ public class NpcData: ScriptableObject
 
     [field: SerializeField, OverrideLabel("Npc 기본 스프라이트")]
     private Sprite _defaultSprite;
+
+    [SerializeField] public SkeletonDataAsset Asset;
     
     [field: SerializeField, Header("Npc 스프라이트 키")]
     private List<Sprite> _sprites;

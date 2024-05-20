@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Spine.Unity;
 using UnityEngine;
 
 
@@ -34,10 +35,11 @@ public static class NpcFactory
     {
         GameObject obj = new GameObject(parameter.NpcData.Key);
 
-        var spr = obj.AddComponent<SpriteRenderer>();
-        spr.sprite = parameter.NpcData.DefaultSprite;
-        spr.color = parameter.AnimationData.FadeoutColor;
-        spr.sortingLayerName = "Npc";
+        obj.AddComponent<MeshFilter>();
+        var renderer = obj.AddComponent<MeshRenderer>();
+        var skeleton = obj.AddComponent<SkeletonAnimation>();
+        renderer.material.color = parameter.AnimationData.FadeoutColor;
+        renderer.sortingLayerName = "Npc";
 
         var npc = obj.AddComponent<Npc>();
         npc.gameObject.transform.localScale = parameter.NpcData.Scale;

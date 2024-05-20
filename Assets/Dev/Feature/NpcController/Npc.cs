@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MyBox;
+using Spine;
+using Spine.Unity;
 using UnityEngine;
 
 public class Npc : MonoBehaviour
@@ -13,7 +16,8 @@ public class Npc : MonoBehaviour
 
     public NpcSlot Slot => _creationParameter.Slot;
 
-    private SpriteRenderer _renderer;
+    private SkeletonAnimation _animation;
+    private MeshRenderer _renderer;
 
     public void Init(NpcCreationParameter parameter)
     {
@@ -25,25 +29,41 @@ public class Npc : MonoBehaviour
 
         _creationParameter = parameter;
 
-        _renderer = GetComponent<SpriteRenderer>();
+        _animation = GetComponent<SkeletonAnimation>();
+        _renderer = GetComponent<MeshRenderer>();
+
+        _animation.skeletonDataAsset = NpcData.Asset;
         
         Debug.Assert(_renderer);
+
+        StartCoroutine(OnUpdate());
+    }
+
+    private IEnumerator OnUpdate()
+    {
+        while (true)
+        {
+            _animation.AnimationName = "";
+            _animation.AnimationName = "smoothing";
+
+            yield return new WaitForSeconds(5f);
+        }
     }
 
     public UniTask AnimateFadein()
     {
         if (_renderer == false) return UniTask.CompletedTask;
 
-        _renderer.color = AniData.FadeoutColor;
-        return _renderer.DOColor(AniData.FadeinColor, AniData.FadeinSpeed)
+        _renderer.material.color = AniData.FadeoutColor;
+        return _renderer.material.DOColor(AniData.FadeinColor, AniData.FadeinSpeed)
             .AsyncWaitForCompletion().AsUniTask().WithCancellation(GlobalCancelation.PlayMode);
     }
     public UniTask AnimateFadeout()
     {
         if (_renderer == false) return UniTask.CompletedTask;
 
-        _renderer.color = AniData.FadeinColor;
-        return _renderer.DOColor(AniData.FadeoutColor, AniData.FadeinSpeed)
+        _renderer.material.color = AniData.FadeinColor;
+        return _renderer.material.DOColor(AniData.FadeoutColor, AniData.FadeinSpeed)
             .AsyncWaitForCompletion().AsUniTask().WithCancellation(GlobalCancelation.PlayMode);
     }
 }
