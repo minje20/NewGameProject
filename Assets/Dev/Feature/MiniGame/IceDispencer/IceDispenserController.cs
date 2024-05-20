@@ -27,6 +27,7 @@ public class IceDispenserController : MonoBehaviour
     [SerializeField] private PressedButton _button;
     [SerializeField] private IceDispenserPosition _position;
     [SerializeField] private MiniGameCircleTimer _gameTimer;
+    [SerializeField] private HUDController _moneyHud;
 
     [ButtonMethod]
     private void RemoveAll()
@@ -126,6 +127,8 @@ public class IceDispenserController : MonoBehaviour
                         _creationForcePower *
                         (Quaternion.Euler(0f, 0f, angle) * Vector3.down)
                         , ForceMode2D.Impulse);
+                    
+                    _moneyHud.SetValue(_moneyHud.Value - 1);
                     
                     yield return new WaitForSeconds(_creationDelay);
                 }

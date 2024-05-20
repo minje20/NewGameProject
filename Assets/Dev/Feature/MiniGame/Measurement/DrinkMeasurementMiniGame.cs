@@ -33,6 +33,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     public float _circleCreationDelay = 0.16f;
     public float _endOfRollbackDuration;
     public MiniGameCircleTimer _circleTimer;
+    public HUDController _moneyHud;
 
     public float _visualizeScoreHeightFactor;
 
@@ -196,7 +197,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
         obj.transform.position = Drink.BottleWorldPos;
         _objectQueue.Enqueue(obj);
-                
+        _moneyHud.SetValue( _moneyHud.Value - 1, false);
         LiquidCount.Value += 1;
     }
     
