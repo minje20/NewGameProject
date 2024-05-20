@@ -128,7 +128,7 @@ public class IceDispenserController : MonoBehaviour
                         (Quaternion.Euler(0f, 0f, angle) * Vector3.down)
                         , ForceMode2D.Impulse);
                     
-                    _moneyHud.SetValue(_moneyHud.Value - 1);
+                    _moneyHud.SetValue(_moneyHud.Value - 10);
                     
                     yield return new WaitForSeconds(_creationDelay);
                 }

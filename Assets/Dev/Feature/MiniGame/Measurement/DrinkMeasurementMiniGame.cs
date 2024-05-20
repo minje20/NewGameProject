@@ -197,7 +197,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
         obj.transform.position = Drink.BottleWorldPos;
         _objectQueue.Enqueue(obj);
-        _moneyHud.SetValue( _moneyHud.Value - 1, false);
+        _moneyHud.SetValue( _moneyHud.Value - 10, false);
         LiquidCount.Value += 1;
     }
     
