@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MyBox;
@@ -23,5 +24,9 @@ public class DrinkPosition : MonoBehaviour
         => Data.BottlePosition;
     public Vector3 RotatingPivotLocalPos
         => Data.RotationPivotPosition;
-    
+
+    private void Awake()
+    {
+        _renderer.sprite = null;
+    }
 }

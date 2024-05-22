@@ -32,7 +32,6 @@ public class SelectMiniGameBehaviour: IMiniGameBehaviour
         selector.Open(_optional);
 
         drink.Data = null;
-        drink.Renderer.sprite = null;
 
         while (true)
         {
