@@ -10551,23 +10551,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e91f5984b2e6a44297b7c1a3ac445fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameDuration: 323
-  _angle: 85
-  _backToOriginSpeed: 1
-  _measureSpeed: 1
-  _jiggerToDistance: 6
-  _scoreIncreasementSpeed: 1
-  _liquidCreationStartAngle: 85
-  _defaultAngle: 50
-  _maxCircleCount: 5555
-  _circleCreationDelay: 0.0041
-  _endOfRollbackDuration: 1
-  _dummyLineT: 0.45
+  _data: {fileID: 11400000, guid: 89cce9960dbeed74889a53a327d26a4c, type: 2}
   _circleTimer: {fileID: 1557512643}
   _moneyHud: {fileID: 1235898431}
-  _visualizeScoreHeightFactor: 2
-  Drink: {fileID: 0}
-  Jigger: {fileID: 0}
   _prefab: {fileID: 747525643}
 --- !u!114 &1446863640
 MonoBehaviour:
@@ -11939,16 +11925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f7bbcc6c4446c0a238b497a3b65375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomSizeVariation:
-  - {x: 1, y: 1, z: 1}
-  _creationDelay: 0.07
-  _gameDuration: 1
-  _createStepWaitDurationRange: {x: 0.5, y: 1.25}
-  _createStepIceCountRange: {x: 2, y: 4}
-  _createStepCount: 5
-  _creationFov: 87
-  _creationForcePower: 15
-  _creationDistanceFromPosition: 1
+  _data: {fileID: 11400000, guid: a36083960c6018b468824374130ece0a, type: 2}
   _icePrefab: {fileID: 647610879}
   _button: {fileID: 1724629247}
   _position: {fileID: 993498806}

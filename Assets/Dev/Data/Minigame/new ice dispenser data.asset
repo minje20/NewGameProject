@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e01f8fe6c0ddf4a8e62be5e6e8c1b2, type: 3}
+  m_Name: new ice dispenser data
+  m_EditorClassIdentifier: 
+  _creationDelay: 0.016
+  _gameDuration: 6
+  _createStepWaitDurationRange: {x: 0.55, y: 0.95}
+  _createStepIceCountRange: {x: 2, y: 4}
+  _creationFov: 40
+  _creationForcePower: 15
+  _creationDistanceFromPosition: 1
+  _randomSizeVariation:
+  - {x: 1, y: 1, z: 1}

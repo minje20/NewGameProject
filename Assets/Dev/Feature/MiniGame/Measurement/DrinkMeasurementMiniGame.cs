@@ -17,7 +17,7 @@ using UnityEngine.UI;
 public class DrinkMeasurementMiniGame : MonoBehaviour
 {
     #region Inspector
-    [field: SerializeField, OverrideLabel("계량 미니게임 데이터"), Foldout("데이터"), DisplayInspector, InitializationField, MustBeAssigned]
+    [field: SerializeField, OverrideLabel("계량 미니게임 데이터"), Foldout("데이터"), InitializationField, MustBeAssigned]
     private DrinkMeasurementData _data;
     
     [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]

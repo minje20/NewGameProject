@@ -14,21 +14,30 @@ using Random = UnityEngine.Random;
 
 public class IceDispenserController : MonoBehaviour
 {
-    [SerializeField] private List<Vector3> _randomSizeVariation;
-    [SerializeField] private float _creationDelay;
-    [SerializeField] private float _gameDuration;
-    [SerializeField] private Vector2 _createStepWaitDurationRange;
-    [SerializeField] private Vector2Int _createStepIceCountRange;
-    [SerializeField] private int _createStepCount;
-    [SerializeField] private int _creationFov;
-    [SerializeField] private int _creationForcePower;
-    [SerializeField] private float _creationDistanceFromPosition;
-    [SerializeField] private GameObject _icePrefab;
-    [SerializeField] private PressedButton _button;
-    [SerializeField] private IceDispenserPosition _position;
-    [SerializeField] private MiniGameCircleTimer _gameTimer;
-    [SerializeField] private HUDController _moneyHud;
+    #region Inspector
+    [field: SerializeField, Foldout("데이터"), InitializationField, MustBeAssigned] 
+    private IceDispenserData _data;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned] 
+    private GameObject _icePrefab;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned] 
+    private PressedButton _button;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned] 
+    private IceDispenserPosition _position;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned] 
+    private MiniGameCircleTimer _gameTimer;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned] 
+    private HUDController _moneyHud;
+    #endregion
 
+    #region Getter/Setter
+    public IceDispenserData Data => _data;
+    #endregion
+    
     [ButtonMethod]
     private void RemoveAll()
     {
@@ -40,6 +49,8 @@ public class IceDispenserController : MonoBehaviour
             Destroy(obj);
         }
     }
+    
+    
 
     private Queue<GameObject> _createdRandomIce = new();
 
@@ -51,7 +62,7 @@ public class IceDispenserController : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        _gameTimer.TimerStart(_gameDuration);
+        _gameTimer.TimerStart(Data.GameDuration);
         StopAllCoroutines();
         StartCoroutine(CoUpdate());
 
@@ -85,18 +96,18 @@ public class IceDispenserController : MonoBehaviour
 
     private Vector3 GetRandomSize()
     {
-        var randomIndex = Random.Range(0, _randomSizeVariation.Count - 1);
-        Debug.Assert(randomIndex >= 0 && randomIndex < _randomSizeVariation.Count);
+        var randomIndex = Random.Range(0, Data.RandomSizeVariation.Count - 1);
+        Debug.Assert(randomIndex >= 0 && randomIndex < Data.RandomSizeVariation.Count);
 
-        return _randomSizeVariation[randomIndex];
+        return Data.RandomSizeVariation[randomIndex];
     }
     private float GetRandomCreationStepWaitDuration()
     {
-        return Random.Range(_createStepWaitDurationRange.x, _createStepWaitDurationRange.y);
+        return Random.Range(Data.CreateStepWaitDurationRange.x, Data.CreateStepWaitDurationRange.y);
     }
     private int GetRandomCreationStepIceCount()
     {
-        return Random.Range(_createStepIceCountRange.x, _createStepIceCountRange.y);
+        return Random.Range(Data.CreateStepIceCountRange.x, Data.CreateStepIceCountRange.y);
     }
 
     private void Awake()
@@ -119,18 +130,18 @@ public class IceDispenserController : MonoBehaviour
                 for (int i = 0; i < length; i++)
                 {
                     var obj = CreateIce();
-                    var angle = Mathf.Lerp(_creationFov * -0.5f, _creationFov * 0.5f, Random.value);
-                    obj.transform.position = _position.IceSpawnPoint + Quaternion.Euler(0f, 0f, angle) * Vector3.down * _creationDistanceFromPosition;
+                    var angle = Mathf.Lerp(Data.CreationFov * -0.5f, Data.CreationFov * 0.5f, Random.value);
+                    obj.transform.position = _position.IceSpawnPoint + Quaternion.Euler(0f, 0f, angle) * Vector3.down * Data.CreationDistanceFromPosition;
                     obj.transform.rotation = quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
                     
                     obj.GetComponent<Rigidbody2D>()?.AddForce(
-                        _creationForcePower *
+                        Data.CreationForcePower *
                         (Quaternion.Euler(0f, 0f, angle) * Vector3.down)
                         , ForceMode2D.Impulse);
                     
                     _moneyHud.SetValue(_moneyHud.Value - 10);
                     
-                    yield return new WaitForSeconds(_creationDelay);
+                    yield return new WaitForSeconds(Data.CreationDelay);
                 }
                 yield return new WaitForSeconds(GetRandomCreationStepWaitDuration());
             }
@@ -141,10 +152,12 @@ public class IceDispenserController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (Data == false) return;
+        
         var pos = _position.IceSpawnPoint;
-        Gizmos.DrawRay(pos, Vector3.down * _creationDistanceFromPosition);
-        var el = Quaternion.Euler(0f, 0f, _creationFov * -0.5f);
-        var er = Quaternion.Euler(0f, 0f, _creationFov * 0.5f);
+        Gizmos.DrawRay(pos, Vector3.down * Data.CreationDistanceFromPosition);
+        var el = Quaternion.Euler(0f, 0f, Data.CreationFov * -0.5f);
+        var er = Quaternion.Euler(0f, 0f, Data.CreationFov * 0.5f);
         
         Gizmos.DrawRay(pos, er * Vector3.down * 5f);
         Gizmos.DrawRay(pos, el * Vector3.down * 5f);
