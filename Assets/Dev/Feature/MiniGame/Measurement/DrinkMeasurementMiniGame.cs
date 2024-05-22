@@ -32,6 +32,8 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     public int _maxCircleCount = 100;
     public float _circleCreationDelay = 0.16f;
     public float _endOfRollbackDuration;
+    [Range(0f, 1f)]
+    public float _dummyLineT = 0.45f;
     public MiniGameCircleTimer _circleTimer;
     public HUDController _moneyHud;
 

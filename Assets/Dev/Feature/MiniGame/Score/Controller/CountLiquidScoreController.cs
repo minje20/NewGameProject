@@ -46,7 +46,7 @@ public class CountLiquidScoreController : ScoreController
         _behaviour.CurrentScore = value;
     }
 
-    public void ShowLine(Vector3 pos)
+    public void ShowLine(float pos)
     {
         _displayer.LineEnabled = true;
         _displayer.SetLinePosition(pos);

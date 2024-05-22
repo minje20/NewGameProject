@@ -42,7 +42,6 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         controller.Reset();
         scoreController.Setup();
         //TODO: scoreController.ShowLine 더미 코드.
-        scoreController.ShowLine(new Vector3(0.5420238f,-17.88316f,0f));
         await controller.Calculate();
         
         controller.Started = true;
@@ -56,6 +55,14 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
                 {
                     int count = await controller.LiquidCount.WaitAsync(GlobalCancelation.PlayMode);
                     scoreController.SetCount(count);
+                }
+            }),
+            UniTask.Create(async () =>
+            {
+                while (true)
+                {
+                    scoreController.ShowLine(controller._dummyLineT);
+                    await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
                 }
             })
         );
