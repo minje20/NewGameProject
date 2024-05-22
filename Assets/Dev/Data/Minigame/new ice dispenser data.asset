@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: new ice dispenser data
   m_EditorClassIdentifier: 
   _creationDelay: 0.016
-  _gameDuration: 0
+  _gameDuration: 6
   _createStepWaitDurationRange: {x: 0.55, y: 0.95}
   _createStepIceCountRange: {x: 2, y: 4}
   _creationFov: 40
   _creationForcePower: 15
   _creationDistanceFromPosition: 1
   _randomSizeVariation:
-  - {x: 1, y: 1, z: 1}
+  - {x: 0.75, y: 0.75, z: 0.75}

@@ -1,0 +1,181 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6345708998670409031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6347148950108794418}
+  - component: {fileID: 3464493241446362271}
+  - component: {fileID: 2527930124962505376}
+  - component: {fileID: 662387937816805884}
+  - component: {fileID: 7067663645807488867}
+  - component: {fileID: 5425988683882897281}
+  m_Layer: 0
+  m_Name: Timeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6347148950108794418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345708998670409031}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &3464493241446362271
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345708998670409031}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 4916bb0c3533dc340be4230eefff4054, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: -7608732550657605341, guid: 4916bb0c3533dc340be4230eefff4054, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References:
+    - 9d04c256957d41d4db345d660708d7a9: {fileID: 0}
+    - ab4340dd46eb2f34e8177f806674f14b: {fileID: 0}
+    - e448650de09ae2b43ba71b23f71a6d40: {fileID: 0}
+    - ed8d5d5d3d9e4c749a49171a28a0ff50: {fileID: 0}
+    - 304ef2d0ca0a75c48b8dbd32e979761e: {fileID: 0}
+    - 31a66e8d8afb3574e856cc8fc087b172: {fileID: 0}
+    - 0e697b3b3e713c94caf591313a132638: {fileID: 0}
+    - 43fd1d1b418a84643850da8998226078: {fileID: 0}
+    - 8eeff14ef0054d340b9c3d56a935cbfa: {fileID: 0}
+    - 88a373f9e265f1b4189d5c97fd663cec: {fileID: 0}
+    - 844fe3536988c50419da711e42a3c06c: {fileID: 0}
+    - 4d51cad468f928447b1ee0fa62e517fe: {fileID: 0}
+    - 2ecb53a5e28d5b24da0c3f356cc56c96: {fileID: 0}
+    - a7fe5335353946f4193d09df1afd1b92: {fileID: 0}
+    - dd82044e364ebcc42b11761de4da30e4: {fileID: 0}
+    - 5d8e735b5fb57da47975cc80a8007346: {fileID: 0}
+    - 76eeaf0b6e4576e4c8860fc582b9d2c4: {fileID: 0}
+    - 32316ef07f6436c44a1d1049b6e2bf26: {fileID: 0}
+    - 6426de28b5e150244b669f5e67fc2e41: {fileID: 0}
+--- !u!114 &2527930124962505376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345708998670409031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c36ad9f085259d43b569342773eeda4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _director: {fileID: 3464493241446362271}
+  _receivers:
+  - {fileID: 662387937816805884}
+  _components:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &662387937816805884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345708998670409031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e7defa5a3840e2b28166e95d08b339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7067663645807488867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345708998670409031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"npc_controller","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"NpcController,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"minigame_controller","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"MiniGameController,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"camera_controller","value":{"$content":2,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"CameraController,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"maked_cocktail","value":null,"typeHandle":{"Identification":null,"$version":"A"},"$version":"A"},{"name":"bar_controller","value":{"$content":3,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"BarController,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"dialogue_controller","value":{"$content":4,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"DialogueController,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"fame_hud_controller","value":{"$content":5,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"HUDController,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 0}
+    - {fileID: 2527930124962505376}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+--- !u!114 &5425988683882897281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345708998670409031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: fe9792e5bde95214393ff411a2cad627, type: 2}

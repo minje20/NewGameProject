@@ -15,44 +15,37 @@ MonoBehaviour:
   _rectOffset: {x: 20, y: 1}
   _list:
   - _usePrefab: 1
-    _targetObjectName: Player
-    _targetPrefab: {fileID: 828418061268387261, guid: 2163deb2c7b92f94fbdc8a1be00476d6,
+    _targetObjectName: Shaker
+    _targetPrefab: {fileID: 2431188247703587962, guid: 9f97953abf7b65c4fbc72bfea12dc021,
       type: 3}
-    _backgroundColor: {r: 1, g: 0.31760997, b: 0.31760997, a: 1}
+    _backgroundColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    _textColor: {r: 0, g: 0.43686247, b: 1, a: 1}
+    _icon: {fileID: 0}
+  - _usePrefab: 1
+    _targetObjectName: Shaker
+    _targetPrefab: {fileID: 8847588304691832612, guid: 482cdea8700a0ea4dadf3d793f8479d9,
+      type: 3}
+    _backgroundColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
     _textColor: {r: 0, g: 0, b: 0, a: 1}
     _icon: {fileID: 0}
   - _usePrefab: 1
-    _targetObjectName: 
-    _targetPrefab: {fileID: 5752271023960345246, guid: 0b6d474f1e85179489e809a5a4d4da7f,
+    _targetObjectName: Shaker
+    _targetPrefab: {fileID: 4589423936013552989, guid: 3889378bba594d8479e762807497596a,
       type: 3}
-    _backgroundColor: {r: 0.15723264, g: 0.622343, b: 1, a: 1}
-    _textColor: {r: 0, g: 0, b: 0, a: 1}
-    _icon: {fileID: 0}
-  - _usePrefab: 0
-    _targetObjectName: =====Object=====
-    _targetPrefab: {fileID: 5752271023960345246, guid: 0b6d474f1e85179489e809a5a4d4da7f,
-      type: 3}
-    _backgroundColor: {r: 0, g: 0.13833088, b: 0.8962264, a: 1}
+    _backgroundColor: {r: 0, g: 0.22915363, b: 1, a: 1}
     _textColor: {r: 1, g: 1, b: 1, a: 1}
     _icon: {fileID: 0}
-  - _usePrefab: 0
-    _targetObjectName: =====Actor=====
-    _targetPrefab: {fileID: 5752271023960345246, guid: 0b6d474f1e85179489e809a5a4d4da7f,
+  - _usePrefab: 1
+    _targetObjectName: Shaker
+    _targetPrefab: {fileID: 8476011224772245230, guid: ea9a8578cfed4b54ab2394ae312d8637,
       type: 3}
-    _backgroundColor: {r: 0.8773585, g: 0.48067215, b: 0.29521176, a: 1}
-    _textColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
-    _icon: {fileID: 0}
-  - _usePrefab: 0
-    _targetObjectName: =====Manager=====
-    _targetPrefab: {fileID: 5752271023960345246, guid: 0b6d474f1e85179489e809a5a4d4da7f,
-      type: 3}
-    _backgroundColor: {r: 0.8784314, g: 0.83151513, b: 0.29411763, a: 1}
+    _backgroundColor: {r: 0, g: 1, b: 0.9760642, a: 1}
     _textColor: {r: 0, g: 0, b: 0, a: 1}
     _icon: {fileID: 0}
-  - _usePrefab: 0
-    _targetObjectName: =====Property=====
-    _targetPrefab: {fileID: 5752271023960345246, guid: 0b6d474f1e85179489e809a5a4d4da7f,
+  - _usePrefab: 1
+    _targetObjectName: Shaker
+    _targetPrefab: {fileID: 492458728748042627, guid: 81fd9742089726d4fa27dba0db40d61c,
       type: 3}
-    _backgroundColor: {r: 0.29411763, g: 0.8784314, b: 0.39431933, a: 1}
+    _backgroundColor: {r: 0, g: 1, b: 0.21481133, a: 1}
     _textColor: {r: 0, g: 0, b: 0, a: 1}
     _icon: {fileID: 0}
