@@ -39,7 +39,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         controller.Jigger = jigger;
         controller.Drink = drinkPosition;
 
-        controller.Reset();
+        controller.GameReset();
         scoreController.Setup();
         //TODO: scoreController.ShowLine 더미 코드.
         await controller.Calculate();
@@ -47,7 +47,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         controller.Started = true;
         
         await UniTask.WhenAny(
-            UniTask.Delay((int)(controller.GameDuration * 1000f), DelayType.DeltaTime, PlayerLoopTiming.Update,
+            UniTask.Delay((int)(controller.Data.GameDuration * 1000f), DelayType.DeltaTime, PlayerLoopTiming.Update,
                 GlobalCancelation.PlayMode),
             UniTask.Create(async () =>
             {
@@ -61,7 +61,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
             {
                 while (true)
                 {
-                    scoreController.ShowLine(controller._dummyLineT);
+                    scoreController.ShowLine(controller.Data.NormalizedLinePosition);
                     await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
                 }
             })
@@ -72,11 +72,11 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         
 
         await UniTask.WhenAll(
-            transform.DOMove(backupPosition, controller.EndOfRollbackDuration).AsyncWaitForCompletion().AsUniTask(),
-            transform.DORotate(Vector3.zero, controller.EndOfRollbackDuration).AsyncWaitForCompletion().AsUniTask()
+            transform.DOMove(backupPosition, controller.Data.EndOfRollbackDuration).AsyncWaitForCompletion().AsUniTask(),
+            transform.DORotate(Vector3.zero, controller.Data.EndOfRollbackDuration).AsyncWaitForCompletion().AsUniTask()
         )
         .WithCancellation(GlobalCancelation.PlayMode);
         
-        controller.Reset();
+        controller.GameReset();
     }
 }

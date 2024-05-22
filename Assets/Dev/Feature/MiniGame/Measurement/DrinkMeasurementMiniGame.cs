@@ -16,40 +16,38 @@ using UnityEngine.UI;
 
 public class DrinkMeasurementMiniGame : MonoBehaviour
 {
-    private InputAction _keyAction;
-
-    public float _gameDuration;
-
-    public float GameDuration => _gameDuration;
-
-    public float _angle;
-    public float _backToOriginSpeed;
-    public float _measureSpeed;
-    public float _jiggerToDistance;
-    public float _scoreIncreasementSpeed;
-    public float _liquidCreationStartAngle;
-    public float _defaultAngle;
-    public int _maxCircleCount = 100;
-    public float _circleCreationDelay = 0.16f;
-    public float _endOfRollbackDuration;
-    [Range(0f, 1f)]
-    public float _dummyLineT = 0.45f;
-    public MiniGameCircleTimer _circleTimer;
-    public HUDController _moneyHud;
-
-    public float _visualizeScoreHeightFactor;
-
-    public DrinkPosition Drink;
-    public Transform Jigger;
-
-    public GameObject _prefab;
-
-    public float EndOfRollbackDuration => _endOfRollbackDuration;
-
-    private Queue<GameObject> _objectQueue = new Queue<GameObject>(100);
-
-    public AsyncReactiveProperty<int> LiquidCount { get; private set; } = new(0);
+    #region Inspector
+    [field: SerializeField, OverrideLabel("계량 미니게임 데이터"), Foldout("데이터"), DisplayInspector, InitializationField, MustBeAssigned]
+    private DrinkMeasurementData _data;
     
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
+    private MiniGameCircleTimer _circleTimer;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
+    private HUDController _moneyHud;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
+    private GameObject _prefab;
+    #endregion
+
+
+    #region Getter/Setter
+    public AsyncReactiveProperty<int> LiquidCount { get; private set; } = new(0);
+    public DrinkMeasurementData Data => _data;
+    public Transform Jigger { get; set; }
+    public DrinkPosition Drink { get; set; }
+    #endregion
+
+
+    
+    private InputAction _keyAction;
+    private Queue<GameObject> _liquidQueue = new (100);
+
+    private Matrix4x4 _measureMatrix;
+    private Vector3 _originPos;
+    private float _normalizedScore;
+    private float _t;
+    private float _creationTimer;
 
     public static Matrix4x4 GetMatrix(Vector3 position, Vector3 pivot, float angle)
     {
@@ -100,31 +98,25 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     {
         var originDrinkPos = GetOriginDrinkPosition(
             Jigger.position,
-            _jiggerToDistance,
-            _angle,
+            Data.JiggerToDistance,
+            Data.Angle,
             Vector3.Distance(Drink.BottleLocalPos, Drink.RotatingPivotLocalPos),
             Vector3.Distance(Drink.BottleWorldPos, Drink.transform.position)
         );
 
-        _rPos = originDrinkPos;
+        _originPos = originDrinkPos;
         var back = Drink.transform.position;
-        Drink.transform.position = _rPos;
-        _measureMatrix = GetMatrix(_rPos, Drink.RotatingPivotWorldPos, _angle);
+        Drink.transform.position = _originPos;
+        _measureMatrix = GetMatrix(_originPos, Drink.RotatingPivotWorldPos, Data.Angle);
         Drink.transform.position = back;
         
         return UniTask.WhenAll(
-            Drink.transform.DOMove(Vector3.Lerp(_rPos, _measureMatrix.GetPosition(), _defaultAngle / _angle), 1f).AsyncWaitForCompletion().AsUniTask(),
+            Drink.transform.DOMove(Vector3.Lerp(_originPos, _measureMatrix.GetPosition(), Data.DefaultAngle / Data.Angle), 1f).AsyncWaitForCompletion().AsUniTask(),
             Drink.transform.DORotateQuaternion(
-                Quaternion.Slerp(Quaternion.identity, _measureMatrix.rotation, _defaultAngle / _angle),
+                Quaternion.Slerp(Quaternion.identity, _measureMatrix.rotation, Data.DefaultAngle / Data.Angle),
                 1f).AsyncWaitForCompletion().AsUniTask()
         ).WithCancellation(GlobalCancelation.PlayMode);
     }
-
-    private Matrix4x4 _measureMatrix;
-    private Vector3 _rPos;
-    private float _normalizedScore;
-    private float _t;
-    private float _creationTimer;
 
     public bool Started
     {
@@ -137,48 +129,50 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
             enabled = value;
             
             if(enabled)
-                _circleTimer.TimerStart(_gameDuration);
+                _circleTimer.TimerStart(Data.GameDuration);
         }
     }
 
-    public void Reset()
+    public void GameReset()
     {
-        while (_objectQueue.Any())
+        while (_liquidQueue.Any())
         {
-            Destroy(_objectQueue.Dequeue());
+            Destroy(_liquidQueue.Dequeue());
         }
 
         _t = 0f;
         LiquidCount.Value = 0;
-        _circleTimer.TimerStop();
+        
+        if(_circleTimer)
+            _circleTimer.TimerStop();
     }
     
     private void Update()
     {
         if (_keyAction.IsPressed())
         {
-            _t += _measureSpeed * Time.deltaTime;
+            _t += Data.MeasurementSpeed * Time.deltaTime;
         }
         else
         {
-            _t -= _measureSpeed * Time.deltaTime;
+            _t -= Data.BackToOriginDuration * Time.deltaTime;
         }
 
-        _t = Mathf.Max(_t, _defaultAngle / _angle);
+        _t = Mathf.Max(_t, Data.DefaultAngle / Data.Angle);
         _t = Mathf.Min(_t, 1f);
         
         Vector3 pos = _measureMatrix.GetPosition();
         Quaternion rot = _measureMatrix.rotation;
         
-        Drink.transform.position = Vector3.Lerp(_rPos, pos, _t);
+        Drink.transform.position = Vector3.Lerp(_originPos, pos, _t);
         Drink.transform.rotation = Quaternion.Slerp(Quaternion.identity, rot, _t);
         
         _creationTimer += Time.deltaTime;
         
 
-        if (_t * _angle >= _liquidCreationStartAngle)
+        if (_t * Data.Angle >= Data.LiquidCreationStartAngle)
         {
-            if (_creationTimer > _circleCreationDelay)
+            if (_creationTimer > Data.CircleCreationDelay)
             {
                 CreateCircle();
                 _creationTimer = 0f;
@@ -191,26 +185,16 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         var obj = Instantiate(_prefab);
         obj.SetActive(true);
         
-        while (_objectQueue.Count > _maxCircleCount)
+        while (_liquidQueue.Count > Data.MaxCircleCount)
         {
-            var deletionObj = _objectQueue.Dequeue();
+            var deletionObj = _liquidQueue.Dequeue();
             Destroy(deletionObj);
         }
 
         obj.transform.position = Drink.BottleWorldPos;
-        _objectQueue.Enqueue(obj);
+        _liquidQueue.Enqueue(obj);
         _moneyHud.SetValue( _moneyHud.Value - 10, false);
         LiquidCount.Value += 1;
-    }
-    
-    private void CalculateScore()
-    {
-        float curAngle = Drink.transform.rotation.eulerAngles.z;
-
-        if (curAngle > _liquidCreationStartAngle)
-        {
-            _normalizedScore += _scoreIncreasementSpeed * Time.deltaTime;
-        }
     }
 
 }
