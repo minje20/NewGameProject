@@ -28,6 +28,9 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     
     [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
     private GameObject _prefab;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
+    private MeshRenderer _renderTexturePannel;
     #endregion
 
 
@@ -184,6 +187,16 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     {
         var obj = Instantiate(_prefab);
         obj.SetActive(true);
+        if (Drink == false || Drink.Data == false)
+        {
+            Debug.LogError("Drink 혹은 Drink의 데이터가 null 입니다.");
+            return;
+        }
+
+        if (Drink.Data.LiquidMaterial)
+        {
+            _renderTexturePannel.material = Drink.Data.LiquidMaterial;
+        }
         
         while (_liquidQueue.Count > Data.MaxCircleCount)
         {

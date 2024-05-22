@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: Liquid_Vodka
   m_Shader: {fileID: -6465566751694194690, guid: 7bea43cf4fbccd746851cd4e82db2d69,
     type: 3}
   m_Parent: {fileID: 0}

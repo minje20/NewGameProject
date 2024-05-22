@@ -459,9 +459,9 @@ GameObject:
   m_Component:
   - component: {fileID: 21978820}
   - component: {fileID: 21978824}
+  - component: {fileID: 21978821}
   - component: {fileID: 21978823}
   - component: {fileID: 21978822}
-  - component: {fileID: 21978821}
   m_Layer: 5
   m_Name: Button (5)
   m_TagString: Untagged
@@ -1375,9 +1375,9 @@ GameObject:
   m_Component:
   - component: {fileID: 143208473}
   - component: {fileID: 143208477}
+  - component: {fileID: 143208474}
   - component: {fileID: 143208476}
   - component: {fileID: 143208475}
-  - component: {fileID: 143208474}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -1868,9 +1868,9 @@ GameObject:
   m_Component:
   - component: {fileID: 195493644}
   - component: {fileID: 195493648}
+  - component: {fileID: 195493645}
   - component: {fileID: 195493647}
   - component: {fileID: 195493646}
-  - component: {fileID: 195493645}
   m_Layer: 5
   m_Name: Button (6)
   m_TagString: Untagged
@@ -3034,9 +3034,9 @@ GameObject:
   m_Component:
   - component: {fileID: 458306539}
   - component: {fileID: 458306543}
+  - component: {fileID: 458306540}
   - component: {fileID: 458306542}
   - component: {fileID: 458306541}
-  - component: {fileID: 458306540}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -6508,9 +6508,9 @@ GameObject:
   m_Component:
   - component: {fileID: 884918311}
   - component: {fileID: 884918315}
+  - component: {fileID: 884918312}
   - component: {fileID: 884918314}
   - component: {fileID: 884918313}
-  - component: {fileID: 884918312}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -7100,7 +7100,7 @@ Transform:
   m_GameObject: {fileID: 993498804}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.68, y: -33.79, z: 0}
+  m_LocalPosition: {x: 47.9, y: -37.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10555,6 +10555,7 @@ MonoBehaviour:
   _circleTimer: {fileID: 1557512643}
   _moneyHud: {fileID: 1235898431}
   _prefab: {fileID: 747525643}
+  _renderTexturePannel: {fileID: 89665084}
 --- !u!114 &1446863640
 MonoBehaviour:
   m_ObjectHideFlags: 0

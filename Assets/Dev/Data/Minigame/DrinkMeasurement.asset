@@ -15,11 +15,11 @@ MonoBehaviour:
   _gameDuration: 5
   _backToOriginDuration: 1
   _measurementSpeed: 0.75
-  _circleCreationDelay: 0.16
+  _circleCreationDelay: 0.016
   _endOfRollbackDuration: 1
   _angle: 85
   _liquidCreationStartAngle: 85
   _defaultAngle: 60
-  _jiggerToDistance: 3
+  _jiggerToDistance: 6
   _maxCircleCount: 500
   _normalizedLinePosition: 1
