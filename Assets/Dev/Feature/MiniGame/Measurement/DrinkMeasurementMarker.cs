@@ -42,7 +42,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         controller.Reset();
         scoreController.Setup();
         //TODO: scoreController.ShowLine 더미 코드.
-        scoreController.ShowLine(new Vector3(-0.209999993f,-19.372f,0f));
+        scoreController.ShowLine(new Vector3(0.5420238f,-17.88316f,0f));
         await controller.Calculate();
         
         controller.Started = true;

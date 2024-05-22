@@ -28,7 +28,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361291ca24ad23d4b98f74514a3e508e, type: 3}
   m_Name: Ice Dispenser Marker
   m_EditorClassIdentifier: 
-  m_Time: 2.05
+  m_Time: 1.9
 --- !u!114 &-7608732550657605341
 MonoBehaviour:
   m_ObjectHideFlags: 1
