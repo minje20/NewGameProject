@@ -89,6 +89,18 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
         return m.GetPosition() + Vector3.down * bottleToPivotLength;
     }
+
+    [ButtonMethod]
+    private void ClearLiquid()
+    {
+        if (Application.isPlaying == false) return;
+        
+        while (_liquidQueue.Any())
+        {
+            Destroy(_liquidQueue.Dequeue());
+        }
+        
+    }
     
     private void Awake()
     {
@@ -180,7 +192,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         }
         
         
-        _t += Data.MeasurementSpeed * Time.deltaTime * (_keyAction.IsPressed() ? 1f : -1f);
+        _t += Time.deltaTime * (_keyAction.IsPressed() ? Data.MeasurementSpeed : -Data.BackToOriginDuration);
         _t = Mathf.Clamp(_t, Data.DefaultAngle / Data.Angle, Data.MaxAngle / Data.Angle);
         
         Quaternion rot = _measureMatrix.rotation;
@@ -222,6 +234,9 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
             var deletionObj = _liquidQueue.Dequeue();
             Destroy(deletionObj);
         }
+
+        var rigid = obj.GetComponent<Rigidbody2D>();
+        rigid.AddForce(Drink.transform.up * Data.LiquidForce, ForceMode2D.Impulse);
 
         obj.transform.position = Drink.BottleWorldPos;
         _liquidQueue.Enqueue(obj);

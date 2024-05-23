@@ -41,7 +41,13 @@ public class DrinkMeasurementData : ScriptableObject
     [Tooltip("해당 각도가 플레이어가 최대로 기울일 수 있는 각도임")]
     private float _maxAngle = 60f;
 
+    
+    
+    [field: SerializeField, OverrideLabel("액체 발사 힘"), Foldout("물리"), MinValue(0f)]
+    [Tooltip("액체 셀 하나가 생성된 후 특정 방향으로 발사될 강도")]
+    private float _liquidForce = 1f;
 
+    
     [field: SerializeField, OverrideLabel("병의 최소 기울기 각도(degree)"), Foldout("각도"), Range(0f, MAX_DEGREE)]
     [Tooltip("계량을 시작했을 때, 기본적인 병의 회전 각도. 이 값이 0일 경우, 병은 수직으로 세워져 있게됨\n'병 기울임 각도(degree)'를 넘지 않도록 유의")]
     private float _defaultAngle = 40f;
@@ -69,6 +75,8 @@ public class DrinkMeasurementData : ScriptableObject
     }
 
     public bool IsValidation { get; set; }
+
+    public float LiquidForce => _liquidForce;
 
     public float MaxAngle => _maxAngle;
     public float StartOfRollbackDuration => _startOfRollbackDuration;
