@@ -48,6 +48,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
     private Matrix4x4 _measureMatrix;
     private Vector3 _originPos;
+    private Vector3 _validationOriginPos;
     private float _normalizedScore;
     private float _t;
     private float _creationTimer;
@@ -79,10 +80,10 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         return m;
     }
 
-    public static Vector3 GetOriginDrinkPosition(Vector3 jiggerPos, float jiggerToPointDistance,
+    public static Vector3 GetOriginDrinkPosition(Vector3 jiggerPos, Vector2 jiggerOffset,
         float angle, float bottleToRotationPivotLength, float bottleToPivotLength)
     {
-        var bottlePos = jiggerPos + Vector3.up * jiggerToPointDistance;
+        var bottlePos = jiggerPos + (Vector3)jiggerOffset;
         var pivot = bottlePos + Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.down * bottleToRotationPivotLength;
         var m = GetInverseMatrix(bottlePos, pivot, angle);
 
@@ -101,24 +102,31 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     {
         var originDrinkPos = GetOriginDrinkPosition(
             Jigger.position,
-            Data.JiggerToDistance,
+            Data.JiggerOffset,
             Data.Angle,
             Vector3.Distance(Drink.BottleLocalPos, Drink.RotatingPivotLocalPos),
-            Vector3.Distance(Drink.BottleWorldPos, Drink.transform.position)
+            Vector3.Magnitude(Drink.BottleLocalPos)
         );
 
         _originPos = originDrinkPos;
         var back = Drink.transform.position;
+        _validationOriginPos = back;
         Drink.transform.position = _originPos;
         _measureMatrix = GetMatrix(_originPos, Drink.RotatingPivotWorldPos, Data.Angle);
         Drink.transform.position = back;
         
         return UniTask.WhenAll(
-            Drink.transform.DOMove(Vector3.Lerp(_originPos, _measureMatrix.GetPosition(), Data.DefaultAngle / Data.Angle), 1f).AsyncWaitForCompletion().AsUniTask(),
+            Drink.transform.DOMove(
+                GetMatrix(_originPos, Drink.RotatingPivotLocalPos + _originPos, Data.DefaultAngle).GetPosition(), //position
+                Data.StartOfRollbackDuration) // duration
+                .SetId(this).AsyncWaitForCompletion().AsUniTask(), // task 처리
+            
             Drink.transform.DORotateQuaternion(
-                Quaternion.Slerp(Quaternion.identity, _measureMatrix.rotation, Data.DefaultAngle / Data.Angle),
-                1f).AsyncWaitForCompletion().AsUniTask()
-        ).WithCancellation(GlobalCancelation.PlayMode);
+                Quaternion.Lerp(Quaternion.identity, _measureMatrix.rotation, Data.DefaultAngle / Data.Angle), // rotation
+                Data.StartOfRollbackDuration) //duration
+                .SetId(this).AsyncWaitForCompletion().AsUniTask() // task 처리
+
+            ).WithCancellation(GlobalCancelation.PlayMode);
     }
 
     public bool Started
@@ -145,6 +153,8 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
         _t = 0f;
         LiquidCount.Value = 0;
+
+        DOTween.Kill(this);
         
         if(_circleTimer)
             _circleTimer.TimerStop();
@@ -152,26 +162,35 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     
     private void Update()
     {
-        if (_keyAction.IsPressed())
+        if (Data.IsValidation)
         {
-            _t += Data.MeasurementSpeed * Time.deltaTime;
-        }
-        else
-        {
-            _t -= Data.BackToOriginDuration * Time.deltaTime;
-        }
+            if (Application.isPlaying == false) return;
+            if (Jigger == false) return;
+            if (Data == false) return;
+            if (Drink == false) return;
+            DOTween.Kill(this);
+        
+            _t = 0f;
+            Drink.transform.position = _validationOriginPos;
+            Drink.transform.rotation = Quaternion.identity;
 
-        _t = Mathf.Max(_t, Data.DefaultAngle / Data.Angle);
-        _t = Mathf.Min(_t, 1f);
+            Calculate();
+
+            Data.IsValidation = false;
+        }
         
-        Vector3 pos = _measureMatrix.GetPosition();
+        
+        _t += Data.MeasurementSpeed * Time.deltaTime * (_keyAction.IsPressed() ? 1f : -1f);
+        _t = Mathf.Clamp(_t, Data.DefaultAngle / Data.Angle, Data.MaxAngle / Data.Angle);
+        
         Quaternion rot = _measureMatrix.rotation;
+
+        Drink.transform.position = GetMatrix(_originPos, Drink.RotatingPivotLocalPos + _originPos, _t * Data.Angle)
+            .GetPosition();
+        Drink.transform.rotation = Quaternion.Lerp(Quaternion.identity, rot, _t);
         
-        Drink.transform.position = Vector3.Lerp(_originPos, pos, _t);
-        Drink.transform.rotation = Quaternion.Slerp(Quaternion.identity, rot, _t);
         
         _creationTimer += Time.deltaTime;
-        
 
         if (_t * Data.Angle >= Data.LiquidCreationStartAngle)
         {
