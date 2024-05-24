@@ -24,6 +24,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
     public async UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
         var controller = binder.GetComponentT<DrinkMeasurementMiniGame>("DrinkMeasurement");
+        var pourController = binder.GetComponentT<LiquidPourController>("ShakerToJiggerLiquidPourController");
         var drinkPosition = binder.GetComponentT<DrinkPosition>("DrinkPosition");
         var scoreController = binder.GetComponentT<CountLiquidScoreController>("CountLiquidScoreController");
         var jigger = binder.GetComponentT<Transform>("Jigger");
@@ -77,6 +78,9 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         )
         .WithCancellation(GlobalCancelation.PlayMode);
         
+        pourController.CountOfTotalCreatingLiquid = controller.LiquidCount.Value;
+        pourController.LiquidMaterial = drinkPosition.Data.LiquidMaterial;
         controller.GameReset();
+
     }
 }

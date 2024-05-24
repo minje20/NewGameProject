@@ -61,7 +61,7 @@ public class DrinkMeasurementData : ScriptableObject
     private Vector2 _jiggerOffset = Vector2.zero;
     
     [field: SerializeField, OverrideLabel("최대 액체 sphere 생성 개수"), Foldout("기타"), MinValue(0f)]
-    private float _maxCircleCount = 500f;
+    private int _maxCircleCount = 500;
     
     [field: SerializeField, OverrideLabel("계량 선의 정규화 위치"), Foldout("기타"), Range(0f, 1f)]
     private float _normalizedLinePosition = 1f;
@@ -95,7 +95,7 @@ public class DrinkMeasurementData : ScriptableObject
 
     public float DefaultAngle => _defaultAngle;
 
-    public float MaxCircleCount => _maxCircleCount;
+    public int MaxCircleCount => _maxCircleCount;
 
     public float CircleCreationDelay => _circleCreationDelay;
 
