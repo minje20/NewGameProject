@@ -1,4 +1,4 @@
-a passerby outside_2.png
+a passerby outside_b.png
 size:153,344
 filter:Linear,Linear
 Layer 1
