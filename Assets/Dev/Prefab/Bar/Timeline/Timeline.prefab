@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6345708998670409031}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -77,6 +77,12 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 0}
+  - key: {fileID: 8942514016702310317, guid: 8a185e71b384241469a9f92743aca21a, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7396630425141771804, guid: 8a185e71b384241469a9f92743aca21a, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8511541202921748628, guid: 8a185e71b384241469a9f92743aca21a, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 9d04c256957d41d4db345d660708d7a9: {fileID: 0}
@@ -92,6 +98,7 @@ PlayableDirector:
     - 844fe3536988c50419da711e42a3c06c: {fileID: 0}
     - 4d51cad468f928447b1ee0fa62e517fe: {fileID: 0}
     - 2ecb53a5e28d5b24da0c3f356cc56c96: {fileID: 0}
+    - fbe97380eb5cdf048a8e9a8960f2a5d0: {fileID: 0}
     - a7fe5335353946f4193d09df1afd1b92: {fileID: 0}
     - dd82044e364ebcc42b11761de4da30e4: {fileID: 0}
     - 5d8e735b5fb57da47975cc80a8007346: {fileID: 0}
@@ -114,6 +121,9 @@ MonoBehaviour:
   _receivers:
   - {fileID: 662387937816805884}
   _components:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -152,7 +162,8 @@ MonoBehaviour:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"npc_controller","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"NpcController,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"minigame_controller","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"MiniGameController,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"camera_controller","value":{"$content":2,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"CameraController,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"maked_cocktail","value":null,"typeHandle":{"Identification":null,"$version":"A"},"$version":"A"},{"name":"bar_controller","value":{"$content":3,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"BarController,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"maked_cocktail","value":null,"typeHandle":{"Identification":"CocktailRecipe,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"bar_controller","value":{"$content":3,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"BarController,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"dialogue_controller","value":{"$content":4,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"DialogueController,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"fame_hud_controller","value":{"$content":5,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"HUDController,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'

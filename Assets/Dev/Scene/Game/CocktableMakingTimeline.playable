@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6af3464acebee746af5a7a776130a4c, type: 3}
   m_Name: Liquid Pour Marker
   m_EditorClassIdentifier: 
-  m_Time: 8.983333333333333
+  m_Time: 9.983333333333334
 --- !u!114 &-8729190341600051444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 24.70529536182676
+  m_Time: 25.70529536182677
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: fced6e06acf18d44391db1aade486e2d, type: 2}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361291ca24ad23d4b98f74514a3e508e, type: 3}
   m_Name: Ice Dispenser Marker
   m_EditorClassIdentifier: 
-  m_Time: 3.5333333015441895
+  m_Time: 4.533333301544192
 --- !u!114 &-7608732550657605341
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,6 +123,7 @@ MonoBehaviour:
     - {fileID: 2269995835593967651}
     - {fileID: 7606417240030843229}
     - {fileID: -4875804148587223395}
+    - {fileID: 8538777763337430410}
 --- !u!114 &-4875804148587223395
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46fe249be95f084aaa21ac4a820f539, type: 3}
   m_Name: Liquid Pour Wait Marker
   m_EditorClassIdentifier: 
-  m_Time: 13.183333333333332
+  m_Time: 14.183333333333337
 --- !u!114 &-2584291006807080791
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab81ed6ec4537d4b9496bb34d37e976, type: 3}
   m_Name: Drink Measurement Marker
   m_EditorClassIdentifier: 
-  m_Time: 11.516666666666671
+  m_Time: 12.516666666666673
 --- !u!114 &907520382916148455
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff58544621d737644b376c31c2b5ca46, type: 3}
   m_Name: Drink Select Marker
   m_EditorClassIdentifier: 
-  m_Time: 7.249999952316285
+  m_Time: 8.249999952316287
 --- !u!114 &1589857691031623351
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,7 +322,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: T_FirstBatch
   - m_Version: 1
-    m_Start: 14.133333333333333
+    m_Start: 15.13333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 4508490694007318757}
     m_Duration: 1.7666666666666675
@@ -390,7 +391,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: T_SAM2Shaking
   - m_Version: 1
-    m_Start: 4.666666666666666
+    m_Start: 5.666666666666672
     m_ClipIn: 0
     m_Asset: {fileID: 4869457802107822942}
     m_Duration: 1.5333333333333323
@@ -472,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46fe249be95f084aaa21ac4a820f539, type: 3}
   m_Name: Liquid Pour Wait Marker
   m_EditorClassIdentifier: 
-  m_Time: 9.349999999999998
+  m_Time: 10.350000000000001
 --- !u!114 &2394383570244277050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -485,7 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab81ed6ec4537d4b9496bb34d37e976, type: 3}
   m_Name: Drink Measurement Marker
   m_EditorClassIdentifier: 
-  m_Time: 7.700000000000005
+  m_Time: 8.700000000000006
 --- !u!114 &3202411304307452586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -498,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd59f329391d8b74b97a2d51f96d9f23, type: 3}
   m_Name: Shaking Marker
   m_EditorClassIdentifier: 
-  m_Time: 17.676243534435827
+  m_Time: 18.676243534435834
 --- !u!114 &4508490694007318757
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -615,7 +616,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 6.199999999999998
+    m_Start: 7.200000000000009
     m_ClipIn: 0
     m_Asset: {fileID: -2584291006807080791}
     m_Duration: 7.9333333333333345
@@ -684,7 +685,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: M_SelectAndMeasurement
   - m_Version: 1
-    m_Start: 15.9
+    m_Start: 16.900000000000013
     m_ClipIn: 0.699999999999994
     m_Asset: {fileID: 8693055973268482345}
     m_Duration: 4.403495460997023
@@ -753,7 +754,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: M_Shaking
   - m_Version: 1
-    m_Start: 1
+    m_Start: 2
     m_ClipIn: 0
     m_Asset: {fileID: -1471261894676837119}
     m_Duration: 3.666666666667
@@ -822,7 +823,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: M_IceMeasurement
   - m_Version: 1
-    m_Start: 20.303495460997024
+    m_Start: 21.303495460997034
     m_ClipIn: 0
     m_Asset: {fileID: 8270770511685413370}
     m_Duration: 4.401799900829779
@@ -890,6 +891,75 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: M_EndOfMaking
+  - m_Version: 1
+    m_Start: 1
+    m_ClipIn: 0
+    m_Asset: {fileID: 8076206661921966387}
+    m_Duration: 1
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7179814432341898987}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: M_SelectRecipe
   m_Markers:
     m_Objects: []
 --- !u!114 &7606417240030843229
@@ -904,7 +974,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6af3464acebee746af5a7a776130a4c, type: 3}
   m_Name: Liquid Pour Marker
   m_EditorClassIdentifier: 
-  m_Time: 12.849999999999998
+  m_Time: 13.850000000000001
+--- !u!114 &8076206661921966387
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48853ae485fa386428341ac1ea122570, type: 3}
+  m_Name: ControlPlayableAsset
+  m_EditorClassIdentifier: 
+  sourceGameObject:
+    exposedName: fbe97380eb5cdf048a8e9a8960f2a5d0
+    defaultValue: {fileID: 0}
+  prefabGameObject: {fileID: 0}
+  updateParticle: 1
+  particleRandomSeed: 4496
+  updateDirector: 1
+  updateITimeControl: 1
+  searchHierarchy: 0
+  active: 1
+  postPlayback: 2
 --- !u!114 &8270770511685413370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -940,7 +1033,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff58544621d737644b376c31c2b5ca46, type: 3}
   m_Name: Drink Select Marker
   m_EditorClassIdentifier: 
-  m_Time: 10.766666666666671
+  m_Time: 11.766666666666673
+--- !u!114 &8538777763337430410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a02ef6f37ffb244d8b1a08205226ab9, type: 3}
+  m_Name: Recipe Select Marker
+  m_EditorClassIdentifier: 
+  m_Time: 1.1
 --- !u!114 &8693055973268482345
 MonoBehaviour:
   m_ObjectHideFlags: 1

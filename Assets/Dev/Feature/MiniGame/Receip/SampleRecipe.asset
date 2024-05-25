@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ce240fefdf87e4998fdb2f527e0284, type: 3}
+  m_Name: SampleRecipe
+  m_EditorClassIdentifier: 
+  _timelineKey: DummyTimeline
+  _cocktail: {fileID: 11400000, guid: 0c8cc53b858e63f49aaace88a939efa5, type: 2}
+  _recipeText: "\uAC04\uC7A5 \uD55C \uC2A4\uD47C\n\uB3FC\uC9C0\uACE0\uAE30 \uD55C
+    \uADFC\n\uACE0\uCDA7\uAC00\uB8E8 \uBC18 \uC2A4\uD47C"

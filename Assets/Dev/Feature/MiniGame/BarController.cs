@@ -8,9 +8,41 @@ using UnityEngine;
 public class BarController : MonoBehaviour
 {
     [field: SerializeField, InitializationField, MustBeAssigned]
-    private SpriteRenderer _slot;
-    [field: SerializeField, InitializationField, MustBeAssigned]
-    private Sprite _sprite;
+    private Transform _slot;
+
+    [SerializeField] private float _fadeinDuration = 2f;
+    [SerializeField] private float _fadeoutDuration = 2f;
+
+    private CocktailData _currentCocktailData;
+
+    public CocktailData CurrentCocktailData
+    {
+        get => _currentCocktailData;
+        private set
+        {
+            _currentCocktailData = value;
+            if (value == false) return;
+            
+            _cocktailObject = value.ClonePrefab();
+            _cocktailObject.gameObject.SetActive(false);
+            _cocktailRenderer = _cocktailObject.GetComponent<SpriteRenderer>();
+            _cocktailObject.transform.position = _slot.position;
+        }
+    }
+
+    private RecipeData _currentRecipeData;
+    public RecipeData CurrentRecipeData
+    {
+        get => _currentRecipeData;
+        set
+        {
+            _currentRecipeData = value;
+            CurrentCocktailData = value.Cocktail;
+        }
+    }
+
+    private GameObject _cocktailObject;
+    private SpriteRenderer _cocktailRenderer;
 
     private void Awake()
     {
@@ -19,17 +51,17 @@ public class BarController : MonoBehaviour
 
     public void ShowDrink()
     {
-        _slot.gameObject.SetActive(true);
-        _slot.sprite = _sprite;
-        _slot.color = Color.black;
-        _slot.DOColor(Color.white, 1f);
+        _cocktailObject.gameObject.SetActive(true);
+        
+        _cocktailRenderer.color = Color.black;
+        _cocktailRenderer.DOColor(Color.white, _fadeinDuration);
     }
 
     public void HideDrink()
     {
-        _slot.gameObject.SetActive(false);
-        _slot.color = Color.white;
-        _slot.DOColor(Color.black, 1f).OnComplete(() =>
-            _slot.sprite = null);
+        _cocktailObject.gameObject.SetActive(false);
+        _cocktailRenderer.color = Color.white;
+        _cocktailRenderer.DOColor(Color.black, _fadeoutDuration).OnComplete(() =>
+            _cocktailRenderer.gameObject.SetActive(false));
     }
 }

@@ -20,7 +20,15 @@ public class RecipeData : ScriptableObject
 
     [field: SerializeField]
     private CocktailData _cocktail;
-    
+
+    [field: SerializeField, Multiline] 
+    private string _recipeText;
+
+    public string TimelineKey => _timelineKey;
+    public CocktailData Cocktail => _cocktail;
+
+    public string RecipeText => _recipeText;
+
     // 해당 레시피를 선택했을 때 필요한 정보를 작성
     // 예: 완성된 칵테일, 획득 명성, 돈 등 
 }
