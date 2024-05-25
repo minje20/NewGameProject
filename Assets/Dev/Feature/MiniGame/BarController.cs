@@ -20,6 +20,8 @@ public class BarController : MonoBehaviour
         get => _currentCocktailData;
         private set
         {
+            if (_currentRecipeData == null) return;
+            
             _currentCocktailData = value;
             if (value == false) return;
             

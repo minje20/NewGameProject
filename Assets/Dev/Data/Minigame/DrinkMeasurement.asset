@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27556cc53f1f93a4ab1f986c3d26df5c, type: 3}
   m_Name: DrinkMeasurement
   m_EditorClassIdentifier: 
-  _gameDuration: 6
+  _gameDuration: 2
   _backToOriginDuration: 0.5
   _measurementSpeed: 0.75
   _circleCreationDelay: 0.01
