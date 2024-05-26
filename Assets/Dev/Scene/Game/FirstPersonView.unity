@@ -5646,6 +5646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1539071581}
+  - component: {fileID: 1539071583}
   - component: {fileID: 1539071582}
   m_Layer: 0
   m_Name: CocktailRenderTexture
@@ -5684,8 +5685,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pivot: {fileID: 384223484}
-  _controller: {fileID: 925680854}
-  _pannel: {fileID: 1928891058}
+--- !u!114 &1539071583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539071580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ed2d27f99bfc54bb432979dbca7671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: CocktailResult
+  _component: {fileID: 1539071582}
 --- !u!1 &1544085089
 GameObject:
   m_ObjectHideFlags: 0
@@ -10216,7 +10229,7 @@ PrefabInstance:
     - target: {fileID: 2527930124962505376, guid: 628b5c52237b66d4b98cafe353e06aec,
         type: 3}
       propertyPath: _components.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2527930124962505376, guid: 628b5c52237b66d4b98cafe353e06aec,
         type: 3}
@@ -10293,6 +10306,11 @@ PrefabInstance:
       propertyPath: _components.Array.data[14]
       value: 
       objectReference: {fileID: 154345715}
+    - target: {fileID: 2527930124962505376, guid: 628b5c52237b66d4b98cafe353e06aec,
+        type: 3}
+      propertyPath: _components.Array.data[15]
+      value: 
+      objectReference: {fileID: 1539071583}
     - target: {fileID: 3464493241446362271, guid: 628b5c52237b66d4b98cafe353e06aec,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
