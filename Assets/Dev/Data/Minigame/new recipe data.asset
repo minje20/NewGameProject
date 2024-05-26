@@ -46,7 +46,7 @@ MonoBehaviour:
         Range: {x: 50, y: 89}
       - Score: 0
         Range: {x: -99999, y: 49}
-      DrinkData: {fileID: 11400000, guid: 8fcf99520e1438b41945e4d8ecdeca78, type: 2}
+      DrinkData: {fileID: 0}
     _liquidScoreParam:
       LinePosition: 0.071
   _MeansurementParameter2:

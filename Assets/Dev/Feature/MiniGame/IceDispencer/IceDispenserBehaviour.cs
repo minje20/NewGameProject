@@ -10,9 +10,34 @@ public class IceDispenserBehaviour : IMiniGameBehaviour
     public async UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
         var controller = binder.GetComponentT<IceDispenserController>("IceDispenserController");
-        
-        await controller.GameStart();
-        
+        var barController = binder.GetComponentT<BarController>("BarController");
+        var scoreController = binder.GetComponentT<CountTextScoreController>("CountTextScoreController");
+
+        RecipeData recipeData = barController.CurrentRecipeData;
+
+        scoreController.Setup(
+            recipeData.Iceparameter.CountScoreParam,
+            new TextScoreDisplayer.ValueParameter() { MaxCount = recipeData.Iceparameter.CountScoreParam.TargetCount })
+            ;
+
+        scoreController.SetEnableText(true);
+
+        await UniTask.WhenAny(
+            controller.GameStart(),
+            UniTask.Create(async () =>
+            {
+                while (true)
+                {
+                    int count = await controller.IceCount.WaitAsync();
+                    scoreController.SetCount(count);
+                }
+            })
+            .WithCancellation(GlobalCancelation.PlayMode)
+        );
+
+        await scoreController.DisplayResult();
+
+        scoreController.Release();
         controller.GameReset();
     }
 }

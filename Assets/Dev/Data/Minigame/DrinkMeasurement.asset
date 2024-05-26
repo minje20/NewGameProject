@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27556cc53f1f93a4ab1f986c3d26df5c, type: 3}
   m_Name: DrinkMeasurement
   m_EditorClassIdentifier: 
-  _gameDuration: 2
+  _gameDuration: 5
   _backToOriginDuration: 0.5
   _measurementSpeed: 0.75
   _circleCreationDelay: 0.01
@@ -25,4 +25,3 @@ MonoBehaviour:
   _liquidCreationStartAngle: 107.5
   _jiggerOffset: {x: 0.81, y: 5}
   _maxCircleCount: 1000
-  _normalizedLinePosition: 0.414

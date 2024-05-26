@@ -1,25 +1,23 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using MyBox;
 using UnityEngine;
 
-public class CountLiquidScoreController : ScoreController
+public class CountTextScoreController : MonoBehaviour
 {
-    [SerializeField] private LiquidScoreDisplayer.Parameter _displayerParameter;
-
+    [SerializeField] TextScoreDisplayer.Parameter _parameter;
+    
     private CountScoreBehaviour _behaviour;
-    private LiquidScoreDisplayer _displayer;
+    private TextScoreDisplayer _displayer;
 
     private void Awake()
     {
-        Setup(null);
+        Setup(null, new TextScoreDisplayer.ValueParameter());
         
         Release();
     }
 
-    public void Setup(CountScoreBehaviour.Parameter? behaviourParameter)
+    public void Setup(CountScoreBehaviour.Parameter? behaviourParameter, TextScoreDisplayer.ValueParameter displayerParameter)
     {
         Release();
 
@@ -32,8 +30,9 @@ public class CountLiquidScoreController : ScoreController
             };
         }
         
+        
         _behaviour = new(behaviourParameter.Value);
-        _displayer = new(_displayerParameter);
+        _displayer = new(_parameter, displayerParameter);
     }
 
     public void Release()
@@ -48,21 +47,18 @@ public class CountLiquidScoreController : ScoreController
     public void AddCount(int value)
     {
         _behaviour.CurrentScore += value;
+        _displayer.SetCount(_behaviour.CurrentScore);
     }
 
     public void SetCount(int value)
     {
         _behaviour.CurrentScore = value;
+        _displayer.SetCount(_behaviour.CurrentScore);
     }
 
-    public void ShowLine(float pos)
+    public void SetEnableText(bool value)
     {
-        _displayer.LineEnabled = true;
-        _displayer.SetLinePosition(pos);
-    }
-    public void HideLine()
-    {
-        _displayer.LineEnabled = false;
+        _displayer.CountingTextEnabled = value;
     }
 
     public UniTask DisplayResult()
@@ -71,5 +67,5 @@ public class CountLiquidScoreController : ScoreController
         
         return _displayer.Display(score);
     }
-    
+
 }

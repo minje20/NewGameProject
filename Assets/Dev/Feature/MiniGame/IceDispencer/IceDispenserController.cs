@@ -54,6 +54,8 @@ public class IceDispenserController : MonoBehaviour
 
     private Queue<GameObject> _createdRandomIce = new();
 
+    public AsyncReactiveProperty<int> IceCount { get; private set; } = new(0);
+
     public async UniTask GameStart()
     {
         if (gameObject.activeSelf) return;
@@ -76,6 +78,8 @@ public class IceDispenserController : MonoBehaviour
             var obj = _createdRandomIce.Dequeue();
             Destroy(obj);
         }
+
+        IceCount.Value = 0;
         
         gameObject.SetActive(false);
         _gameTimer.TimerStop();
@@ -90,6 +94,7 @@ public class IceDispenserController : MonoBehaviour
         _createdRandomIce.Enqueue(obj);
 
         obj.transform.position = _position.IceSpawnPoint;
+        IceCount.Value += 1;
 
         return obj;
     }
