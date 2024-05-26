@@ -2713,7 +2713,10 @@ MonoBehaviour:
   _upDirection: {fileID: 1197740555}
   _downDirection: {fileID: 1650288811}
   _skipTip: {fileID: 1673986029}
-  _skipTwinkleDuration: 0.5
+  _skipTwinkleDuration: 1
+  _textCompletionDuration: 0.35
+  _skipTwinkleX: -15
+  _skipTwinkleEase: 7
 --- !u!4 &703243727
 Transform:
   m_ObjectHideFlags: 0
