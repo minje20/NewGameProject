@@ -98,10 +98,6 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
             
             data.IsEnd = true;
         }
-        else
-        {
-            Debug.LogError("등록되지 않은 drink data");
-        }
         
         controller.Started = false;
         _ = scoreController.DisplayResult().ContinueWith(() => scoreController.Release());
