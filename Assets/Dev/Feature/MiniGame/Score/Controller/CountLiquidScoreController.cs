@@ -36,6 +36,8 @@ public class CountLiquidScoreController : ScoreController
         _displayer = new(_displayerParameter);
     }
 
+    public EMiniGameScore CurrentScore => _behaviour.GetCalculatedScore();
+
     public void Release()
     {
         _behaviour?.Dispose();

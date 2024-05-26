@@ -20,7 +20,6 @@ public class CountScoreBehaviour : IScoreBehaviour
         //TODO: 더미 구현. 향후 scriptableObject로 변경
         public int TargetCount;
         public List<T> Range;
-        public DrinkData DrinkData;
     }
     
     private const int STANDARD_SCORE = 100;

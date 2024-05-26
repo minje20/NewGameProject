@@ -27,6 +27,11 @@ public class DrinkData : MiniGameItemData
     
     [field: SerializeField, Foldout("기타"), OverrideLabel("액체의 머테리얼")] 
     private Material _liquidMaterial;
+    
+    [field: SerializeField, Foldout("기타"), PropertyName("재료 이름")] 
+    private string _name;
+
+    public string Name => _name;
     public Vector3 BottlePosition => _bottlePosition;
 
     public Material LiquidMaterial => _liquidMaterial;

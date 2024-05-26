@@ -21,8 +21,6 @@ public class RecipeData : ScriptableObject
 
     [field: SerializeField] private CocktailData _cocktail;
 
-    [field: SerializeField, Multiline] private string _recipeText;
-
     [SerializeField] private MiniMeasurementInfo _Iceparameter;
     [SerializeField] private MiniMeasurementInfo _MeansurementParameter1;
     [SerializeField] private MiniMeasurementInfo _MeansurementParameter2;
@@ -30,8 +28,6 @@ public class RecipeData : ScriptableObject
 
     public string TimelineKey => _timelineKey;
     public CocktailData Cocktail => _cocktail;
-
-    public string RecipeText => _recipeText;
 
     public MiniMeasurementInfo Iceparameter => _Iceparameter;
 
@@ -48,8 +44,11 @@ public class MiniMeasurementInfo
 {
     [SerializeField] private CountScoreBehaviour.Parameter _countScoreParam;
     [SerializeField] private LiquidScoreDisplayer.ValueParameter _liquidScoreParam;
+    [SerializeField] private DrinkData _drinkData;
 
     public CountScoreBehaviour.Parameter CountScoreParam => _countScoreParam;
 
     public LiquidScoreDisplayer.ValueParameter LiquidScoreParam => _liquidScoreParam;
+
+    public DrinkData DrinkData => _drinkData;
 }

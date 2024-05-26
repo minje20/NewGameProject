@@ -10,6 +10,8 @@ public class CountTextScoreController : MonoBehaviour
     private CountScoreBehaviour _behaviour;
     private TextScoreDisplayer _displayer;
 
+    public EMiniGameScore CurrentScore => _behaviour.GetCalculatedScore();
+
     private void Awake()
     {
         Setup(null, new TextScoreDisplayer.ValueParameter());

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using IndieLINY.MessagePipe;
 using MyBox;
 using UnityEngine;
 
@@ -39,6 +38,9 @@ public class BarController : MonoBehaviour
         get => _currentRecipeData;
         set
         {
+            if (_currentRecipeData == value) return;
+            
+            Context.Reset();
             _currentRecipeData = value;
             CurrentCocktailData = value.Cocktail;
         }
@@ -46,6 +48,8 @@ public class BarController : MonoBehaviour
 
     private GameObject _cocktailObject;
     private SpriteRenderer _cocktailRenderer;
+
+    public MiniGameContext Context { get; private set; } = new();
 
     public float TotalScore { get; set; }
 
@@ -68,5 +72,38 @@ public class BarController : MonoBehaviour
         _cocktailRenderer.color = Color.white;
         _cocktailRenderer.DOColor(Color.black, _fadeoutDuration).OnComplete(() =>
             _cocktailRenderer.gameObject.SetActive(false));
+    }
+}
+
+public class MeasureItem
+{
+    public MiniMeasurementInfo Info;
+    public EMiniGameScore Score;
+    public bool IsEnd;
+}
+
+public class MiniGameContext
+{
+    public int CurrentIceCount { get; set; }
+    public int IceMaxCount { get; set; }
+    public bool IsIceEnd { get; set; }
+    public EMiniGameScore IceScore { get; set; }
+    
+    public Dictionary<DrinkData, MeasureItem> MeasuredDrinkTable { get; private set; } = new();
+    
+    public bool IsShakeEnd { get; set; }
+    public EMiniGameScore ShakeScore { get; set; }
+ 
+    public void Reset()
+    {
+        MeasuredDrinkTable.Clear();
+        
+        CurrentIceCount = 0;
+        IceMaxCount = 0;
+        IsIceEnd = false;
+        IceScore = EMiniGameScore.Bad;
+
+        IsShakeEnd = false;
+        ShakeScore = EMiniGameScore.Bad;
     }
 }

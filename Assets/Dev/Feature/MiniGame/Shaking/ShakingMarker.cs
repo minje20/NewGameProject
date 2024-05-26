@@ -20,12 +20,15 @@ public class ShakingMiniGameBehaviour : IMiniGameBehaviour
     public UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
         var controller = binder.GetComponentT<ShakingMiniGameController>("ShakingController");
+        var barController = binder.GetComponentT<BarController>("BarController");
         var jump = binder.GetReceiver<JumpReceiver>();
 
         jump.Skip = false;
-        controller.GameStart().ContinueWith(_ =>
+        controller.GameStart().ContinueWith(x =>
         {
             jump.Skip = true;
+            barController.Context.IsShakeEnd = true;
+            barController.Context.ShakeScore = x;
         });
         
         return UniTask.CompletedTask;

@@ -270,6 +270,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &63073694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4213511725440645692, guid: d5b584497a2e73f4a916aae6155c4ae7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5506626534331109967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &65068199
 GameObject:
   m_ObjectHideFlags: 0
@@ -9884,11 +9896,69 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2021740730}
     m_Modifications:
+    - target: {fileID: 2852544450002051675, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: _barController
+      value: 
+      objectReference: {fileID: 925680854}
+    - target: {fileID: 2852544450002051675, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: _iceTextTemplate
+      value: "\uBAA9\uD45C \uC5BC\uC74C \uAC1C\uC218:  {ice_current_count} / {ice_max_count}\n\uC810\uC218:
+        {ice_score}\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852544450002051675, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: _summaryTemplate
+      value: "\uBAA9\uD45C \uC5BC\uC74C: {target_ice_count}\n\uAE30\uC8FC \uACC4\uB7C9
+        1: {target_measurement_1}\n\uAE30\uC8FC \uACC4\uB7C9 2: {target_measurement_2}\n\uAE30\uC8FC
+        \uACC4\uB7C9 3: {target_measurement_3}\n\uAE30\uC8FC \uACC4\uB7C9 4: {target_measurement_4}"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852544450002051675, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: _shakingTextTemplate
+      value: "\uC250\uC774\uD0B9 \uC810\uC218: {shaking_score}\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852544450002051675, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: _measurementTextTemplate
+      value: "\uACC4\uB7C9: {measurement_name}\n\uC810\uC218: {measurement_score}\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 3512016447365475216, guid: d5b584497a2e73f4a916aae6155c4ae7,
         type: 3}
       propertyPath: m_Name
       value: RecipeSummaryController
       objectReference: {fileID: 0}
+    - target: {fileID: 4213511725440645692, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213511725440645692, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 0.22979736
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213511725440645692, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 0.1914959
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213511725440645692, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213511725440645692, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207558678122562950, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 63073694}
     - target: {fileID: 7011423879953595154, guid: d5b584497a2e73f4a916aae6155c4ae7,
         type: 3}
       propertyPath: m_LocalPosition.x

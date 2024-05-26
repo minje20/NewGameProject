@@ -30,6 +30,7 @@ public class IceDispenserBehaviour : IMiniGameBehaviour
                 {
                     int count = await controller.IceCount.WaitAsync();
                     scoreController.SetCount(count);
+                    barController.Context.CurrentIceCount = count;
                 }
             })
             .WithCancellation(GlobalCancelation.PlayMode)
@@ -37,6 +38,9 @@ public class IceDispenserBehaviour : IMiniGameBehaviour
 
         await scoreController.DisplayResult();
 
+        barController.Context.IceScore = scoreController.CurrentScore;
+        barController.Context.IsIceEnd = true;
+        
         scoreController.Release();
         controller.GameReset();
     }

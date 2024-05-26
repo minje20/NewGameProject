@@ -22,7 +22,6 @@ public class RecipeSelectBehaviour : IMiniGameBehaviour
 
         RecipeData data = await controller.Open();
 
-        summaryController.Text = data.RecipeText;
         summaryController.Open();
     }
 }

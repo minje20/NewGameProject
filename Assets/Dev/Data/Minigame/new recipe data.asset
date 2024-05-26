@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timelineKey: 
   _cocktail: {fileID: 11400000, guid: 0c8cc53b858e63f49aaace88a939efa5, type: 2}
-  _recipeText: fdsafdsa
   _Iceparameter:
     _countScoreParam:
       TargetCount: 5
@@ -29,9 +28,9 @@ MonoBehaviour:
         Range: {x: 50, y: 89}
       - Score: 0
         Range: {x: -99999, y: 49}
-      DrinkData: {fileID: 0}
     _liquidScoreParam:
       LinePosition: 1
+    _drinkData: {fileID: 0}
   _MeansurementParameter1:
     _countScoreParam:
       TargetCount: 150
@@ -46,9 +45,9 @@ MonoBehaviour:
         Range: {x: 50, y: 89}
       - Score: 0
         Range: {x: -99999, y: 49}
-      DrinkData: {fileID: 0}
     _liquidScoreParam:
-      LinePosition: 0.071
+      LinePosition: 0.393
+    _drinkData: {fileID: 11400000, guid: ea6d33b606a77244d803ea7d65cd2e7e, type: 2}
   _MeansurementParameter2:
     _countScoreParam:
       TargetCount: 200
@@ -63,6 +62,6 @@ MonoBehaviour:
         Range: {x: 50, y: 89}
       - Score: 0
         Range: {x: -99999, y: 49}
-      DrinkData: {fileID: 11400000, guid: ea6d33b606a77244d803ea7d65cd2e7e, type: 2}
     _liquidScoreParam:
-      LinePosition: 0.86
+      LinePosition: 0.717
+    _drinkData: {fileID: 11400000, guid: 041b579dcc9100e4a903a250b5a0684f, type: 2}

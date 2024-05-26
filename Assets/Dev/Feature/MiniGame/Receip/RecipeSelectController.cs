@@ -43,6 +43,26 @@ public class RecipeSelectController : MonoBehaviour, IMessagePipePublisher<Count
     private void OnSelected(RecipeData data)
     {
         _barController.CurrentRecipeData = data;
+
+        var context = _barController.Context;
         
+        context.Reset();
+        context.IceMaxCount = data.Iceparameter.CountScoreParam.TargetCount;
+        AddTable(data.MeansurementParameter1);
+        AddTable(data.MeansurementParameter2);
+    }
+
+    private void AddTable(MiniMeasurementInfo info)
+    {
+        if (info == null) return;
+        if (info.DrinkData == null) return;
+        
+        var context = _barController.Context;
+        context.MeasuredDrinkTable[info.DrinkData] = new MeasureItem()
+        {
+            Info = info,
+            Score = EMiniGameScore.Bad,
+            IsEnd = false
+        };
     }
 }

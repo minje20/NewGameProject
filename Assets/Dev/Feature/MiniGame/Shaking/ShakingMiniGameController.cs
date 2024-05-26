@@ -7,13 +7,6 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public enum EShakingResult
-{
-    Failure,
-    NormalHit,
-    PerfectHit
-}
-
 public class ShakingMiniGameController : MonoBehaviour
 {
     [SerializeField] private Transform _tip;
@@ -48,7 +41,7 @@ public class ShakingMiniGameController : MonoBehaviour
         _parent.gameObject.SetActive(false);
     }
 
-    public async UniTask<EShakingResult> GameStart()
+    public async UniTask<EMiniGameScore> GameStart()
     {
         return await GameUpdate();
     }
@@ -61,13 +54,13 @@ public class ShakingMiniGameController : MonoBehaviour
         return new Vector3(x, position.y, position.z);
     }
 
-    private async UniTask<EShakingResult> GameUpdate()
+    private async UniTask<EMiniGameScore> GameUpdate()
     {
         IsStarted = true;
         _tip.position = _tipPivot.position;
         _hitboxContainer.position = GetRandomHitboxStartPosition();
 
-        EShakingResult rank = EShakingResult.Failure;
+        EMiniGameScore rank = EMiniGameScore.Bad;
         
         _parent.gameObject.SetActive(true);
         _resultMessageText.text = "";
@@ -78,25 +71,25 @@ public class ShakingMiniGameController : MonoBehaviour
             {
                 if (PerfectHitBoxBound.Intersects(TipHitBoxBound))
                 {
-                    rank = EShakingResult.PerfectHit;
+                    rank = EMiniGameScore.Perfect;
                     _resultMessageText.text = "Perfect!";
                     break;
                 }
                 if (NormalHitBoxBound.Intersects(TipHitBoxBound))
                 {
-                    rank = EShakingResult.PerfectHit;
+                    rank = EMiniGameScore.Good;
                     _resultMessageText.text = "Good!";
                     break;
                 }
 
-                rank = EShakingResult.Failure;
+                rank = EMiniGameScore.Bad;
                 _resultMessageText.text = "Bad!";
                 break;
             }
 
             if (BarHitBoxBound.Intersects(TipHitBoxBound) == false)
             {
-                rank = EShakingResult.Failure;
+                rank = EMiniGameScore.Bad;
                 _resultMessageText.text = "Bad!";
                 break;
             }

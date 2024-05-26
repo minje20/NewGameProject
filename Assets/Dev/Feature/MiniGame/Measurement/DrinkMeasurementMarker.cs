@@ -46,13 +46,12 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         MiniMeasurementInfo info = null;
         RecipeData currentRecipeData = barController.CurrentRecipeData;
 
-        if (currentRecipeData.MeansurementParameter1.CountScoreParam.DrinkData == controller.Drink.Data)
+        if (barController.Context.MeasuredDrinkTable.TryGetValue(controller.Drink.Data, out var item))
         {
-            info = currentRecipeData.MeansurementParameter1;
-        }
-        else if (currentRecipeData.MeansurementParameter2.CountScoreParam.DrinkData == controller.Drink.Data)
-        {
-            info = currentRecipeData.MeansurementParameter2;
+            if (item.IsEnd == false)
+            {
+                info = item.Info;
+            }
         }
         
         scoreController.Setup(info?.CountScoreParam);
@@ -90,6 +89,20 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
             })
         );
         
+        if (barController.Context.MeasuredDrinkTable.TryGetValue(drinkPosition.Data, out var data))
+        {
+            if (data.IsEnd == false)
+            {
+                data.Score = scoreController.CurrentScore;
+            }
+            
+            data.IsEnd = true;
+        }
+        else
+        {
+            Debug.LogError("등록되지 않은 drink data");
+        }
+        
         controller.Started = false;
         _ = scoreController.DisplayResult().ContinueWith(() => scoreController.Release());
         
@@ -102,6 +115,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         
         pourController.CountOfTotalCreatingLiquid = controller.LiquidCount.Value;
         pourController.LiquidMaterial = drinkPosition.Data.LiquidMaterial;
+        
         controller.GameReset();
 
     }
