@@ -22,6 +22,13 @@ public class LiquidScoreDisplayer : IScoreDisplayer
         public Transform BDownPivot;
     }
 
+    [Serializable]
+    public struct ValueParameter
+    {
+        [Range(0f, 1f)]
+        public float LinePosition;
+    }
+
     private TMP_Text _enumScoreText;
     private LineRenderer _line;
     private Transform _displayPivot;

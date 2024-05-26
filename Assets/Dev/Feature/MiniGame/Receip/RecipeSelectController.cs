@@ -2,10 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using IndieLINY.MessagePipe;
 using MyBox;
 using UnityEngine;
 
-public class RecipeSelectController : MonoBehaviour
+
+public class CountScorePipeEvent : IMessagePipeEvent
+{
+    public CountScoreBehaviour.Parameter Parameter;
+}
+
+public class CountScoreChannel : PubSubMessageChannel<CountScorePipeEvent>
+{
+}
+
+public class RecipeSelectController : MonoBehaviour, IMessagePipePublisher<CountScorePipeEvent>
 {
     [field: SerializeField, AutoProperty, InitializationField, MustBeAssigned]
     private RecipeSelectView _view;
@@ -32,5 +43,6 @@ public class RecipeSelectController : MonoBehaviour
     private void OnSelected(RecipeData data)
     {
         _barController.CurrentRecipeData = data;
+        
     }
 }

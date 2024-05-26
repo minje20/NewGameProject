@@ -24,6 +24,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
     public async UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
         var controller = binder.GetComponentT<DrinkMeasurementMiniGame>("DrinkMeasurement");
+        var barController = binder.GetComponentT<BarController>("BarController");
         var pourController = binder.GetComponentT<LiquidPourController>("ShakerToJiggerLiquidPourController");
         var drinkPosition = binder.GetComponentT<DrinkPosition>("DrinkPosition");
         var scoreController = binder.GetComponentT<CountLiquidScoreController>("CountLiquidScoreController");
@@ -41,7 +42,20 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         controller.Drink = drinkPosition;
 
         controller.GameReset();
-        scoreController.Setup();
+
+        MiniMeasurementInfo info = null;
+        RecipeData currentRecipeData = barController.CurrentRecipeData;
+
+        if (currentRecipeData.MeansurementParameter1.CountScoreParam.DrinkData == controller.Drink.Data)
+        {
+            info = currentRecipeData.MeansurementParameter1;
+        }
+        else if (currentRecipeData.MeansurementParameter2.CountScoreParam.DrinkData == controller.Drink.Data)
+        {
+            info = currentRecipeData.MeansurementParameter2;
+        }
+        
+        scoreController.Setup(info?.CountScoreParam);
         //TODO: scoreController.ShowLine 더미 코드.
         await controller.Calculate();
         
@@ -62,7 +76,15 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
             {
                 while (true)
                 {
-                    scoreController.ShowLine(controller.Data.NormalizedLinePosition);
+                    if (info != null)
+                    {
+                        scoreController.ShowLine(info.LiquidScoreParam.LinePosition);
+                    }
+                    else
+                    {
+                        scoreController.HideLine();
+                    }
+                    
                     await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
                 }
             })

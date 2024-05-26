@@ -8,22 +8,34 @@ using UnityEngine;
 public class CountLiquidScoreController : ScoreController
 {
     [SerializeField] private LiquidScoreDisplayer.Parameter _displayerParameter;
-    [SerializeField] private CountScoreBehaviour.Parameter _behaviourParameter;
+
+    [field: SerializeField, AutoProperty(AutoPropertyMode.Scene), InitializationField, MustBeAssigned]
+    private BarController _barController;
     
     private CountScoreBehaviour _behaviour;
     private LiquidScoreDisplayer _displayer;
 
     private void Awake()
     {
-        Setup();
+        Setup(null);
+        
         Release();
     }
 
-    public void Setup()
+    public void Setup(CountScoreBehaviour.Parameter? behaviourParameter)
     {
         Release();
+
+        if (behaviourParameter == null)
+        {
+            behaviourParameter = new CountScoreBehaviour.Parameter()
+            {
+                Range = new(),
+                TargetCount = int.MaxValue
+            };
+        }
         
-        _behaviour = new(_behaviourParameter);
+        _behaviour = new(behaviourParameter.Value);
         _displayer = new(_displayerParameter);
     }
 
@@ -51,10 +63,15 @@ public class CountLiquidScoreController : ScoreController
         _displayer.LineEnabled = true;
         _displayer.SetLinePosition(pos);
     }
+    public void HideLine()
+    {
+        _displayer.LineEnabled = false;
+    }
 
     public UniTask DisplayResult()
     {
         EMiniGameScore score = _behaviour.GetCalculatedScore();
+        
         return _displayer.Display(score);
     }
     

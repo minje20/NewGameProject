@@ -3156,6 +3156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925680853}
+  - component: {fileID: 925680855}
   - component: {fileID: 925680854}
   m_Layer: 0
   m_Name: BarController
@@ -3195,6 +3196,20 @@ MonoBehaviour:
   _slot: {fileID: 507930625}
   _fadeinDuration: 2
   _fadeoutDuration: 2
+--- !u!114 &925680855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925680852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ed2d27f99bfc54bb432979dbca7671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: BarController
+  _component: {fileID: 925680854}
 --- !u!1 &936409744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1150835948144867017, guid: bf52e1d73d333284190e1e0dc12c1fc0,
@@ -7776,6 +7791,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2021740730}
     m_Modifications:
+    - target: {fileID: 2805629040276470847, guid: 713b4997270c5b94597ec3909988d245,
+        type: 3}
+      propertyPath: _barController
+      value: 
+      objectReference: {fileID: 925680854}
     - target: {fileID: 3183492756223987339, guid: 713b4997270c5b94597ec3909988d245,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8007,6 +8027,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6132174615666479732, guid: 6fd0577c186a50f45bfac423cc9c4a6a,
+        type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: ed9b28e81635a9146a655e4caa34c74c,
+        type: 2}
     - target: {fileID: 6318137298732551283, guid: 6fd0577c186a50f45bfac423cc9c4a6a,
         type: 3}
       propertyPath: _barController
@@ -9679,6 +9705,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2527930124962505376, guid: 628b5c52237b66d4b98cafe353e06aec,
         type: 3}
+      propertyPath: _components.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527930124962505376, guid: 628b5c52237b66d4b98cafe353e06aec,
+        type: 3}
       propertyPath: _components.Array.data[0]
       value: 
       objectReference: {fileID: 1446863640}
@@ -9742,6 +9773,11 @@ PrefabInstance:
       propertyPath: _components.Array.data[12]
       value: 
       objectReference: {fileID: 5506626534331109968}
+    - target: {fileID: 2527930124962505376, guid: 628b5c52237b66d4b98cafe353e06aec,
+        type: 3}
+      propertyPath: _components.Array.data[13]
+      value: 
+      objectReference: {fileID: 925680855}
     - target: {fileID: 3464493241446362271, guid: 628b5c52237b66d4b98cafe353e06aec,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using IndieLINY.MessagePipe;
 using MyBox;
 using UnityEngine;
 
@@ -46,11 +47,13 @@ public class BarController : MonoBehaviour
     private GameObject _cocktailObject;
     private SpriteRenderer _cocktailRenderer;
 
+    public float TotalScore { get; set; }
+
     private void Awake()
     {
         _slot.gameObject.SetActive(false);
     }
-
+    
     public void ShowDrink()
     {
         _cocktailObject.gameObject.SetActive(true);
