@@ -9972,6 +9972,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8579450799925157020, guid: c02729386cb4acd44b2956432040b10b,
         type: 3}
+      propertyPath: m_TargetDisplay
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579450799925157020, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 0}
