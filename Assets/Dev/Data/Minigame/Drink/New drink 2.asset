@@ -15,5 +15,6 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 0a1ce6d322b883b418adb01c4f538711, type: 3}
   _bottlePosition: {x: 0.05, y: 8.87, z: 0}
   _rotationPivotPosition: {x: 0.05, y: 4.37, z: 0}
+  _selectionUiOffset: {x: 0, y: 6.21, z: 0}
   _liquidMaterial: {fileID: 2100000, guid: 12e0473e9c005e848ad8e36bfef46b0e, type: 2}
   _name: "\uBC14\uCE74\uB514 \uB7FC"

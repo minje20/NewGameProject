@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class IngredientSelectionUI : MonoBehaviour
@@ -13,13 +15,30 @@ public class IngredientSelectionUI : MonoBehaviour
     [SerializeField] private GameObject _ingredientPrefab;
     [SerializeField] private Transform _ingredientGroup;
     [SerializeField] private Sprite[] _ingredientSprites;
+    [SerializeField] private DrinkData[] _ingredientDatas;
      private GameObject[] _ingredientPrefabs;
 
-     private Vector2 _ingredientCaptureIndexRange = new Vector2(0, 4);
+     private Vector2 _ingredientCaptureIndexRange;
 
-    private void Start()
+     private InputAction _leftInput;
+     private InputAction _rightInput;
+     
+     public DrinkData CurrentData { get; private set; }
+     private int _dataIndex;
+
+     private void Awake()
+     {
+         _leftInput = InputManager.Actions.MoveLeftIngredientSelection;
+         _rightInput = InputManager.Actions.MoveRightIngredientSelection;
+     }
+
+     private void Start()
     {
+        _ingredientCaptureIndexRange = new Vector2(0, 4);
         _ingredientPrefabs = new GameObject[_ingredientTransforms.Length];
+
+        _dataIndex = 2;
+        CurrentData = _ingredientDatas[_dataIndex];
 
         for (int i = 0; i < _ingredientPrefabs.Length; i++)
         {
@@ -31,7 +50,39 @@ public class IngredientSelectionUI : MonoBehaviour
             _ingredientPrefabs[i].transform.localScale = _ingredientTransforms[i].localScale;
             _ingredientPrefabs[i].GetComponent<Image>().color = _ingredientColors[i];
             _ingredientPrefabs[i].GetComponent<Image>().sprite = _ingredientSprites[i];
+            _ingredientPrefabs[i].GetComponent<Image>().SetNativeSize();
         }
+    }
+
+    private void __MiniGame_Reset__()
+    {
+        DOTween.Kill(this);
+
+        foreach (var obj in _ingredientPrefabs)
+        {
+            Destroy(obj);
+        }
+        
+        Start();
+        
+    }
+
+    public void MoveStop()
+    {
+        DOTween.Complete(this);
+    }
+    
+    private void Update()
+    {
+        if (_leftInput.triggered)
+        {
+            TurnLeft();
+        }
+        if(_rightInput.triggered)
+        {
+            TurnRight();
+        }
+        
     }
 
     public void TurnRight()
@@ -40,6 +91,11 @@ public class IngredientSelectionUI : MonoBehaviour
         {
             return;
         }
+
+        CurrentData = _ingredientDatas[++_dataIndex];
+        
+        DOTween.Kill(this);
+        
         _ingredientCaptureIndexRange.x++;
         _ingredientCaptureIndexRange.y++;
         
@@ -56,9 +112,10 @@ public class IngredientSelectionUI : MonoBehaviour
                 continue;
             }
 
-            _ingredientPrefabs[i].transform.DOMove(_ingredientTransforms[i - 1].position, 0.5f);
-            _ingredientPrefabs[i].transform.DOScale(_ingredientTransforms[i - 1].localScale, 0.5f);
-            _ingredientPrefabs[i].GetComponent<Image>().DOColor(_ingredientColors[i - 1], 0.5f);
+            _ingredientPrefabs[i].transform.DOMove(_ingredientTransforms[i - 1].position, 0.5f).SetId(this);
+            _ingredientPrefabs[i].transform.DOScale(_ingredientTransforms[i - 1].localScale, 0.5f).SetId(this);
+            _ingredientPrefabs[i].GetComponent<Image>().DOColor(_ingredientColors[i - 1], 0.5f).SetId(this);
+            _ingredientPrefabs[i].GetComponent<Image>().SetNativeSize();
             
             _ingredientPrefabs[i - 1] = _ingredientPrefabs[i];
             _ingredientPrefabs[i] = null;
@@ -71,6 +128,7 @@ public class IngredientSelectionUI : MonoBehaviour
                     _ingredientGroup);
 
                 _ingredientPrefabs[i].GetComponent<Image>().sprite = _ingredientSprites[i + (int)_ingredientCaptureIndexRange.x];
+                _ingredientPrefabs[i].GetComponent<Image>().SetNativeSize();
                 _ingredientPrefabs[i].transform.localScale = _ingredientTransforms[i].localScale;
             }
         }
@@ -78,10 +136,16 @@ public class IngredientSelectionUI : MonoBehaviour
     
     public void TurnLeft()
     {
+        
         if ((int)_ingredientCaptureIndexRange.x == -2)
         {
             return;
         }
+        
+        CurrentData = _ingredientDatas[--_dataIndex];
+        
+        DOTween.Kill(this);
+        
         _ingredientCaptureIndexRange.x--;
         _ingredientCaptureIndexRange.y--;
         for (int i = _ingredientPrefabs.Length - 1; i >= 0; i--)
@@ -97,9 +161,10 @@ public class IngredientSelectionUI : MonoBehaviour
                 continue;
             }
 
-            _ingredientPrefabs[i].transform.DOMove(_ingredientTransforms[i + 1].position, 0.5f);
-            _ingredientPrefabs[i].transform.DOScale(_ingredientTransforms[i + 1].localScale, 0.5f);
-            _ingredientPrefabs[i].GetComponent<Image>().DOColor(_ingredientColors[i + 1], 0.5f);
+            _ingredientPrefabs[i].transform.DOMove(_ingredientTransforms[i + 1].position, 0.5f).SetId(this);
+            _ingredientPrefabs[i].transform.DOScale(_ingredientTransforms[i + 1].localScale, 0.5f).SetId(this);
+            _ingredientPrefabs[i].GetComponent<Image>().DOColor(_ingredientColors[i + 1], 0.5f).SetId(this);
+            _ingredientPrefabs[i].GetComponent<Image>().SetNativeSize();
             
             _ingredientPrefabs[i + 1] = _ingredientPrefabs[i];
 
@@ -112,6 +177,7 @@ public class IngredientSelectionUI : MonoBehaviour
                     _ingredientGroup);
                 
                 _ingredientPrefabs[i].GetComponent<Image>().sprite = _ingredientSprites[i + (int)_ingredientCaptureIndexRange.x];
+                _ingredientPrefabs[i].GetComponent<Image>().SetNativeSize();
                 _ingredientPrefabs[i].transform.localScale = _ingredientTransforms[i].localScale;
             }
         }

@@ -19,29 +19,31 @@ public class IngredientSelectMiniGameBehaviour: IMiniGameBehaviour
 {
     public async UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
-        var selector = binder.GetComponentT<ISelectorUIController>("IngredientSelector");
-        var ingredient = binder.GetComponentT<IngredientPosition>("IngredientPosition");
+        //var selector = binder.GetComponentT<ISelectorUIController>("IngredientSelector");
+        //var ingredient = binder.GetComponentT<IngredientPosition>("IngredientPosition");
+//
+        //selector.Open(false);
+//
+        //ingredient.Data = null;
+        //ingredient.Renderer.sprite = null;
+//
+        //while (true)
+        //{
+        //    SelectorButton btn = await selector.GetSelectedItemOnChanged(source.Token);
+//
+        //    if (btn == null)
+        //    {
+        //        await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
+        //    }
+        //    else
+        //    {
+        //        ingredient.Data = btn.Data as IngredientData;
+        //        
+        //        if(ingredient.Data)
+        //            ingredient.Renderer.sprite = ingredient.Data.Sprite;
+        //    }
+        //}
 
-        selector.Open(false);
-
-        ingredient.Data = null;
-        ingredient.Renderer.sprite = null;
-
-        while (true)
-        {
-            SelectorButton btn = await selector.GetSelectedItemOnChanged(source.Token);
-
-            if (btn == null)
-            {
-                await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
-            }
-            else
-            {
-                ingredient.Data = btn.Data as IngredientData;
-                
-                if(ingredient.Data)
-                    ingredient.Renderer.sprite = ingredient.Data.Sprite;
-            }
-        }
+        return;
     }
 }

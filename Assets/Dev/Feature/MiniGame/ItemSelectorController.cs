@@ -18,11 +18,9 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
     public Button SelectingButton;
     public Button SkipButton;
     public DrinkPosition DrinkPosition;
+    public IngredientSelectionUI View;
     
-    private List<SelectorButton> _buttons;
-
-    private AsyncReactiveProperty<SelectorButton> _selectedSprite = new(null);
-
+    private AsyncReactiveProperty<DrinkData> _selectedSprite = new(null);
 
     private CancellationTokenSource _selectCancelation;
 
@@ -32,21 +30,11 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
     {
         transform.position = ClosePivot.position;
 
-        _buttons = Content.GetComponentsInChildren<SelectorButton>().ToList();
-
-        foreach (var button in _buttons)
-        {
-            button.Button.onClick.AddListener(() =>
-            {
-                var sbt = button.GetComponent<SelectorButton>();
-                _selectedSprite.Value = sbt;
-            });
-        }
-
         SelectingButton.onClick.AddListener(() =>
         {
-            if (_selectedSprite.Value == null && _canNoSelect == false) return;
-            if (_selectedSprite.Value.Data is INoSelectedData && _canNoSelect == false) return;
+            _selectedSprite.Value = View.CurrentData;
+            DrinkPosition.Data = View.CurrentData;
+            
             Close();
         });
         
@@ -58,11 +46,31 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
         });
     }
 
+    private void Update()
+    {
+        if (_selectCancelation != null)
+        {
+            if (InputManager.Actions.ShakingMiniGameInteraction.triggered)
+            {
+                _selectedSprite.Value = View.CurrentData;
+                DrinkPosition.Data = View.CurrentData;
+                Close();
+            }
+            else
+            {
+                _selectedSprite.Value = View.CurrentData;
+                DrinkPosition.Data = View.CurrentData;
+            }
+        }
+    }
+
     public void Open(bool canNoSelect)
     {
         if (_selectCancelation != null) return;
         _canNoSelect = canNoSelect;
         _selectCancelation = new();
+        
+        Content.gameObject.SetActive(true);
         
         var tween = transform.DOMove(OpenPivot.position, 1f).SetId(this);
     }
@@ -77,7 +85,9 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
         }
 
         _selectCancelation = null;
-        transform.DOMove(ClosePivot.position, 1f).SetId(this);
+        View.MoveStop();
+        transform.DOMove(ClosePivot.position, 1f).OnComplete(()=>
+            Content.gameObject.SetActive(false)).SetId(this);
     }
 
     private void __MiniGame_Reset__()
@@ -87,9 +97,9 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
         transform.position = ClosePivot.position;
     }
 
-    public async UniTask<SelectorButton> GetSelectedItemOnChanged(CancellationToken token)
+    public async UniTask<DrinkData> GetSelectedItemOnChanged(CancellationToken token)
     {
-        SelectorButton btn = null;
+        DrinkData btn = null;
 
         try
         {

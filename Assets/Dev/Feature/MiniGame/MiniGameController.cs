@@ -34,7 +34,7 @@ public interface IMiniGameBinder
 public interface ISelectorUIController
 {
     public void Open(bool canNoSelect);
-    public UniTask<SelectorButton> GetSelectedItemOnChanged(CancellationToken token);
+    public UniTask<DrinkData> GetSelectedItemOnChanged(CancellationToken token);
 }
 
 public class MiniGameController : MonoBehaviour, INotificationReceiver, IMiniGameBinder

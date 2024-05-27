@@ -80,6 +80,24 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveLeftIngredientSelection"",
+                    ""type"": ""Button"",
+                    ""id"": ""b18ce12a-00bb-47bf-b046-0294ff010ec3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveRightIngredientSelection"",
+                    ""type"": ""Button"",
+                    ""id"": ""f87f2400-9937-4a86-90a6-a60f98493195"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -192,6 +210,28 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
                     ""action"": ""DialogueSkip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b5099e9-86b9-4fc7-b520-cc553e322b9e"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""WinPCScheme"",
+                    ""action"": ""MoveLeftIngredientSelection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e9ad895-3356-4a12-adcb-3cbb2d670543"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""WinPCScheme"",
+                    ""action"": ""MoveRightIngredientSelection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -223,6 +263,8 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         m_PlayerControl_Collect = m_PlayerControl.FindAction("Collect", throwIfNotFound: true);
         m_PlayerControl_ShakingMiniGameInteraction = m_PlayerControl.FindAction("ShakingMiniGameInteraction", throwIfNotFound: true);
         m_PlayerControl_DialogueSkip = m_PlayerControl.FindAction("DialogueSkip", throwIfNotFound: true);
+        m_PlayerControl_MoveLeftIngredientSelection = m_PlayerControl.FindAction("MoveLeftIngredientSelection", throwIfNotFound: true);
+        m_PlayerControl_MoveRightIngredientSelection = m_PlayerControl.FindAction("MoveRightIngredientSelection", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -290,6 +332,8 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_Collect;
     private readonly InputAction m_PlayerControl_ShakingMiniGameInteraction;
     private readonly InputAction m_PlayerControl_DialogueSkip;
+    private readonly InputAction m_PlayerControl_MoveLeftIngredientSelection;
+    private readonly InputAction m_PlayerControl_MoveRightIngredientSelection;
     public struct PlayerControlActions
     {
         private @DefaultKeymap m_Wrapper;
@@ -300,6 +344,8 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         public InputAction @Collect => m_Wrapper.m_PlayerControl_Collect;
         public InputAction @ShakingMiniGameInteraction => m_Wrapper.m_PlayerControl_ShakingMiniGameInteraction;
         public InputAction @DialogueSkip => m_Wrapper.m_PlayerControl_DialogueSkip;
+        public InputAction @MoveLeftIngredientSelection => m_Wrapper.m_PlayerControl_MoveLeftIngredientSelection;
+        public InputAction @MoveRightIngredientSelection => m_Wrapper.m_PlayerControl_MoveRightIngredientSelection;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -327,6 +373,12 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
             @DialogueSkip.started += instance.OnDialogueSkip;
             @DialogueSkip.performed += instance.OnDialogueSkip;
             @DialogueSkip.canceled += instance.OnDialogueSkip;
+            @MoveLeftIngredientSelection.started += instance.OnMoveLeftIngredientSelection;
+            @MoveLeftIngredientSelection.performed += instance.OnMoveLeftIngredientSelection;
+            @MoveLeftIngredientSelection.canceled += instance.OnMoveLeftIngredientSelection;
+            @MoveRightIngredientSelection.started += instance.OnMoveRightIngredientSelection;
+            @MoveRightIngredientSelection.performed += instance.OnMoveRightIngredientSelection;
+            @MoveRightIngredientSelection.canceled += instance.OnMoveRightIngredientSelection;
         }
 
         private void UnregisterCallbacks(IPlayerControlActions instance)
@@ -349,6 +401,12 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
             @DialogueSkip.started -= instance.OnDialogueSkip;
             @DialogueSkip.performed -= instance.OnDialogueSkip;
             @DialogueSkip.canceled -= instance.OnDialogueSkip;
+            @MoveLeftIngredientSelection.started -= instance.OnMoveLeftIngredientSelection;
+            @MoveLeftIngredientSelection.performed -= instance.OnMoveLeftIngredientSelection;
+            @MoveLeftIngredientSelection.canceled -= instance.OnMoveLeftIngredientSelection;
+            @MoveRightIngredientSelection.started -= instance.OnMoveRightIngredientSelection;
+            @MoveRightIngredientSelection.performed -= instance.OnMoveRightIngredientSelection;
+            @MoveRightIngredientSelection.canceled -= instance.OnMoveRightIngredientSelection;
         }
 
         public void RemoveCallbacks(IPlayerControlActions instance)
@@ -383,5 +441,7 @@ public partial class @DefaultKeymap: IInputActionCollection2, IDisposable
         void OnCollect(InputAction.CallbackContext context);
         void OnShakingMiniGameInteraction(InputAction.CallbackContext context);
         void OnDialogueSkip(InputAction.CallbackContext context);
+        void OnMoveLeftIngredientSelection(InputAction.CallbackContext context);
+        void OnMoveRightIngredientSelection(InputAction.CallbackContext context);
     }
 }

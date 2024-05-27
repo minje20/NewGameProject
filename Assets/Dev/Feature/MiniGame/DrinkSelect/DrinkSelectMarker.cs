@@ -35,20 +35,20 @@ public class SelectMiniGameBehaviour: IMiniGameBehaviour
 
         while (true)
         {
-            SelectorButton btn = await selector.GetSelectedItemOnChanged(source.Token);
+            DrinkData data = await selector.GetSelectedItemOnChanged(source.Token);
 
-            if (btn == null)
+            if (data == null)
             {
                 return;
             }
-            else if(btn.Data is not NoSelectedDrinkData)
+            else if(data is not NoSelectedDrinkData)
             {
-                drink.Data = btn.Data as DrinkData;
+                drink.Data = data;
                 
                 if(drink.Data)
                     drink.Renderer.sprite = drink.Data.Sprite;
             }
-            else if (btn.Data is NoSelectedDrinkData noSelectedDrinkData && _optional)
+            else if (data is NoSelectedDrinkData noSelectedDrinkData && _optional)
             {
                 drink.Data = noSelectedDrinkData;
                 drink.Renderer.sprite = noSelectedDrinkData.Sprite;
