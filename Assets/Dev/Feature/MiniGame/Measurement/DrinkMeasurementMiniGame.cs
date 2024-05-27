@@ -31,6 +31,9 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     
     [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
     private MeshRenderer _renderTexturePannel;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
+    private RenderTexture _renderTexture;
     #endregion
 
 
@@ -119,6 +122,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
             if (_renderTexturePannel.material == Drink.Data.LiquidMaterial) return;
             
             _renderTexturePannel.material = Drink.Data.LiquidMaterial;
+            _renderTexturePannel.material.SetTexture("_MainTEX", _renderTexture);
         }
     }
 
@@ -138,6 +142,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         Drink.transform.position = _originPos;
         _measureMatrix = GetMatrix(_originPos, Drink.RotatingPivotWorldPos, Data.Angle);
         Drink.transform.position = back;
+        
         
         return UniTask.WhenAll(
             Drink.transform.DOMove(
@@ -162,6 +167,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
                 return;
 
             enabled = value;
+            _renderTexturePannel.gameObject.SetActive(value);
             
             if(enabled)
                 _circleTimer.TimerStart(Data.GameDuration);
@@ -187,6 +193,8 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     private void __MiniGame_Reset__()
     {
         GameReset();
+        Started = false;
+
     }
     
     private void Update()

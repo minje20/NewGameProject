@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12e0473e9c005e848ad8e36bfef46b0e, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -663,6 +663,7 @@ MonoBehaviour:
   _moneyHud: {fileID: 0}
   _prefab: {fileID: 5728729147179214691}
   _renderTexturePannel: {fileID: 6606492861149169002}
+  _renderTexture: {fileID: 0}
 --- !u!1001 &4394436932999157796
 PrefabInstance:
   m_ObjectHideFlags: 0

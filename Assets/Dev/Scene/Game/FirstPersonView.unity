@@ -9863,6 +9863,11 @@ PrefabInstance:
       propertyPath: _circleTimer
       value: 
       objectReference: {fileID: 1557512643}
+    - target: {fileID: 2075917350148605577, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: _renderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: d1acc1e60e9f37d46a842f4e7f6734d2, type: 2}
     - target: {fileID: 4148379993040651986, guid: c02729386cb4acd44b2956432040b10b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9938,6 +9943,11 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6606492861149169002, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6980821309154539039, guid: c02729386cb4acd44b2956432040b10b,
         type: 3}
       propertyPath: m_Name
