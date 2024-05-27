@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10003,6 +10003,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4213511725440645692, guid: d5b584497a2e73f4a916aae6155c4ae7,
         type: 3}
+      propertyPath: m_text
+      value: "\uBAA9\uD45C \uC5BC\uC74C \uAC1C\uC218:  0 / 5\n\uC810\uC218: Bad\n\n\uACC4\uB7C9:
+        \uACE0\uB4E0\uC2A4 \uC9C4\n\uC810\uC218: \n\n\uACC4\uB7C9: \uBC14\uCE74\uB514
+        \uB7FC\n\uC810\uC218: \n\n\uACC4\uB7C9: \uC571\uC194\uB8E8\uD2B8 \uBCF4\uB4DC\uCE74\n\uC810\uC218:
+        \n\n\uACC4\uB7C9: \uC571\uC194\uB8E8\uD2B8 \uBCF4\uB4DC\uCE74 test\n\uC810\uC218:
+        \n\n\uC250\uC774\uD0B9 \uC810\uC218: \n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213511725440645692, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
       propertyPath: m_fontSize
       value: 0.35
       objectReference: {fileID: 0}
@@ -10031,6 +10040,16 @@ PrefabInstance:
       propertyPath: _text
       value: 
       objectReference: {fileID: 63073694}
+    - target: {fileID: 6153044746684071175, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 6.3003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153044746684071175, guid: d5b584497a2e73f4a916aae6155c4ae7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.3458
+      objectReference: {fileID: 0}
     - target: {fileID: 7011423879953595154, guid: d5b584497a2e73f4a916aae6155c4ae7,
         type: 3}
       propertyPath: m_LocalPosition.x

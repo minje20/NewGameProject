@@ -50,6 +50,8 @@ public class RecipeSelectController : MonoBehaviour, IMessagePipePublisher<Count
         context.IceMaxCount = data.Iceparameter.CountScoreParam.TargetCount;
         AddTable(data.MeansurementParameter1);
         AddTable(data.MeansurementParameter2);
+        AddTable(data.MeansurementParameter3);
+        AddTable(data.MeansurementParameter4);
     }
 
     private void AddTable(MiniMeasurementInfo info)

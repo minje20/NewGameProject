@@ -24,6 +24,8 @@ public class RecipeData : ScriptableObject
     [SerializeField] private MiniMeasurementInfo _Iceparameter;
     [SerializeField] private MiniMeasurementInfo _MeansurementParameter1;
     [SerializeField] private MiniMeasurementInfo _MeansurementParameter2;
+    [SerializeField] private MiniMeasurementInfo _MeansurementParameter3;
+    [SerializeField] private MiniMeasurementInfo _MeansurementParameter4;
 
 
     public string TimelineKey => _timelineKey;
@@ -34,6 +36,9 @@ public class RecipeData : ScriptableObject
     public MiniMeasurementInfo MeansurementParameter1 => _MeansurementParameter1;
 
     public MiniMeasurementInfo MeansurementParameter2 => _MeansurementParameter2;
+    public MiniMeasurementInfo MeansurementParameter3 => _MeansurementParameter3;
+
+    public MiniMeasurementInfo MeansurementParameter4 => _MeansurementParameter4;
 
     // 해당 레시피를 선택했을 때 필요한 정보를 작성
     // 예: 완성된 칵테일, 획득 명성, 돈 등 
