@@ -39,7 +39,7 @@ public class SelectMiniGameBehaviour: IMiniGameBehaviour
 
             if (btn == null)
             {
-                await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
+                return;
             }
             else if(btn.Data is not NoSelectedDrinkData)
             {

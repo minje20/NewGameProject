@@ -42,6 +42,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         controller.Drink = drinkPosition;
 
         controller.GameReset();
+        controller.ApplyLiquidMaterial();
 
         MiniMeasurementInfo info = null;
         RecipeData currentRecipeData = barController.CurrentRecipeData;

@@ -110,6 +110,18 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         LiquidCount.Value = 0;
     }
 
+    public void ApplyLiquidMaterial()
+    {
+        if (Drink.Data == null) return;
+        
+        if (Drink.Data.LiquidMaterial)
+        {
+            if (_renderTexturePannel.material == Drink.Data.LiquidMaterial) return;
+            
+            _renderTexturePannel.material = Drink.Data.LiquidMaterial;
+        }
+    }
+
     public UniTask Calculate()
     {
         var originDrinkPos = GetOriginDrinkPosition(
@@ -222,11 +234,6 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         {
             Debug.LogError("Drink 혹은 Drink의 데이터가 null 입니다.");
             return;
-        }
-
-        if (Drink.Data.LiquidMaterial)
-        {
-            _renderTexturePannel.material = Drink.Data.LiquidMaterial;
         }
         
         while (_liquidQueue.Count > Data.MaxCircleCount)

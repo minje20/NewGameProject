@@ -16,6 +16,7 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
     public Transform OpenPivot;
     public Transform Content;
     public Button SelectingButton;
+    public Button SkipButton;
     
     private List<SelectorButton> _buttons;
 
@@ -47,6 +48,12 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
             if (_selectedSprite.Value.Data is INoSelectedData && _canNoSelect == false) return;
             Close();
         });
+        
+        SkipButton.onClick.AddListener(() =>
+        {
+            _selectedSprite.Value = null;
+            Close();
+        });
     }
 
     public void Open(bool canNoSelect)
@@ -73,10 +80,21 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
 
     public async UniTask<SelectorButton> GetSelectedItemOnChanged()
     {
-        return await _selectedSprite.WaitAsync(CancellationTokenSource.CreateLinkedTokenSource(
-            GlobalCancelation.PlayMode,
-            _selectCancelation.Token
+        SelectorButton btn = null;
+
+        try
+        {
+            btn = await _selectedSprite.WaitAsync(CancellationTokenSource.CreateLinkedTokenSource(
+                GlobalCancelation.PlayMode,
+                _selectCancelation.Token
             ).Token);
+        }
+        catch (NullReferenceException e)
+        {
+            return null;
+        }
+
+        return btn;
     }
 
     [ButtonMethod]

@@ -35,13 +35,17 @@ public class LiquidPourController : MonoBehaviour
     private CancellationTokenSource _cancellation;
     private List<GameObject> _liquidList = new(100);
 
+    private void Awake()
+    {
+        GameReset();
+    }
 
     public UniTask GameStart()
     {
-        GameReset();
-
-        
-        _liquidRenerer.material = LiquidMaterial;
+        if (LiquidMaterial != null)
+        {
+            _liquidRenerer.material = LiquidMaterial;
+        }
 
         IsRunning = true;
 
@@ -88,6 +92,7 @@ public class LiquidPourController : MonoBehaviour
         });
         _liquidList.Clear();
         _currentCreatedLiquidCount = 0;
+        CountOfTotalCreatingLiquid = 0;
     }
 
     private Vector3 GetPointOfLine(float t)
