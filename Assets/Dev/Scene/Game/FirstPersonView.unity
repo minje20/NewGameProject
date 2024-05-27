@@ -1465,7 +1465,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2545565540012917006}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 991639863}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4ed2d27f99bfc54bb432979dbca7671, type: 3}
@@ -3333,6 +3333,12 @@ Transform:
   - {fileID: 40072888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &991639863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2431188247703587962, guid: 9f97953abf7b65c4fbc72bfea12dc021,
+    type: 3}
+  m_PrefabInstance: {fileID: 2545565540012917006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &993498805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 659139029077744446, guid: ea9a8578cfed4b54ab2394ae312d8637,
@@ -9446,6 +9452,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380661365473805507, guid: bcdad7942dd921549b78b409235b87b6,
         type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380661365473805507, guid: bcdad7942dd921549b78b409235b87b6,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[16].key
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380661365473805507, guid: bcdad7942dd921549b78b409235b87b6,
+        type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
       objectReference: {fileID: 366916557}
@@ -9464,6 +9480,11 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[6].value
       value: 
       objectReference: {fileID: 366916557}
+    - target: {fileID: 6380661365473805507, guid: bcdad7942dd921549b78b409235b87b6,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[16].value
+      value: 
+      objectReference: {fileID: 991639863}
     - target: {fileID: 8660547566704067341, guid: bcdad7942dd921549b78b409235b87b6,
         type: 3}
       propertyPath: m_Name
@@ -9532,6 +9553,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6900432863979872998, guid: a835227a9a0e8454881e060cad5d618a,
+        type: 3}
+      propertyPath: _movementDuration
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7621424717821298831, guid: a835227a9a0e8454881e060cad5d618a,
         type: 3}
       propertyPath: m_Name
@@ -9568,7 +9594,7 @@ PrefabInstance:
     - target: {fileID: 5575335054118112936, guid: 3ec6f48e9e566cb43ba0046a7229cc2c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.42
+      value: -4.31
       objectReference: {fileID: 0}
     - target: {fileID: 5575335054118112936, guid: 3ec6f48e9e566cb43ba0046a7229cc2c,
         type: 3}
@@ -9848,6 +9874,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264830956592082864, guid: 512ea35fa13fc0945a4493536a850d1c,
+        type: 3}
+      propertyPath: _movementDuration
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5388264095395127431, guid: 512ea35fa13fc0945a4493536a850d1c,
         type: 3}
@@ -10991,17 +11022,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6162736927539760014, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6446015272465800941, guid: c02729386cb4acd44b2956432040b10b,
         type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606492861149169002, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606492861149169002, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606492861149169002, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6980821309154539039, guid: c02729386cb4acd44b2956432040b10b,
         type: 3}
       propertyPath: m_Name
       value: DrinkMeasurement
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 902870769751840939, guid: c02729386cb4acd44b2956432040b10b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
