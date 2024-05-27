@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _testButton: {fileID: 1723564239832915410}
-  _data: {fileID: 11400000, guid: 102e871e5778c31458baa0bc2c4ba01a, type: 2}
+  _data: {fileID: 11400000, guid: ed9b28e81635a9146a655e4caa34c74c, type: 2}
   _openDuration: 1
   _closeDuration: 1
   _openPivot: {x: 10.362023, y: -22.283161, z: 0}

@@ -137,7 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _view: {fileID: 5207558678122562950}
-  _text: {fileID: 4213511725440645692}
+  _barController: {fileID: 0}
+  _iceTextTemplate: "\uBAA9\uD45C \uC5BC\uC74C \uAC1C\uC218:  {ice_current_count}
+    / {ice_max_count}\n\uC810\uC218: {ice_score}\n"
+  _measurementTextTemplate: "\uACC4\uB7C9: {measurement_name}\n\uC810\uC218: {measurement_score}\n"
+  _shakingTextTemplate: "\uC250\uC774\uD0B9 \uC810\uC218: {shaking_score}\n"
 --- !u!114 &5207558678122562950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _openPivot: {x: -14.377976, y: -18.23316, z: 0}
+  _text: {fileID: 4213511725440645692}
 --- !u!1 &3982740271979077440
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,8 +221,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB77C\uBA74 \uD55C \uC2A4\uD47C\n\uCE58\uD0A8 \uB450 \uC2A4\uD47C\n\uCE58\uC57D
-    \uC138 \uC2A4\uD47C"
+  m_text: "\uBAA9\uD45C \uC5BC\uC74C \uAC1C\uC218:  0 / 5\n\uC810\uC218: Bad\n\n\uACC4\uB7C9:
+    \uACE0\uB4E0\uC2A4 \uC9C4\n\uC810\uC218: \n\n\uACC4\uB7C9: \uBC14\uCE74\uB514
+    \uB7FC\n\uC810\uC218: \n\n\uACC4\uB7C9: \uC571\uC194\uB8E8\uD2B8 \uBCF4\uB4DC\uCE74\n\uC810\uC218:
+    \n\n\uACC4\uB7C9: \uC571\uC194\uB8E8\uD2B8 \uBCF4\uB4DC\uCE74 test\n\uC810\uC218:
+    \n\n\uC250\uC774\uD0B9 \uC810\uC218: \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87ad96f160430de458ea18f6bb2462b7, type: 2}
   m_sharedMaterial: {fileID: -6633197366286672688, guid: 87ad96f160430de458ea18f6bb2462b7,
@@ -245,14 +253,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.6
-  m_fontSizeBase: 0.6
+  m_fontSize: 0.35
+  m_fontSizeBase: 0.35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -281,7 +289,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0.3903103, z: 0, w: 0.5554409}
+  m_margin: {x: 0.22979736, y: 0.3903103, z: 0.1914959, w: 0.5554409}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -324,8 +332,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.0884, y: 1.8918}
-  m_SizeDelta: {x: 5.0091, y: 5.2084}
+  m_AnchoredPosition: {x: 0.0884, y: 1.3458}
+  m_SizeDelta: {x: 5.0091, y: 6.3003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6609990661857306265
 Canvas:
