@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MyBox;
@@ -5,10 +6,22 @@ using UnityEngine;
 
 public class MiniGameItemData : ScriptableObject
 {
-    [field: SerializeField, Foldout("이미지 정보"), OverrideLabel("병 스프라이트")] 
+    [field: SerializeField, Foldout("이미지 정보"), OverrideLabel("닫힌 병 스프라이트")] 
     private Sprite _sprite;
+    [field: SerializeField, Foldout("이미지 정보"), OverrideLabel("열린 병 스프라이트")] 
+    private Sprite _openedSprite;
 
     public Sprite Sprite => _sprite;
+
+    public Sprite OpenedSprite
+    {
+        get
+        {
+            if (_openedSprite) return _openedSprite;
+
+            return _sprite;
+        }
+    }
 }
 
 public interface INoSelectedData
@@ -25,9 +38,6 @@ public class DrinkData : MiniGameItemData
     [field: SerializeField, Foldout("미니게임 좌표 정보"), OverrideLabel("병 회전 기준 위치(로컬 좌표계)")] 
     private Vector3 _rotationPivotPosition;
     
-    [field: SerializeField, Foldout("UI 좌표 정보"), OverrideLabel("병 위치 Offset")] 
-    private Vector3 _selectionUiOffset;
-    
     [field: SerializeField, Foldout("기타"), OverrideLabel("액체의 머테리얼")] 
     private Material _liquidMaterial;
     
@@ -41,5 +51,10 @@ public class DrinkData : MiniGameItemData
 
     public Vector3 RotationPivotPosition => _rotationPivotPosition;
 
-    public Vector2 SelectionUiOffset => _selectionUiOffset;
+
+    public void EDITOR_SetPositions(Vector3 rotationPivot, Vector3 bottlePosition)
+    {
+        _rotationPivotPosition = rotationPivot;
+        _bottlePosition = bottlePosition;
+    }
 }

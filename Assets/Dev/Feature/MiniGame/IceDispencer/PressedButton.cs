@@ -16,9 +16,6 @@ public class PressedButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     [field: SerializeField, AutoProperty, MustBeAssigned, InitializationField]
     private Button _button;
 
-    [field: SerializeField]
-    private float _pressionMultiplyer = 1f;
-
     public Button Button => _button;
     public bool IsPressed { get; private set; }
 

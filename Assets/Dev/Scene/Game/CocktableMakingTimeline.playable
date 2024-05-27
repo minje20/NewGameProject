@@ -130,9 +130,9 @@ MonoBehaviour:
     - {fileID: -5634190467805133796}
     - {fileID: -2010458906839069109}
     - {fileID: 5404062638164348318}
-    - {fileID: 3264706451315191821}
-    - {fileID: -2607754106255845549}
     - {fileID: -2467504440206714090}
+    - {fileID: 5043595586762386420}
+    - {fileID: -5186782439549794538}
 --- !u!114 &-5634190467805133796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +146,19 @@ MonoBehaviour:
   m_Name: Liquid Pour Wait Marker
   m_EditorClassIdentifier: 
   m_Time: 17.999999960263573
+--- !u!114 &-5186782439549794538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62324278cdb421f4f8d03a87af5906ee, type: 3}
+  m_Name: Liqueur Select Marker
+  m_EditorClassIdentifier: 
+  m_Time: 19.483333333333334
 --- !u!114 &-4875804148587223395
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,19 +198,6 @@ MonoBehaviour:
   m_Name: Making Result Marker
   m_EditorClassIdentifier: 
   m_Time: 29.96666666666669
---- !u!114 &-2607754106255845549
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff58544621d737644b376c31c2b5ca46, type: 3}
-  m_Name: Drink Select Marker
-  m_EditorClassIdentifier: 
-  m_Time: 19.5
 --- !u!114 &-2584291006807080791
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -587,19 +587,6 @@ MonoBehaviour:
   m_Name: Shaking Marker
   m_EditorClassIdentifier: 
   m_Time: 26.309576867769163
---- !u!114 &3264706451315191821
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff58544621d737644b376c31c2b5ca46, type: 3}
-  m_Name: Drink Select Marker
-  m_EditorClassIdentifier: 
-  m_Time: 15.683333333333334
 --- !u!114 &4508490694007318757
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -671,6 +658,19 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects: []
+--- !u!114 &5043595586762386420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62324278cdb421f4f8d03a87af5906ee, type: 3}
+  m_Name: Liqueur Select Marker
+  m_EditorClassIdentifier: 
+  m_Time: 15.683333333333334
 --- !u!114 &5404062638164348318
 MonoBehaviour:
   m_ObjectHideFlags: 1

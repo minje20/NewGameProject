@@ -7,10 +7,10 @@ using UnityEngine.Timeline;
 
 
 
-public class DrinkSelectMarker : Marker, IMiniGameMarker
+public class LiqueurSelectMarker : Marker, IMiniGameMarker
 {
-    public PropertyName id => "DrinkSelect";
+    public PropertyName id => "LiqueurSelect";
 
     public IMiniGameBehaviour Create()
-        => new SelectMiniGameBehaviour("AlcoholSelector");
+        => new SelectMiniGameBehaviour("LiqueurSelector");
 }

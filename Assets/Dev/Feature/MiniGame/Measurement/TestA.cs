@@ -1,27 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TestA : MonoBehaviour
 {
+    [DisplayInspector]
+    public DrinkData Data;
+
+    public DrinkMeasurementData GameData;
+    
     public Transform Target;
     public Transform MirrorTarget;
     public Transform TargetPivot;
     public Transform Jigger;
     public Transform Bottle;
-    
-    public float Angle;
-    public float JiggerToPointDistance;
 
-    public bool Toggle;
+    public SpriteRenderer A;
+    public SpriteRenderer B;
+    
 
     private Vector3 _targetPivot;
     private Vector3 _target;
-    private float _length;
-    private float _bottleToPivotlength;
-    private float _targetToPivotlength;
 
 
     private void Awake()
@@ -31,10 +33,26 @@ public class TestA : MonoBehaviour
         
         _targetPivot = position;
         _target = position1;
+    }
+
+    private void OnValidate()
+    {
+        if (Data == false) return;
+        if (A == false) return;
+        if (B == false) return;
+
+        A.sprite = Data.Sprite;
+        B.sprite = Data.Sprite;
+    }
+
+    [ButtonMethod]
+    private void SetOffset()
+    {
+        if (Data == false) return;
+        if (TargetPivot == false) return;
+        if (Bottle == false) return;
         
-        _length = (_target - Bottle.position).magnitude;
-        _bottleToPivotlength = (_targetPivot - Bottle.position).magnitude;
-        _targetToPivotlength = (_targetPivot - _target).magnitude;
+        Data.EDITOR_SetPositions(TargetPivot.localPosition, Bottle.localPosition);
     }
 
     private void Update()
@@ -42,51 +60,20 @@ public class TestA : MonoBehaviour
         SetToOrigin();
     }
 
-    public static Matrix4x4 GetMatrix(Vector3 position, Vector3 pivot, float angle)
-    {
-        Vector3 vector3 = Quaternion.AngleAxis(angle, Vector3.forward) * (position - pivot);
-        position = pivot + vector3;
-        
-        var m =Matrix4x4.TRS(
-            position,
-            Quaternion.Euler(0f, 0f, angle),
-            Vector3.one
-        );
-
-        return m;
-    }
-    public static Matrix4x4 GetInverseMatrix(Vector3 position, Vector3 pivot, float angle)
-    {
-        Vector3 vector3 = Quaternion.AngleAxis(-angle, Vector3.forward) * (position - pivot);
-        position = pivot + vector3;
-        
-        var m =Matrix4x4.TRS(
-            position,
-            Quaternion.identity,
-            Vector3.one
-        );
-
-        return m;
-    }
-
     private void SetToOrigin()
     {
-        var bottlePos = Jigger.position + Vector3.up * JiggerToPointDistance;
-        var pivot = bottlePos + Quaternion.AngleAxis(Angle, Vector3.forward) * Vector3.down * _bottleToPivotlength;
-        var m = GetInverseMatrix(bottlePos, pivot, Angle);
+        var targetPos = DrinkMeasurementMiniGame.GetOriginDrinkPosition(Jigger.position, GameData.JiggerOffset, GameData.Angle,
+            Vector3.Distance(Data.BottlePosition, Data.RotationPivotPosition), Data.BottlePosition.magnitude);
 
-        var targetPos = m.GetPosition() + Vector3.down * _length;
-
-        Debug.DrawLine(m.GetPosition(),bottlePos);
-        Debug.DrawLine(m.GetPosition(), targetPos, Color.yellow);
 
         Target.position = targetPos;
-        Target.rotation = m.rotation;
+        Target.rotation = Quaternion.identity;
         
-        var mm = GetMatrix(targetPos,  targetPos + Vector3.up * _targetToPivotlength, Angle);
-        
-        MirrorTarget.position = mm.GetPosition();
-        MirrorTarget.rotation = mm.rotation;
+        var m = DrinkMeasurementMiniGame.GetMatrix(targetPos,  targetPos + Data.RotationPivotPosition, GameData.Angle);
+
+        MirrorTarget.position = DrinkMeasurementMiniGame.GetMatrix(targetPos, Data.RotationPivotPosition + targetPos, GameData.MaxAngle)
+            .GetPosition();
+        MirrorTarget.rotation =Quaternion.Lerp(Quaternion.identity, m.rotation, GameData.MaxAngle / GameData.Angle);
         
     }
 }

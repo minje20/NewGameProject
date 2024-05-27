@@ -17,7 +17,7 @@ public class IngredientSelectMarker : Marker, IMiniGameMarker
 
 public class IngredientSelectMiniGameBehaviour: IMiniGameBehaviour
 {
-    public async UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
+    public UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
         //var selector = binder.GetComponentT<ISelectorUIController>("IngredientSelector");
         //var ingredient = binder.GetComponentT<IngredientPosition>("IngredientPosition");
@@ -44,6 +44,6 @@ public class IngredientSelectMiniGameBehaviour: IMiniGameBehaviour
         //    }
         //}
 
-        return;
+        return UniTask.CompletedTask;
     }
 }
