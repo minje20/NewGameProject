@@ -23,12 +23,12 @@ public class IceDispenserBehaviour : IMiniGameBehaviour
         scoreController.SetEnableText(true);
 
         await UniTask.WhenAny(
-            controller.GameStart(),
+            controller.GameStart(source.Token),
             UniTask.Create(async () =>
             {
                 while (true)
                 {
-                    int count = await controller.IceCount.WaitAsync();
+                    int count = await controller.IceCount.WaitAsync(source.Token);
                     scoreController.SetCount(count);
                     barController.Context.CurrentIceCount = count;
                 }
@@ -36,7 +36,7 @@ public class IceDispenserBehaviour : IMiniGameBehaviour
             .WithCancellation(GlobalCancelation.PlayMode)
         );
 
-        await scoreController.DisplayResult();
+        await scoreController.DisplayResult().WithCancellation(source.Token);
 
         barController.Context.IceScore = scoreController.CurrentScore;
         barController.Context.IsIceEnd = true;

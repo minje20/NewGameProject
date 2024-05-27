@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using IndieLINY.MessagePipe;
 using MyBox;
@@ -34,10 +35,16 @@ public class RecipeSelectController : MonoBehaviour, IMessagePipePublisher<Count
         _view.OnSelected -= OnSelected;
     }
 
-    public async UniTask<RecipeData> Open()
+    public async UniTask<RecipeData> Open(CancellationToken cancellationToken)
     {
-        await _view.Open();
+        await _view.Open(cancellationToken);
         return _barController.CurrentRecipeData;
+    }
+
+    private void __MiniGame_Reset__()
+    {
+        _barController.CurrentRecipeData = null;
+        _barController.Context.Reset();
     }
 
     private void OnSelected(RecipeData data)

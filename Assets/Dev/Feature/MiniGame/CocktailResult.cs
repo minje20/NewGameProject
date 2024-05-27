@@ -23,4 +23,15 @@ public class CocktailResult : MonoBehaviour
 
         _cocktail.transform.position = _pivot.position;
     }
+    
+
+    private void __MiniGame_Reset__()
+    {
+        if (_cocktail)
+        {
+            Destroy(_cocktail);
+
+            _cocktail = null;
+        }
+    }
 }

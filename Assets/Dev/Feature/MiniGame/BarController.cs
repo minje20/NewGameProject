@@ -24,6 +24,11 @@ public class BarController : MonoBehaviour
             
             _currentCocktailData = value;
             if (value == false) return;
+
+            if (_cocktailObject)
+            {
+                Destroy(_cocktailObject);
+            }
             
             _cocktailObject = value.ClonePrefab();
             _cocktailObject.gameObject.SetActive(false);
@@ -39,6 +44,12 @@ public class BarController : MonoBehaviour
         set
         {
             if (_currentRecipeData == value) return;
+
+            if (value == null)
+            {
+                _currentRecipeData = null;
+                return;
+            }
             
             Context.Reset();
             _currentRecipeData = value;

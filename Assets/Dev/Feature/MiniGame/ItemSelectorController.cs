@@ -17,6 +17,7 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
     public Transform Content;
     public Button SelectingButton;
     public Button SkipButton;
+    public DrinkPosition DrinkPosition;
     
     private List<SelectorButton> _buttons;
 
@@ -52,6 +53,7 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
         SkipButton.onClick.AddListener(() =>
         {
             _selectedSprite.Value = null;
+            DrinkPosition.Data = null;
             Close();
         });
     }
@@ -62,7 +64,7 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
         _canNoSelect = canNoSelect;
         _selectCancelation = new();
         
-        var tween = transform.DOMove(OpenPivot.position, 1f);
+        var tween = transform.DOMove(OpenPivot.position, 1f).SetId(this);
     }
 
     private void Close()
@@ -75,10 +77,17 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
         }
 
         _selectCancelation = null;
-        transform.DOMove(ClosePivot.position, 1f);
+        transform.DOMove(ClosePivot.position, 1f).SetId(this);
     }
 
-    public async UniTask<SelectorButton> GetSelectedItemOnChanged()
+    private void __MiniGame_Reset__()
+    {
+        Close();
+        DOTween.Kill(this);
+        transform.position = ClosePivot.position;
+    }
+
+    public async UniTask<SelectorButton> GetSelectedItemOnChanged(CancellationToken token)
     {
         SelectorButton btn = null;
 
@@ -86,10 +95,11 @@ public class ItemSelectorController : MonoBehaviour, ISelectorUIController
         {
             btn = await _selectedSprite.WaitAsync(CancellationTokenSource.CreateLinkedTokenSource(
                 GlobalCancelation.PlayMode,
-                _selectCancelation.Token
+                _selectCancelation.Token,
+                token
             ).Token);
         }
-        catch (NullReferenceException e)
+        catch (NullReferenceException)
         {
             return null;
         }

@@ -40,7 +40,7 @@ public class LiquidPourController : MonoBehaviour
         GameReset();
     }
 
-    public UniTask GameStart()
+    public UniTask GameStart(CancellationToken token )
     {
         if (LiquidMaterial != null)
         {
@@ -49,9 +49,14 @@ public class LiquidPourController : MonoBehaviour
 
         IsRunning = true;
 
+        var t = CancellationTokenSource.CreateLinkedTokenSource(
+            token,
+            GlobalCancelation.PlayMode
+        ).Token;
+
         return UniTask.WhenAny(
             UniTask.Delay((int)(Data.Timeout * 1000f), DelayType.DeltaTime, PlayerLoopTiming.Update,
-                GlobalCancelation.PlayMode),
+                t),
             UniTask.WhenAll(
                 OnLiquidUpdate(),
                 UniTask.WaitUntil(
@@ -68,7 +73,7 @@ public class LiquidPourController : MonoBehaviour
                         
                         return count >= CountOfTotalCreatingLiquid;
                     },
-                    PlayerLoopTiming.Update, GlobalCancelation.PlayMode)
+                    PlayerLoopTiming.Update, t)
             )
         ).WithCancellation(_cancellation.Token)
         .ContinueWith(x=>IsRunning = false);

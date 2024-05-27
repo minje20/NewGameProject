@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MyBox;
@@ -37,29 +38,29 @@ public class RecipeSelectView : MonoBehaviour
         _closePivot = transform.position;
     }
 
-    public async UniTask Open()
+    public async UniTask Open(CancellationToken cancellationToken)
     {
         transform.position = _closePivot;
 
         DOTween.Kill(this);
 
-        try
-        {
-            await transform
+        var cancelation = CancellationTokenSource.CreateLinkedTokenSource(
+            GlobalCancelation.PlayMode,
+            cancellationToken
+        );
+
+        await transform
                 .DOMove(_openPivot, _openDuration)
                 .SetEase(Ease.Linear)
                 .SetId(this)
                 .AsyncWaitForCompletion()
                 .AsUniTask()
-                .WithCancellation(GlobalCancelation.PlayMode);
+                .WithCancellation(cancelation.Token)
+            ;
 
-            await _testButton.OnClickAsync(GlobalCancelation.PlayMode);
+        await _testButton.OnClickAsync(cancelation.Token);
 
-            await Close();
-        }
-        catch (OperationCanceledException)
-        {
-        }
+        await Close();
     }
 
     private async UniTask Close()
@@ -67,18 +68,18 @@ public class RecipeSelectView : MonoBehaviour
         transform.position = _openPivot;
 
         DOTween.Kill(this);
+        await transform.DOMove(_closePivot, _closeDuration)
+            .SetId(this)
+            .AsyncWaitForCompletion()
+            .AsUniTask()
+            .WithCancellation(GlobalCancelation.PlayMode);
+    }
+    
 
-        try
-        {
-            await transform.DOMove(_closePivot, _closeDuration)
-                .SetId(this)
-                .AsyncWaitForCompletion()
-                .AsUniTask()
-                .WithCancellation(GlobalCancelation.PlayMode);
-        }
-        catch (OperationCanceledException)
-        {
-        }
+    private void __MiniGame_Reset__()
+    {
+        DOTween.Kill(this);
+        transform.position = _closePivot;
     }
 
     private void Awake()

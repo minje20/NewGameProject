@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -41,9 +42,9 @@ public class ShakingMiniGameController : MonoBehaviour
         _parent.gameObject.SetActive(false);
     }
 
-    public async UniTask<EMiniGameScore> GameStart()
+    public async UniTask<EMiniGameScore> GameStart(CancellationToken token)
     {
-        return await GameUpdate();
+        return await GameUpdate(token);
     }
 
     private Vector3 GetRandomHitboxStartPosition()
@@ -54,7 +55,7 @@ public class ShakingMiniGameController : MonoBehaviour
         return new Vector3(x, position.y, position.z);
     }
 
-    private async UniTask<EMiniGameScore> GameUpdate()
+    private async UniTask<EMiniGameScore> GameUpdate(CancellationToken token)
     {
         IsStarted = true;
         _tip.position = _tipPivot.position;
@@ -64,6 +65,11 @@ public class ShakingMiniGameController : MonoBehaviour
         
         _parent.gameObject.SetActive(true);
         _resultMessageText.text = "";
+
+        var t = CancellationTokenSource.CreateLinkedTokenSource(
+            token,
+            GlobalCancelation.PlayMode
+        ).Token;
 
         while (true)
         {
@@ -99,12 +105,18 @@ public class ShakingMiniGameController : MonoBehaviour
             await UniTask.WaitForEndOfFrame();
         }
         
-        await UniTask.Delay((int)(_remainingDisableDuration * 1000f));
+        await UniTask.Delay((int)(_remainingDisableDuration * 1000f), DelayType.DeltaTime, PlayerLoopTiming.Update, t);
         
         _parent.gameObject.SetActive(false);
         IsStarted = false;
 
         return rank;
+    }
+
+    private void __MiniGame_Reset__()
+    {
+        _parent.gameObject.SetActive(false);
+        IsStarted = false;
     }
 
     private void OnDrawGizmos()

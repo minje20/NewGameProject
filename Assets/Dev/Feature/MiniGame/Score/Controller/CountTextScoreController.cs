@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -68,6 +69,11 @@ public class CountTextScoreController : MonoBehaviour
         EMiniGameScore score = _behaviour.GetCalculatedScore();
         
         return _displayer.Display(score);
+    }
+
+    private void __MiniGame_Reset__()
+    {
+        Release();
     }
 
 }

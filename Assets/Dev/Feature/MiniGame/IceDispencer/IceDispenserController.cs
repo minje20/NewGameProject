@@ -56,7 +56,7 @@ public class IceDispenserController : MonoBehaviour
 
     public AsyncReactiveProperty<int> IceCount { get; private set; } = new(0);
 
-    public async UniTask GameStart()
+    public async UniTask GameStart(CancellationToken? token = null)
     {
         if (gameObject.activeSelf) return;
 
@@ -68,7 +68,17 @@ public class IceDispenserController : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(CoUpdate());
 
-        await UniTask.WaitUntil(()=>_gameTimer.IsBegin == false, PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
+        var t =  CancellationTokenSource.CreateLinkedTokenSource(
+            GlobalCancelation.PlayMode,
+            token ?? GlobalCancelation.PlayMode
+        ).Token;
+
+        await UniTask.WaitUntil(()=>_gameTimer.IsBegin == false, PlayerLoopTiming.Update, t);
+    }
+
+    private void __MiniGame_Reset__()
+    {
+        GameReset();
     }
     
     public void GameReset()

@@ -29,7 +29,7 @@ public class IngredientSelectMiniGameBehaviour: IMiniGameBehaviour
 
         while (true)
         {
-            SelectorButton btn = await selector.GetSelectedItemOnChanged();
+            SelectorButton btn = await selector.GetSelectedItemOnChanged(source.Token);
 
             if (btn == null)
             {

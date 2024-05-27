@@ -31,6 +31,11 @@ public class RecipeSummaryView : MonoBehaviour
         _openPivot = transform.position;
     }
     
+    
+    private void __MiniGame_Reset__()
+    {
+        Close();
+    }
 
     public void Open()
     {

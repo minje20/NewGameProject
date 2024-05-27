@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using IndieLINY.MessagePipe;
 using MyBox;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -33,9 +34,8 @@ public interface IMiniGameBinder
 public interface ISelectorUIController
 {
     public void Open(bool canNoSelect);
-    public UniTask<SelectorButton> GetSelectedItemOnChanged();
+    public UniTask<SelectorButton> GetSelectedItemOnChanged(CancellationToken token);
 }
-
 
 public class MiniGameController : MonoBehaviour, INotificationReceiver, IMiniGameBinder
 {
@@ -65,6 +65,7 @@ public class MiniGameController : MonoBehaviour, INotificationReceiver, IMiniGam
         _cancellationTokenSource?.Cancel();
         _cancellationTokenSource = new CancellationTokenSource();
 
+        BroadcastReset();
         Director.Play();
         IsGameStarted = true;
     }
@@ -76,8 +77,35 @@ public class MiniGameController : MonoBehaviour, INotificationReceiver, IMiniGam
         _cancellationTokenSource.Cancel();
         _cancellationTokenSource = null;
 
+        BroadcastReset();
         Director.Stop();
         IsGameStarted = false;
+    }
+
+    private void BroadcastReset()
+    {
+        foreach (var com in _components)
+        {
+            com.BroadcastMessage("__MiniGame_Reset__", null, SendMessageOptions.DontRequireReceiver);
+        }
+        foreach (var com in _receivers)
+        {
+            com.BroadcastMessage("__MiniGame_Reset__", null, SendMessageOptions.DontRequireReceiver);
+        }
+    }
+
+    public void GameRestart()
+    {
+        if (_cancellationTokenSource == null) return;
+
+        _cancellationTokenSource.Cancel();
+        _cancellationTokenSource = null;
+        
+        Director.Stop();
+        Director.time = 0f;
+
+        BroadcastReset();
+        GameStart();
     }
 
     // timeline receive method

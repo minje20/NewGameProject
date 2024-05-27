@@ -38,6 +38,11 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
             return;
         }
 
+        var token = CancellationTokenSource.CreateLinkedTokenSource(
+            GlobalCancelation.PlayMode,
+            source.Token
+        ).Token;
+
         controller.Jigger = jigger;
         controller.Drink = drinkPosition;
 
@@ -56,19 +61,18 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         }
         
         scoreController.Setup(info?.CountScoreParam);
-        //TODO: scoreController.ShowLine 더미 코드.
-        await controller.Calculate();
+        await controller.Calculate().WithCancellation(token);
         
         controller.Started = true;
         
         await UniTask.WhenAny(
             UniTask.Delay((int)(controller.Data.GameDuration * 1000f), DelayType.DeltaTime, PlayerLoopTiming.Update,
-                GlobalCancelation.PlayMode),
+                token),
             UniTask.Create(async () =>
             {
                 while (true)
                 {
-                    int count = await controller.LiquidCount.WaitAsync(GlobalCancelation.PlayMode);
+                    int count = await controller.LiquidCount.WaitAsync(token);
                     scoreController.SetCount(count);
                 }
             }),
@@ -85,7 +89,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
                         scoreController.HideLine();
                     }
                     
-                    await UniTask.NextFrame(PlayerLoopTiming.Update, GlobalCancelation.PlayMode);
+                    await UniTask.NextFrame(PlayerLoopTiming.Update, token);
                 }
             })
         );
@@ -108,7 +112,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
             transform.DOMove(backupPosition, controller.Data.EndOfRollbackDuration).AsyncWaitForCompletion().AsUniTask(),
             transform.DORotate(Vector3.zero, controller.Data.EndOfRollbackDuration).AsyncWaitForCompletion().AsUniTask()
         )
-        .WithCancellation(GlobalCancelation.PlayMode);
+        .WithCancellation(token);
         
         pourController.CountOfTotalCreatingLiquid = controller.LiquidCount.Value;
         pourController.LiquidMaterial = drinkPosition.Data.LiquidMaterial;

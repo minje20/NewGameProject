@@ -19,7 +19,7 @@ public class LiquidPourWait : IMiniGameBehaviour
     {
         var controller = binder.GetComponentT<LiquidPourController>("ShakerToJiggerLiquidPourController");
 
-        await UniTask.WaitUntil(() => controller.IsRunning == false);
+        await UniTask.WaitUntil(() => controller.IsRunning == false || source.IsCancellationRequested);
         controller.GameReset();
     }
 }

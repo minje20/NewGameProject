@@ -997,6 +997,7 @@ MonoBehaviour:
   Content: {fileID: 510718457742340278}
   SelectingButton: {fileID: 7493267434425770214}
   SkipButton: {fileID: 2133247302166285593}
+  DrinkPosition: {fileID: 0}
 --- !u!223 &2924801023191008497
 Canvas:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class ShakingMiniGameBehaviour : IMiniGameBehaviour
         var jump = binder.GetReceiver<JumpReceiver>();
 
         jump.Skip = false;
-        controller.GameStart().ContinueWith(x =>
+        controller.GameStart(source.Token).ContinueWith(x =>
         {
             jump.Skip = true;
             barController.Context.IsShakeEnd = true;

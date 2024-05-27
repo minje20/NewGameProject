@@ -131,7 +131,7 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
             Vector3.Distance(Drink.BottleLocalPos, Drink.RotatingPivotLocalPos),
             Vector3.Magnitude(Drink.BottleLocalPos)
         );
-
+        
         _originPos = originDrinkPos;
         var back = Drink.transform.position;
         _validationOriginPos = back;
@@ -182,6 +182,11 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         
         if(_circleTimer)
             _circleTimer.TimerStop();
+    }
+
+    private void __MiniGame_Reset__()
+    {
+        GameReset();
     }
     
     private void Update()

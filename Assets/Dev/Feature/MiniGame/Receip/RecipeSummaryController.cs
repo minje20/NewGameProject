@@ -32,6 +32,11 @@ public class RecipeSummaryController : MonoBehaviour
         _view.Close();
     }
     
+    private void __MiniGame_Reset__()
+    {
+        Text = "";
+    }
+    
     private void Update()
     {
         if (_view.IsClosed) return;

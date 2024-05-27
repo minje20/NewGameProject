@@ -20,7 +20,7 @@ public class RecipeSelectBehaviour : IMiniGameBehaviour
         var controller = binder.GetComponentT<RecipeSelectController>("RecipeSelectController");
         var summaryController = binder.GetComponentT<RecipeSummaryController>("RecipeSummaryController");
 
-        RecipeData data = await controller.Open();
+        RecipeData data = await controller.Open(source.Token);
 
         summaryController.Open();
     }

@@ -19,7 +19,7 @@ public class LiquidPour : IMiniGameBehaviour
     {
         var controller = binder.GetComponentT<LiquidPourController>("ShakerToJiggerLiquidPourController");
         
-        _ = controller.GameStart();
+        _ = controller.GameStart(source.Token);
         
         return UniTask.CompletedTask;
     }
