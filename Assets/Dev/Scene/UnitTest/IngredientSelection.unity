@@ -559,6 +559,14 @@ MonoBehaviour:
   _ingredientPrefab: {fileID: 4830648449609809480, guid: 47ffa802b99bd4443a801499f3ab2191,
     type: 3}
   _ingredientGroup: {fileID: 875839973}
+  _ingredientSprites:
+  - {fileID: 21300000, guid: b2db1a825cbda7146b2cd3f6e94be6e3, type: 3}
+  - {fileID: 21300000, guid: 6b3a2e529a43b5247afd780cb1353648, type: 3}
+  - {fileID: 21300000, guid: 34acc5079d72304448490c318d2bdd6c, type: 3}
+  - {fileID: 21300000, guid: 6b3a2e529a43b5247afd780cb1353648, type: 3}
+  - {fileID: 21300000, guid: 34acc5079d72304448490c318d2bdd6c, type: 3}
+  - {fileID: 21300000, guid: b2db1a825cbda7146b2cd3f6e94be6e3, type: 3}
+  - {fileID: 21300000, guid: 34acc5079d72304448490c318d2bdd6c, type: 3}
 --- !u!1 &1274045551
 GameObject:
   m_ObjectHideFlags: 0
