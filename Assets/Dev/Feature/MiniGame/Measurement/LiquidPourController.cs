@@ -18,6 +18,7 @@ public class LiquidPourController : MonoBehaviour
     public Transform _jigger;
     [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
     public GameObject _liquidPrefab;
+    
     #endregion
 
     #region Getter/Setter
@@ -44,10 +45,11 @@ public class LiquidPourController : MonoBehaviour
     {
         if (LiquidMaterial != null)
         {
-            _liquidRenerer.material = LiquidMaterial;
+            _liquidRenerer.sharedMaterial = LiquidMaterial;
         }
 
         IsRunning = true;
+        _liquidRenerer.gameObject.SetActive(true);
 
         var t = CancellationTokenSource.CreateLinkedTokenSource(
             token,
@@ -82,6 +84,7 @@ public class LiquidPourController : MonoBehaviour
     public void GameReset()
     {
         IsRunning = false;
+        _liquidRenerer.gameObject.SetActive(false);
         
         if (_cancellation?.IsCancellationRequested == false)
             _cancellation?.Cancel();

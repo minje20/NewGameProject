@@ -12,6 +12,7 @@ public class BarController : MonoBehaviour
 
     [SerializeField] private float _fadeinDuration = 2f;
     [SerializeField] private float _fadeoutDuration = 2f;
+    [SerializeField] private RenderTexture _renderTexture;
 
     private CocktailData _currentCocktailData;
 
@@ -68,7 +69,12 @@ public class BarController : MonoBehaviour
     {
         _slot.gameObject.SetActive(false);
     }
-    
+
+    private void OnDestroy()
+    {
+        _renderTexture.Release();
+    }
+
     public void ShowDrink()
     {
         _cocktailObject.gameObject.SetActive(true);

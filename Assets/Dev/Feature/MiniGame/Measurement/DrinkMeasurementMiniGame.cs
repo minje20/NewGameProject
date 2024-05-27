@@ -33,6 +33,9 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
     private MeshRenderer _renderTexturePannel;
     
     [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
+    private Camera _renderCamera;
+    
+    [field: SerializeField, Foldout("컴포넌트(건들지 마시오)"), InitializationField, MustBeAssigned]
     private RenderTexture _renderTexture;
     #endregion
 
@@ -111,6 +114,13 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
 
         Started = false;
         LiquidCount.Value = 0;
+
+        _renderCamera.targetTexture = _renderTexture;
+    }
+
+    private void OnDestroy()
+    {
+        _renderCamera.targetTexture = null;
     }
 
     public void ApplyLiquidMaterial()
@@ -119,10 +129,9 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         
         if (Drink.Data.LiquidMaterial)
         {
-            if (_renderTexturePannel.material == Drink.Data.LiquidMaterial) return;
+            if (_renderTexturePannel.sharedMaterial == Drink.Data.LiquidMaterial) return;
             
-            _renderTexturePannel.material = Drink.Data.LiquidMaterial;
-            _renderTexturePannel.material.SetTexture("_MainTEX", _renderTexture);
+            _renderTexturePannel.sharedMaterial = Drink.Data.LiquidMaterial;
         }
     }
 

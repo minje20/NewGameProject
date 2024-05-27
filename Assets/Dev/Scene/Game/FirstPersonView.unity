@@ -2689,6 +2689,7 @@ MonoBehaviour:
   _slot: {fileID: 507930625}
   _fadeinDuration: 2
   _fadeoutDuration: 2
+  _renderTexture: {fileID: 8400000, guid: d1acc1e60e9f37d46a842f4e7f6734d2, type: 2}
 --- !u!114 &925680855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3964,6 +3965,12 @@ MonoBehaviour:
   - {fileID: 1951818852}
   - {fileID: 65068200}
   - {fileID: 921509254}
+--- !u!20 &1324939278 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8579450799925157020, guid: c02729386cb4acd44b2956432040b10b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8349073491367492516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1332590646
 GameObject:
   m_ObjectHideFlags: 0
@@ -6947,6 +6954,11 @@ PrefabInstance:
       propertyPath: _liquidRenerer
       value: 
       objectReference: {fileID: 1254599362}
+    - target: {fileID: 1476675848592041767, guid: a2f9b17d754aac649beef5245554a36b,
+        type: 3}
+      propertyPath: _renderTexturePannel
+      value: 
+      objectReference: {fileID: 1254599362}
     - target: {fileID: 6149183425908212337, guid: a2f9b17d754aac649beef5245554a36b,
         type: 3}
       propertyPath: m_Name
@@ -9865,6 +9877,11 @@ PrefabInstance:
       objectReference: {fileID: 1557512643}
     - target: {fileID: 2075917350148605577, guid: c02729386cb4acd44b2956432040b10b,
         type: 3}
+      propertyPath: _renderCamera
+      value: 
+      objectReference: {fileID: 1324939278}
+    - target: {fileID: 2075917350148605577, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
       propertyPath: _renderTexture
       value: 
       objectReference: {fileID: 8400000, guid: d1acc1e60e9f37d46a842f4e7f6734d2, type: 2}
@@ -9952,6 +9969,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DrinkMeasurement
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579450799925157020, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579450799925157020, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: orthographic size
+      value: 10.374101
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748474599576948171, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 20.7482
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748474599576948171, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 20.7482
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748474599576948171, guid: c02729386cb4acd44b2956432040b10b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 20.7482
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 902870769751840939, guid: c02729386cb4acd44b2956432040b10b, type: 3}
