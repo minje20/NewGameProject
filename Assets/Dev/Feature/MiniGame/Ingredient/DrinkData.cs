@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class MiniGameItemData : ScriptableObject
 {
     [field: SerializeField, Foldout("이미지 정보"), OverrideLabel("닫힌 병 스프라이트")] 
@@ -56,5 +60,9 @@ public class DrinkData : MiniGameItemData
     {
         _rotationPivotPosition = rotationPivot;
         _bottlePosition = bottlePosition;
+
+#if  UNITY_EDITOR
+        EditorUtility.SetDirty(this);
+#endif
     }
 }
