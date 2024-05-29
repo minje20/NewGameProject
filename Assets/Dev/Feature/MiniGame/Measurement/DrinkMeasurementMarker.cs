@@ -28,6 +28,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
         var pourController = binder.GetComponentT<LiquidPourController>("ShakerToJiggerLiquidPourController");
         var drinkPosition = binder.GetComponentT<DrinkPosition>("DrinkPosition");
         var scoreController = binder.GetComponentT<CountLiquidScoreController>("CountLiquidScoreController");
+        var shaker = binder.GetComponentT<Shaker>("Shaker");
         var jigger = binder.GetComponentT<Transform>("Jigger");
         var transform = drinkPosition.transform;
 
@@ -48,6 +49,7 @@ public class DrinkMeasurementBehaviour : IMiniGameBehaviour
 
         controller.GameReset();
         controller.ApplyLiquidMaterial();
+        shaker.SetEnableIce(true);
 
         MiniMeasurementInfo info = null;
         RecipeData currentRecipeData = barController.CurrentRecipeData;

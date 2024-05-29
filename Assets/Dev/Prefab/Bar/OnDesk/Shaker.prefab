@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2108816507
   m_SortingLayer: 7
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: da4e37e64c3c8a54fac639b87a4ea5a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2108816507
   m_SortingLayer: 7
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: ae20d48d59f40124b8cfb3ab96d14e53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 5113324099046532252}
   - component: {fileID: 717001930891119496}
   - component: {fileID: 7304860178670564245}
+  - component: {fileID: 548571740949973335}
   m_Layer: 0
   m_Name: Shaker
   m_TagString: Untagged
@@ -221,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: Shaker
-  _component: {fileID: 5113324099046532252}
+  _component: {fileID: 548571740949973335}
 --- !u!212 &798940549235693364
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -367,6 +368,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &548571740949973335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431188247703587962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809abb1f67639994dbfe640eb89d3122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7021051108783516503
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +536,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2108816507
   m_SortingLayer: 7
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: e95b52ef7f6e6774ab1dcc5d924ba8be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -12,6 +12,7 @@ public class IceDispenserBehaviour : IMiniGameBehaviour
         var controller = binder.GetComponentT<IceDispenserController>("IceDispenserController");
         var barController = binder.GetComponentT<BarController>("BarController");
         var scoreController = binder.GetComponentT<CountTextScoreController>("CountTextScoreController");
+        var shaker = binder.GetComponentT<Shaker>("Shaker");
 
         RecipeData recipeData = barController.CurrentRecipeData;
 
@@ -40,6 +41,9 @@ public class IceDispenserBehaviour : IMiniGameBehaviour
 
         barController.Context.IceScore = scoreController.CurrentScore;
         barController.Context.IsIceEnd = true;
+        
+        shaker.SetIceObject(controller.CopiedIceObjects);
+        shaker.SetEnableIce(false);
         
         scoreController.Release();
         controller.GameReset();

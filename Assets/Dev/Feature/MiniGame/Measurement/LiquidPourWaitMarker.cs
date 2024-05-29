@@ -18,8 +18,11 @@ public class LiquidPourWait : IMiniGameBehaviour
     public async UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
         var controller = binder.GetComponentT<LiquidPourController>("ShakerToJiggerLiquidPourController");
+        var shaker = binder.GetComponentT<Shaker>("Shaker");
 
         await UniTask.WaitUntil(() => controller.IsRunning == false || source.IsCancellationRequested);
+        
+        shaker.SetLiquidObject(controller.PopLiquidList());
         controller.GameReset();
     }
 }

@@ -145,8 +145,6 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
             Vector3.Magnitude(Drink.BottleLocalPos)
         );
         
-        _renderTexturePannel.gameObject.SetActive(true);
-        
         _originPos = originDrinkPos;
         var back = Drink.transform.position;
         _validationOriginPos = back;
@@ -195,7 +193,6 @@ public class DrinkMeasurementMiniGame : MonoBehaviour
         LiquidCount.Value = 0;
 
         DOTween.Kill(this);
-        _renderTexturePannel.gameObject.SetActive(false);
         
         if(_circleTimer)
             _circleTimer.TimerStop();

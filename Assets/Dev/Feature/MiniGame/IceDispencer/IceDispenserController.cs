@@ -54,6 +54,11 @@ public class IceDispenserController : MonoBehaviour
 
     private Queue<GameObject> _createdRandomIce = new();
 
+    public List<GameObject> CopiedIceObjects =>
+        _createdRandomIce
+            .Select(x=>Instantiate(x))
+            .ToList();
+
     public AsyncReactiveProperty<int> IceCount { get; private set; } = new(0);
 
     public async UniTask GameStart(CancellationToken? token = null)

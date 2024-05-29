@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
@@ -41,6 +42,15 @@ public class LiquidPourController : MonoBehaviour
         GameReset();
     }
 
+    public List<GameObject> PopLiquidList()
+    {
+        var list = new List<GameObject>(_liquidList);
+        
+        _liquidList.Clear();
+
+        return list;
+    }
+
     public UniTask GameStart(CancellationToken token )
     {
         if (LiquidMaterial != null)
@@ -49,7 +59,6 @@ public class LiquidPourController : MonoBehaviour
         }
 
         IsRunning = true;
-        _liquidRenerer.gameObject.SetActive(true);
 
         var t = CancellationTokenSource.CreateLinkedTokenSource(
             token,
@@ -84,21 +93,22 @@ public class LiquidPourController : MonoBehaviour
     public void GameReset()
     {
         IsRunning = false;
-        _liquidRenerer.gameObject.SetActive(false);
+
+        foreach (var liquid in _liquidList)
+        {
+            if (liquid)
+            {
+                Destroy(liquid);
+            }
+        }
+        
+        _liquidList.Clear();
         
         if (_cancellation?.IsCancellationRequested == false)
             _cancellation?.Cancel();
 
         _cancellation = new CancellationTokenSource();
-
-        _liquidList.ForEach(x =>
-        {
-            if (x)
-            {
-                Destroy(x);
-            }
-        });
-        _liquidList.Clear();
+        
         _currentCreatedLiquidCount = 0;
         CountOfTotalCreatingLiquid = 0;
     }
