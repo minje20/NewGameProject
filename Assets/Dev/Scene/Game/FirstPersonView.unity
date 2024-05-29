@@ -1938,6 +1938,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2079903596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &681928137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 681928138}
+  - component: {fileID: 681928139}
+  m_Layer: 0
+  m_Name: DummyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &681928138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681928137}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1257927421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &681928139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681928137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77af45efae0dd194cabb81c8216d3799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _npcKeys:
+  - TEST_NPC_2
+  - TEST_NPC_2
+  _enterScriptCodeList:
+  - visit_0_enter
+  - visit_1_enter
+  _exitScriptCodeList:
+  - visit_0_exit
+  - visit_1_exit
 --- !u!4 &702581168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3261967936919620456, guid: 6fd0577c186a50f45bfac423cc9c4a6a,
@@ -1994,6 +2047,7 @@ MonoBehaviour:
   _textCompletionDuration: 0.35
   _skipTwinkleX: -15
   _skipTwinkleEase: 7
+  _table: {fileID: 11400000, guid: 7c3ee14baa0aa3d4f9a0e7dd19928626, type: 2}
 --- !u!4 &703243727
 Transform:
   m_ObjectHideFlags: 0
@@ -3414,6 +3468,7 @@ Transform:
   - {fileID: 703243727}
   - {fileID: 1235898430}
   - {fileID: 101478841}
+  - {fileID: 681928138}
   m_Father: {fileID: 207075524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1273761903
@@ -6105,6 +6160,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4661581978378251188, guid: 482cdea8700a0ea4dadf3d793f8479d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6989818828472158626, guid: 482cdea8700a0ea4dadf3d793f8479d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8604,6 +8664,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7067663645807488867, guid: 628b5c52237b66d4b98cafe353e06aec,
         type: 3}
+      propertyPath: _data._json
+      value: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"npc_controller","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"NpcController,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"minigame_controller","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"MiniGameController,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"camera_controller","value":{"$content":2,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"CameraController,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"maked_cocktail","value":null,"typeHandle":{"Identification":"CocktailRecipe,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"bar_controller","value":{"$content":3,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"BarController,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"dialogue_controller","value":{"$content":4,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"DialogueController,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"fame_hud_controller","value":{"$content":5,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"HUDController,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"dummy_manager","value":{"$content":6,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"DummyManager,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067663645807488867, guid: 628b5c52237b66d4b98cafe353e06aec,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067663645807488867, guid: 628b5c52237b66d4b98cafe353e06aec,
+        type: 3}
       propertyPath: _data._objectReferences.Array.data[0]
       value: 
       objectReference: {fileID: 1323159539}
@@ -8627,6 +8705,11 @@ PrefabInstance:
       propertyPath: _data._objectReferences.Array.data[5]
       value: 
       objectReference: {fileID: 101478842}
+    - target: {fileID: 7067663645807488867, guid: 628b5c52237b66d4b98cafe353e06aec,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.data[6]
+      value: 
+      objectReference: {fileID: 681928139}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

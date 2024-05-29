@@ -8,6 +8,8 @@ using MyBox;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -35,6 +37,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private float _textCompletionDuration = 0.35f;
     [SerializeField] private float _skipTwinkleX = 0.35f;
     [SerializeField] private Ease _skipTwinkleEase = Ease.Unset;
+    [SerializeField] private scriptTable _table;
 
     private void Awake()
     {
@@ -53,14 +56,19 @@ public class DialogueController : MonoBehaviour
         _text.text = "";
     }
 
-    public DialogueContext BeginText(List<DialogueItem> textList) =>
-        new DialogueContext(
+    public DialogueContext BeginText(string scriptCode)
+    {
+        var textList = _table.CreateScriptsInstance(scriptCode);
+        
+        var context = new DialogueContext(
             textList,
             _textCompletionDuration,
             _text,
             _upDirection,
             _downDirection
         );
+        return context;
+    }
 
     private IEnumerator CoUpdate()
     {
