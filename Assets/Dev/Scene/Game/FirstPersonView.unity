@@ -2008,7 +2008,7 @@ MonoBehaviour:
   _shakingGoodScoreToNumber: 50
   _shakingPerfectScoreToNumber: 100
   _shakingScoreCoverage: 0.4
-  _totalBadRange: {x: -99999999, y: 50}
+  _totalBadRange: {x: 0, y: 50}
   _totalGoodRange: {x: 51, y: 84}
   _totalPerfectRange: {x: 85, y: 100}
 --- !u!4 &702581168 stripped

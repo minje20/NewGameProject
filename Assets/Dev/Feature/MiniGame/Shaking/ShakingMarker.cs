@@ -7,15 +7,26 @@ using UnityEngine.Timeline;
 
 public class ShakingMarker : Marker, IMiniGameMarker
 {
+    [SerializeField] private int shakingIteration;
+
+    public int ShakingIteration => shakingIteration;
+
     public PropertyName id => "ShakingMarker";
 
     public IMiniGameBehaviour Create()
-        => new ShakingMiniGameBehaviour();
+        => new ShakingMiniGameBehaviour(ShakingIteration);
 }
 
 public class ShakingMiniGameBehaviour : IMiniGameBehaviour
 {
     private static readonly int Shake = Animator.StringToHash("Shake");
+
+    private int _number;
+
+    public ShakingMiniGameBehaviour(int number)
+    {
+        _number = number;
+    }
 
     public UniTask Invoke(IMiniGameBinder binder, CancellationTokenSource source)
     {
@@ -27,8 +38,17 @@ public class ShakingMiniGameBehaviour : IMiniGameBehaviour
         controller.GameStart(source.Token).ContinueWith(x =>
         {
             jump.Skip = true;
-            barController.Context.IsShake1End = true;
-            barController.Context.ShakeScore1 = x;
+
+            if (_number == 1)
+            {
+                barController.Context.IsShake1End = true;
+                barController.Context.ShakeScore1 = x;
+            }
+            else
+            {
+                barController.Context.IsShake2End = true;
+                barController.Context.ShakeScore2 = x;
+            }
         });
         
         return UniTask.CompletedTask;

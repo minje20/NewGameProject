@@ -67,6 +67,9 @@ public class RecipeSummaryController : MonoBehaviour
         str += _shakingTextTemplate.FormatWithPlaceholder(
             ("shaking_score", context.IsShake1End ? context.ShakeScore1 : "")
         ) + "\n";
+        str += _shakingTextTemplate.FormatWithPlaceholder(
+            ("shaking_score", context.IsShake2End ? context.ShakeScore2 : "")
+        ) + "\n";
 
         Text = str;
 

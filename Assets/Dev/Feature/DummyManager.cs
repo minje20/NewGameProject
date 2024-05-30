@@ -186,10 +186,11 @@ public class DummyManager : MonoBehaviour
 
         totalScore += iCalc(context.IceScore);
         context.MeasuredDrinkTable.ForEach(pair => totalScore += mCalc(pair.Value.Score, _measurementScoreCoverage / context.MeasuredDrinkTable.Count));
-        totalScore += sCalc(context.ShakeScore1, _shakingScoreCoverage);
-        //totalScore += sCalc(context.ShakeScore2, _shakingScoreCoverage / 2f);
+        totalScore += sCalc(context.ShakeScore1, _shakingScoreCoverage / 2f);
+        totalScore += sCalc(context.ShakeScore2, _shakingScoreCoverage / 2f);
 
         int finalScoreNumber = Mathf.CeilToInt(totalScore * 100f);
+        finalScoreNumber = Mathf.Clamp(finalScoreNumber, 0, 100);
         
         print(finalScoreNumber);
 
