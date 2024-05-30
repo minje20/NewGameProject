@@ -18,8 +18,9 @@ public class IngredientSelectionUI : MonoBehaviour
     [SerializeField] private DrinkData[] _ingredientDatas;
      private GameObject[] _ingredientPrefabs;
 
-     private Vector2 _ingredientCaptureIndexRange;
+     [SerializeField] private Vector2 _ingredientCaptureIndexRange =new Vector2(0, 4);
 
+     private Vector2 _backupRangeIngredientCaptureIndexRange;
      private InputAction _leftInput;
      private InputAction _rightInput;
      
@@ -28,13 +29,14 @@ public class IngredientSelectionUI : MonoBehaviour
 
      private void Awake()
      {
+         _backupRangeIngredientCaptureIndexRange = _ingredientCaptureIndexRange;
          _leftInput = InputManager.Actions.MoveLeftIngredientSelection;
          _rightInput = InputManager.Actions.MoveRightIngredientSelection;
      }
 
      private void Start()
-    {
-        _ingredientCaptureIndexRange = new Vector2(0, 4);
+     {
+         _ingredientCaptureIndexRange = _backupRangeIngredientCaptureIndexRange;
         _ingredientPrefabs = new GameObject[_ingredientTransforms.Length];
 
         _dataIndex = 2;

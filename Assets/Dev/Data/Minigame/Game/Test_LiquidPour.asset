@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d809eb6e0c369a42b8ad83c29af6183, type: 3}
-  m_Name: new liquid pour data
+  m_Name: Test_LiquidPour
   m_EditorClassIdentifier: 
   _jiggerOffset: {x: -0.17, y: 4.04}
   _liquidCreationLineLength: 0.59

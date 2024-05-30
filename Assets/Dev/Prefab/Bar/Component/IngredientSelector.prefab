@@ -1329,6 +1329,9 @@ MonoBehaviour:
   OpenPivot: {fileID: 2027353803861964698}
   Content: {fileID: 4335008519242921619}
   SelectingButton: {fileID: 757068463132441699}
+  SkipButton: {fileID: 757068463132441699}
+  DrinkPosition: {fileID: 0}
+  View: {fileID: 0}
 --- !u!223 &2578054809346964010
 Canvas:
   m_ObjectHideFlags: 0

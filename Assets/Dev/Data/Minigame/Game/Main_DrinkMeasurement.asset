@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27556cc53f1f93a4ab1f986c3d26df5c, type: 3}
+  m_Name: Main_DrinkMeasurement
+  m_EditorClassIdentifier: 
+  _gameDuration: 5
+  _backToOriginDuration: 0.5
+  _measurementSpeed: 0.75
+  _circleCreationDelay: 0.01
+  _endOfRollbackDuration: 1
+  _startOfRollbackDuration: 1
+  _angle: 110.4
+  _maxAngle: 107.5
+  _liquidForce: 5
+  _defaultAngle: 74.9
+  _liquidCreationStartAngle: 107.5
+  _jiggerOffset: {x: 0.81, y: 5}
+  _maxCircleCount: 1000

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7ce240fefdf87e4998fdb2f527e0284, type: 3}
-  m_Name: BurningSpider
+  m_Name: SweetJupyter
   m_EditorClassIdentifier: 
   _timelineKey: 
-  _cocktail: {fileID: 11400000, guid: 0c8cc53b858e63f49aaace88a939efa5, type: 2}
+  _cocktail: {fileID: 11400000, guid: cc10832ccf456624aa890744aa2f0be1, type: 2}
   _Iceparameter:
     _countScoreParam:
       TargetCount: 5
@@ -47,7 +47,7 @@ MonoBehaviour:
         Range: {x: -99999, y: 49}
     _liquidScoreParam:
       LinePosition: 0.393
-    _drinkData: {fileID: 11400000, guid: bb0ca0101ebdd8b4c89034b24e735e1f, type: 2}
+    _drinkData: {fileID: 11400000, guid: 9900b3e88ac5862429ad2108d71edd02, type: 2}
   _MeansurementParameter2:
     _countScoreParam:
       TargetCount: 200
@@ -81,7 +81,7 @@ MonoBehaviour:
         Range: {x: -99999, y: 49}
     _liquidScoreParam:
       LinePosition: 0.717
-    _drinkData: {fileID: 11400000, guid: 2158f8eb11e370145ba91118571a23c7, type: 2}
+    _drinkData: {fileID: 11400000, guid: 3e46531a5b1843143bdd56aca161b4e6, type: 2}
   _MeansurementParameter4:
     _countScoreParam:
       TargetCount: 200
@@ -98,4 +98,4 @@ MonoBehaviour:
         Range: {x: -99999, y: 49}
     _liquidScoreParam:
       LinePosition: 0.717
-    _drinkData: {fileID: 11400000, guid: 8576e425573e4be48bb25e1d1ac6390d, type: 2}
+    _drinkData: {fileID: 11400000, guid: b3b9c9470ccc4fa4ea1932e025e566bc, type: 2}
