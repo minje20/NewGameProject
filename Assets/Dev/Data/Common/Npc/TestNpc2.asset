@@ -17,3 +17,4 @@ MonoBehaviour:
   Asset: {fileID: 11400000, guid: 983b73bb27f12904a8709225cbb5942f, type: 2}
   _sprites: []
   _scale: {x: 1, y: 1, z: 1}
+  _offset: {x: 0, y: -0.496, z: 0}

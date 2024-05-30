@@ -43,7 +43,7 @@ public static class NpcFactory
 
         var npc = obj.AddComponent<Npc>();
         npc.gameObject.transform.localScale = parameter.NpcData.Scale;
-        npc.transform.position = parameter.Slot.Transform.position;
+        npc.transform.position = parameter.Slot.Transform.position + parameter.NpcData.Offset;
         
         npc.Init(parameter);
         

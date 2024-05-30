@@ -20,8 +20,11 @@ public class NpcData: ScriptableObject
     
     [field: SerializeField, Foldout("게임오브젝트"), OverrideLabel("Transform의 Scale 값")]
     private Vector3 _scale = Vector3.one;
+    [field: SerializeField, Foldout("게임오브젝트"), OverrideLabel("Transform의 Position offset 값")]
+    private Vector3 _offset = Vector3.zero;
 
     public Vector3 Scale => _scale;
+    public Vector3 Offset => _offset;
 
     public string Key => _key;
     public List<Sprite> Sprites => _sprites;
