@@ -27,8 +27,8 @@ public class ShakingMiniGameBehaviour : IMiniGameBehaviour
         controller.GameStart(source.Token).ContinueWith(x =>
         {
             jump.Skip = true;
-            barController.Context.IsShakeEnd = true;
-            barController.Context.ShakeScore = x;
+            barController.Context.IsShake1End = true;
+            barController.Context.ShakeScore1 = x;
         });
         
         return UniTask.CompletedTask;

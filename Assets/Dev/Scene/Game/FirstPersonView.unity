@@ -1989,8 +1989,28 @@ MonoBehaviour:
   - visit_0_enter
   - visit_1_enter
   _exitScriptCodeList:
-  - visit_0_exit
-  - visit_1_exit
+  - BadKey: visit_0_exit_bad
+    GoodKey: visit_0_exit_good
+    PerfectKey: visit_0_exit_perfect
+  - BadKey: visit_1_exit
+    GoodKey: visit_1_exit
+    PerfectKey: visit_1_exit
+  _controller: {fileID: 925680854}
+  _iceBadScoreToNumber: 35
+  _iceGoodScoreToNumber: 50
+  _icePerfectScoreToNumber: 100
+  _iceScoreCoverage: 0.35
+  _measurementBadScoreToNumber: 35
+  _measurementGoodScoreToNumber: 50
+  _measurementPerfectScoreToNumber: 100
+  _measurementScoreCoverage: 0.4
+  _shakingBadScoreToNumber: 35
+  _shakingGoodScoreToNumber: 50
+  _shakingPerfectScoreToNumber: 100
+  _shakingScoreCoverage: 0.4
+  _totalBadRange: {x: -99999999, y: 50}
+  _totalGoodRange: {x: 51, y: 84}
+  _totalPerfectRange: {x: 85, y: 100}
 --- !u!4 &702581168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3261967936919620456, guid: 6fd0577c186a50f45bfac423cc9c4a6a,

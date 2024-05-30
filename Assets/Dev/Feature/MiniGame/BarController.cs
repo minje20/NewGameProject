@@ -108,8 +108,10 @@ public class MiniGameContext
     
     public Dictionary<DrinkData, MeasureItem> MeasuredDrinkTable { get; private set; } = new();
     
-    public bool IsShakeEnd { get; set; }
-    public EMiniGameScore ShakeScore { get; set; }
+    public bool IsShake1End { get; set; }
+    public bool IsShake2End { get; set; }
+    public EMiniGameScore ShakeScore1 { get; set; }
+    public EMiniGameScore ShakeScore2 { get; set; }
  
     public void Reset()
     {
@@ -120,7 +122,9 @@ public class MiniGameContext
         IsIceEnd = false;
         IceScore = EMiniGameScore.Bad;
 
-        IsShakeEnd = false;
-        ShakeScore = EMiniGameScore.Bad;
+        IsShake1End = false;
+        IsShake2End = false;
+        ShakeScore1 = EMiniGameScore.Bad;
+        ShakeScore2 = EMiniGameScore.Bad;
     }
 }

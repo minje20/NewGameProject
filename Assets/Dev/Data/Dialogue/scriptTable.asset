@@ -66,33 +66,49 @@ MonoBehaviour:
     script: "\uC8FC\uC778\uACF5: \uC6B0\uB9AC \uAC00\uAC8C \uD2B9\uC81C \uC220\uC785\uB2C8\uB2E4.
       \uD55C \uBC88 \uB9DB\uBCF4\uC2DC\uC8E0."
   - order: 1
-    script_code: visit_0_exit
+    script_code: visit_0_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uD5C8\uD5C8 \uBD88\uD0C0\uB294\uAC8C \uD654\uB048\uD558\uAD6C\uB9CC."
   - order: 2
-    script_code: visit_0_exit
+    script_code: visit_0_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: ..\uADF8\uB9AC\uACE0 \uB2EC\uACE0."
   - order: 3
-    script_code: visit_0_exit
+    script_code: visit_0_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uCDE8\uAE30\uAC00 \uC624\uB974\uB2C8 \uBA38\uB9BF\uC18D\uC774
       \uB2E8\uC21C\uD574 \uC9C0\uB294\uAD6C\uB9CC."
   - order: 4
-    script_code: visit_0_exit
+    script_code: visit_0_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uAC11\uC790\uAE30 \uB098\uC774 \uBA39\uC740\uAC8C
       \uBB54 \uB300\uC218\uC778\uAC00 \uC2F6\uAE30\uB3C4 \uD558\uACE0."
   - order: 5
-    script_code: visit_0_exit
+    script_code: visit_0_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uC9C0\uAE08\uC774\uB77C\uB3C4 \uC2DC\uC791\uD560
       \uC218 \uC788\uB294\uAC8C \uC788\uC9C0 \uC54A\uC744\uAE4C?"
   - order: 6
-    script_code: visit_0_exit
+    script_code: visit_0_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uC774\uB9CC \uC77C\uC5B4\uB098\uBD10\uC57C\uACA0\uC5B4.
       \uC88B\uC740 \uC2DC\uAC04\uC774\uC5C8\uB124."
+  - order: 0
+    script_code: visit_0_exit_good
+    is_master: 0
+    script: visit_0_exit_good_0
+  - order: 1
+    script_code: visit_0_exit_good
+    is_master: 0
+    script: visit_0_exit_good_1
+  - order: 0
+    script_code: visit_0_exit_bad
+    is_master: 0
+    script: visit_0_exit_bad_0
+  - order: 1
+    script_code: visit_0_exit_bad
+    is_master: 0
+    script: visit_0_exit_bad_1
   - order: 0
     script_code: visit_1_enter
     is_master: 0
@@ -106,14 +122,14 @@ MonoBehaviour:
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: ENTER TEST 2"
   - order: 0
-    script_code: visit_1_exit
+    script_code: visit_1_exit_perfect
     is_master: 1
     script: "\uC8FC\uC778\uACF5: EXIT TEST 0"
   - order: 1
-    script_code: visit_1_exit
+    script_code: visit_1_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: EXIT TEST 1"
   - order: 2
-    script_code: visit_1_exit
+    script_code: visit_1_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: EXIT TEST 2"
