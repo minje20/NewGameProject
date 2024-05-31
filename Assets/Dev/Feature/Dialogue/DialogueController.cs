@@ -16,6 +16,9 @@ using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
+    [field: SerializeField, AutoProperty(AutoPropertyMode.Scene), InitializationField, MustBeAssigned]
+    private NpcController _npcController;
+    
     [field: SerializeField, InitializationField, MustBeAssigned]
     private GameObject _content;
 
@@ -61,6 +64,7 @@ public class DialogueController : MonoBehaviour
         var textList = _table.CreateScriptsInstance(scriptCode);
         
         var context = new DialogueContext(
+            _npcController,
             textList,
             _textCompletionDuration,
             _text,

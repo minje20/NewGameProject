@@ -35,15 +35,8 @@ public static class NpcFactory
     {
         GameObject obj = new GameObject(parameter.NpcData.Key);
 
-        obj.AddComponent<MeshFilter>();
-        var renderer = obj.AddComponent<MeshRenderer>();
-        var skeleton = obj.AddComponent<SkeletonAnimation>();
-        renderer.material.color = parameter.AnimationData.FadeoutColor;
-        renderer.sortingLayerName = "Npc";
-
         var npc = obj.AddComponent<Npc>();
-        npc.gameObject.transform.localScale = parameter.NpcData.Scale;
-        npc.transform.position = parameter.Slot.Transform.position + parameter.NpcData.Offset;
+        npc.transform.position = parameter.Slot.Transform.position;
         
         npc.Init(parameter);
         

@@ -4,6 +4,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using MyBox;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class NpcControllerTest : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class NpcControllerTest : MonoBehaviour
     
     [field: SerializeField, DefinedValues(nameof(GetNpcKeyList))]
     private string _npcKey;
+
+    [SerializeField] private string _aniKey;
 
     private string[] GetNpcKeyList()
     {
@@ -43,6 +46,18 @@ public class NpcControllerTest : MonoBehaviour
             {
                 _controller.RemoveNpc(_npcKey);
             });
+        }
+        return _npcKey;
+    }
+    
+    [ButtonMethod]
+    public string Play()
+    {
+        if (_controller == false || Application.isPlaying == false) return _npcKey;
+
+        if (_controller.TryGetNpc(_npcKey, out var npc))
+        {
+            npc.PlayAnimation(_aniKey);
         }
         return _npcKey;
     }

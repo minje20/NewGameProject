@@ -16,6 +16,7 @@ public class DialogueContext
     private TMP_Text _text;
     private Image _upDir;
     private Image _downDir;
+    private NpcController _controller;
 
     private int _index;
 
@@ -61,6 +62,8 @@ public class DialogueContext
         
         var task = _text.DoTextUniTask(CurrentText, _duration, _source.Token);
         _prevTask = task;
+        
+        _controller.GetNpcAll().ForEach(x=>x.PlayAnimation(item.PoseKey));
 
         if (_index >= _texts.Count)
         {
@@ -76,8 +79,9 @@ public class DialogueContext
         _source = null;
     }
 
-    public DialogueContext(List<DialogueItem> texts, float duration, TMP_Text text, Image upDir, Image downDir)
+    public DialogueContext(NpcController controller, List<DialogueItem> texts, float duration, TMP_Text text, Image upDir, Image downDir)
     {
+        _controller = controller;
         _texts = texts;
         _duration = duration;
         _text = text;

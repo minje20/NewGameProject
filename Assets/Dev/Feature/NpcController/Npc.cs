@@ -16,8 +16,9 @@ public class Npc : MonoBehaviour
 
     public NpcSlot Slot => _creationParameter.Slot;
 
-    private SkeletonAnimation _animation;
-    private MeshRenderer _renderer;
+    private List<BaseNpcBehaviour> _behaviours = new();
+    private NpcSpriteBehaviour _spriteBehaviour;
+
 
     public void Init(NpcCreationParameter parameter)
     {
@@ -26,44 +27,55 @@ public class Npc : MonoBehaviour
             Debug.LogWarning($"이미 존재하는 npc({NpcData.Key})를 초기화하였습니다.");
             return;
         }
-
+        
         _creationParameter = parameter;
 
-        _animation = GetComponent<SkeletonAnimation>();
-        _renderer = GetComponent<MeshRenderer>();
+        _behaviours.Add(_spriteBehaviour = BaseNpcBehaviour.Create<NpcSpriteBehaviour>(gameObject, NpcData));
+        _behaviours.Add(BaseNpcBehaviour.Create<NpcSpineBehaviour>(gameObject, NpcData));
+    }
+    
+    public void PlayAnimation(string key)
+    {
+        if (_behaviours == null) return;
 
-        _animation.skeletonDataAsset = NpcData.Asset;
-        
-        Debug.Assert(_renderer);
+        if (key == "")
+        {
+            return;
+        }
 
-        StartCoroutine(OnUpdate());
+        foreach (BaseNpcBehaviour behaviour in _behaviours)
+        {
+            behaviour.Stop();
+        }
+        foreach (BaseNpcBehaviour behaviour in _behaviours)
+        {
+            if (behaviour.PlayAnimation(key)) return;
+        }
     }
 
-    private IEnumerator OnUpdate()
+    public void SetDefault()
     {
-        while (true)
+        foreach (BaseNpcBehaviour behaviour in _behaviours)
         {
-            _animation.AnimationName = "";
-            _animation.AnimationName = "smoothing";
-
-            yield return new WaitForSeconds(5f);
+            behaviour.Stop();
         }
+        _spriteBehaviour.SetDefault();
     }
 
     public UniTask AnimateFadein()
     {
-        if (_renderer == false) return UniTask.CompletedTask;
-
-        _renderer.material.color = AniData.FadeoutColor;
-        return _renderer.material.DOColor(AniData.FadeinColor, AniData.FadeinSpeed)
+        SetDefault();
+        
+        _spriteBehaviour.Renderer.material.color = AniData.FadeoutColor;
+        return _spriteBehaviour.Renderer.material.DOColor(AniData.FadeinColor, AniData.FadeinSpeed)
             .AsyncWaitForCompletion().AsUniTask().WithCancellation(GlobalCancelation.PlayMode);
     }
     public UniTask AnimateFadeout()
     {
-        if (_renderer == false) return UniTask.CompletedTask;
+        SetDefault();
 
-        _renderer.material.color = AniData.FadeinColor;
-        return _renderer.material.DOColor(AniData.FadeoutColor, AniData.FadeinSpeed)
+        _spriteBehaviour.Renderer.material.color = AniData.FadeinColor;
+        return _spriteBehaviour.Renderer.material.DOColor(AniData.FadeoutColor, AniData.FadeinSpeed)
             .AsyncWaitForCompletion().AsUniTask().WithCancellation(GlobalCancelation.PlayMode);
     }
 }

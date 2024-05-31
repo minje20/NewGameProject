@@ -2004,6 +2004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7052fa6b707e6544eaa1c98604342616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _npcController: {fileID: 1323159539}
   _content: {fileID: 265889036}
   _text: {fileID: 506326766}
   _upDirection: {fileID: 1197740555}
@@ -3668,6 +3669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 1323159539}
   _npcKey: 
+  _aniKey: 
 --- !u!114 &1323159539
 MonoBehaviour:
   m_ObjectHideFlags: 0

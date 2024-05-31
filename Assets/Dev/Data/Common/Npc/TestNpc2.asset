@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: TEST_NPC_2
   _defaultSprite: {fileID: 21300000, guid: f4df30e6064ad1a4b95cb0e0089339f6, type: 3}
-  Asset: {fileID: 11400000, guid: 983b73bb27f12904a8709225cbb5942f, type: 2}
-  _sprites: []
-  _scale: {x: 1, y: 1, z: 1}
-  _offset: {x: 0, y: -0.496, z: 0}
+  _spineAssets:
+  - _asset: {fileID: 11400000, guid: 983b73bb27f12904a8709225cbb5942f, type: 2}
+    _containAnimationKeys:
+    - _key: touch_mustache
+      _spineKey: smoothing
+    _offset: {x: 0.22, y: -0.54, z: 0}
+  _sprites:
+  - _sprite: {fileID: 21300000, guid: d4ca822af5e324b419ee24e977733b91, type: 3}
+    _key: test
+    _offset: {x: 0, y: 0, z: 0}

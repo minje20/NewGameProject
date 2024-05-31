@@ -1,41 +1,74 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using MyBox;
 using Spine.Unity;
 using UnityEngine;
 
+
 [CreateAssetMenu(menuName = "IndieLINY/Npc/Data", fileName = "New npc data")]
 public class NpcData: ScriptableObject
 {
+
+    [Serializable]
+    public class SpriteKeyPair
+    {
+        [SerializeField] private Sprite _sprite;
+        [SerializeField] private string _key;
+        [SerializeField] private Vector3 _offset;
+
+        public Sprite Sprite => _sprite;
+        public string Key => _key;
+
+        public Vector3 Offset => _offset;
+    }
+
+    [Serializable]
+    public class SpineKeyPair
+    {
+        [Serializable]
+        public class KeyPair
+        {
+            [SerializeField] private string _key;
+            [SerializeField] private string _spineKey;
+
+            public string Key => _key;
+            public string SpineKey => _spineKey;
+        }
+        [SerializeField] private SkeletonDataAsset _asset;
+        [SerializeField] private List<KeyPair> _containAnimationKeys;
+        [SerializeField] private Vector3 _offset;
+
+        public SkeletonDataAsset Asset => _asset;
+        public Vector3 Offset => _offset;
+        public List<KeyPair> ContainAnimationKeys => _containAnimationKeys;
+    }
+    
     [field: SerializeField]
     private string _key;
 
     [field: SerializeField, OverrideLabel("Npc 기본 스프라이트")]
     private Sprite _defaultSprite;
 
-    [SerializeField] public SkeletonDataAsset Asset;
+    [field: SerializeField]
+    private List<SpineKeyPair> _spineAssets;
     
-    [field: SerializeField, Header("Npc 스프라이트 키")]
-    private List<Sprite> _sprites;
-    
-    [field: SerializeField, Foldout("게임오브젝트"), OverrideLabel("Transform의 Scale 값")]
-    private Vector3 _scale = Vector3.one;
-    [field: SerializeField, Foldout("게임오브젝트"), OverrideLabel("Transform의 Position offset 값")]
-    private Vector3 _offset = Vector3.zero;
-
-    public Vector3 Scale => _scale;
-    public Vector3 Offset => _offset;
+    [field: SerializeField]
+    private List<SpriteKeyPair> _sprites;
 
     public string Key => _key;
-    public List<Sprite> Sprites => _sprites;
+    public List<SpriteKeyPair> Sprites => _sprites;
     public Sprite DefaultSprite => _defaultSprite;
+    public List<SpineKeyPair> SpineAsset => _spineAssets;
 
     public static NpcData CreateErrorData(string key = "")
     {
         var data = ScriptableObject.CreateInstance<NpcData>();
         data._key = key;
-        data._sprites = new List<Sprite>();
+        data._sprites = new ();
         data._defaultSprite = null;
+        data._spineAssets = new();
 
         return data;
     }
