@@ -14,149 +14,189 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _script:
   - order: 0
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uC624\uB79C\uB9CC\uC774\uAD6C\uB9CC"
     pose_key: touch_mustache
   - order: 1
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 1
     script: "\uC8FC\uC778\uACF5: \uC5B4\uB5BB\uAC8C \uC9C0\uB0B4\uC168\uC5B4\uC694?"
     pose_key: 
   - order: 2
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: (\uD55C\uC228) \uBB50\uC5B4.. \uB098\uB984 \uC798
       \uC9C0\uB0C8\uC5B4"
     pose_key: 
   - order: 3
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 1
     script: "\uC8FC\uC778\uACF5: \uD45C\uC815\uB3C4 \uADF8\uB807\uACE0 \uC694\uC0C8
       \uBB54\uAC00 \uD798\uB4E0 \uC77C \uC788\uC73C\uC138\uC694?"
     pose_key: 
   - order: 4
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uC80B\uC744 \uC801\uC5D0 \uC5F0\uAE08\uC744 \uB0B8\uB2E4\uACE0
       \uC5F4\uC2EC\uD788 \uB0C8\uC5C8\uB294\uB370 \uB2E4\uC2DC \uBC1B\uC744 \uC218
       \uC788\uC744\uC9C0 \uBD88\uD655\uC2E4\uD558\uB124.."
     pose_key: 
   - order: 5
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uC694\uC0C8 \uACBD\uAE30\uAC00 \uC548\uC88B\uB2E4\uACE0\uB3C4
       \uD558\uACE0, \uCC38 \uB9C8\uC74C\uC774 \uCC29\uC7A1\uD558\uB124."
     pose_key: touch_mustache
   - order: 6
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uC774 \uB098\uC774\uBA39\uACE0 \uBB54\uAC00 \uD558\uAE30\uB3C4
       \uC880 \uADF8\uB807\uC9C0."
     pose_key: 
   - order: 7
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 1
     script: "\uC8FC\uC778\uACF5: \uC694\uC998 \uACBD\uAE30\uAC00 \uB9CE\uC774 \uC5B4\uB835\uC8E0"
     pose_key: 
   - order: 8
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 1
     script: "\uC8FC\uC778\uACF5: \uD558\uC9C0\uB9CC \uC220\uC740 \uC0B6\uC744 \uB2E8\uC21C\uD558\uAC8C
       \uD574\uC8FC\uC8E0"
     pose_key: 
   - order: 9
-    script_code: visit_0_enter
+    script_code: visit_sommelier_enter
     is_master: 1
     script: "\uC8FC\uC778\uACF5: \uB9DE\uB294 \uCE75\uD14C\uC77C \uD558\uB098 \uCD94\uCC9C\uD574\uB4DC\uB9B4\uAC8C\uC694."
     pose_key: 
   - order: 0
-    script_code: visit_0_exit
+    script_code: visit_sommelier_enter
     is_master: 1
     script: "\uC8FC\uC778\uACF5: \uC6B0\uB9AC \uAC00\uAC8C \uD2B9\uC81C \uC220\uC785\uB2C8\uB2E4.
       \uD55C \uBC88 \uB9DB\uBCF4\uC2DC\uC8E0."
     pose_key: 
   - order: 1
-    script_code: visit_0_exit_perfect
+    script_code: visit_sommelier_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uD5C8\uD5C8 \uBD88\uD0C0\uB294\uAC8C \uD654\uB048\uD558\uAD6C\uB9CC."
     pose_key: 
   - order: 2
-    script_code: visit_0_exit_perfect
+    script_code: visit_sommelier_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: ..\uADF8\uB9AC\uACE0 \uB2EC\uACE0."
     pose_key: 
   - order: 3
-    script_code: visit_0_exit_perfect
+    script_code: visit_sommelier_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uCDE8\uAE30\uAC00 \uC624\uB974\uB2C8 \uBA38\uB9BF\uC18D\uC774
       \uB2E8\uC21C\uD574 \uC9C0\uB294\uAD6C\uB9CC."
     pose_key: 
   - order: 4
-    script_code: visit_0_exit_perfect
+    script_code: visit_sommelier_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uAC11\uC790\uAE30 \uB098\uC774 \uBA39\uC740\uAC8C
       \uBB54 \uB300\uC218\uC778\uAC00 \uC2F6\uAE30\uB3C4 \uD558\uACE0."
     pose_key: 
   - order: 5
-    script_code: visit_0_exit_perfect
+    script_code: visit_sommelier_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uC9C0\uAE08\uC774\uB77C\uB3C4 \uC2DC\uC791\uD560
       \uC218 \uC788\uB294\uAC8C \uC788\uC9C0 \uC54A\uC744\uAE4C?"
     pose_key: touch_mustache
   - order: 6
-    script_code: visit_0_exit_perfect
+    script_code: visit_sommelier_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: \uC774\uB9CC \uC77C\uC5B4\uB098\uBD10\uC57C\uACA0\uC5B4.
       \uC88B\uC740 \uC2DC\uAC04\uC774\uC5C8\uB124."
     pose_key: 
   - order: 0
-    script_code: visit_0_exit_good
+    script_code: visit_sommelier_exit_good
     is_master: 0
     script: visit_0_exit_good_0
     pose_key: 
   - order: 1
-    script_code: visit_0_exit_good
+    script_code: visit_sommelier_exit_good
     is_master: 0
     script: visit_0_exit_good_1
     pose_key: 
   - order: 0
-    script_code: visit_0_exit_bad
+    script_code: visit_sommelier_exit_bad
     is_master: 0
     script: visit_0_exit_bad_0
     pose_key: 
   - order: 1
-    script_code: visit_0_exit_bad
+    script_code: visit_sommelier_exit_bad
     is_master: 0
     script: visit_0_exit_bad_1
     pose_key: 
   - order: 0
-    script_code: visit_1_enter
+    script_code: visit_daughter_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: ENTER TEST 0"
     pose_key: idle
   - order: 1
-    script_code: visit_1_enter
+    script_code: visit_daughter_enter
     is_master: 1
     script: "\uC8FC\uC778\uACF5: ENTER TEST 1"
     pose_key: 
   - order: 2
-    script_code: visit_1_enter
+    script_code: visit_daughter_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: ENTER TEST 2"
     pose_key: smile
   - order: 0
-    script_code: visit_1_exit_perfect
+    script_code: visit_daughter_exit_perfect
     is_master: 1
     script: "\uC8FC\uC778\uACF5: EXIT TEST 0"
     pose_key: 
   - order: 1
-    script_code: visit_1_exit_perfect
+    script_code: visit_daughter_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: EXIT TEST 1"
     pose_key: 
   - order: 2
-    script_code: visit_1_exit_perfect
+    script_code: visit_daughter_exit_perfect
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: EXIT TEST 2"
+    pose_key: 
+  - order: 0
+    script_code: visit_man_enter
+    is_master: 0
+    script: 1
+    pose_key: idle
+  - order: 1
+    script_code: visit_man_enter
+    is_master: 0
+    script: 2
+    pose_key: 
+  - order: 2
+    script_code: visit_man_enter
+    is_master: 0
+    script: 3
+    pose_key: talk
+  - order: 0
+    script_code: visit_man_exit_perfect
+    is_master: 0
+    script: 1
+    pose_key: 
+  - order: 0
+    script_code: visit_girl1_enter
+    is_master: 0
+    script: 1
+    pose_key: 
+  - order: 1
+    script_code: visit_girl1_enter
+    is_master: 0
+    script: 2
+    pose_key: talk
+  - order: 2
+    script_code: visit_girl1_enter
+    is_master: 0
+    script: 3
+    pose_key: 
+  - order: 0
+    script_code: visit_girl1_exit_perfect
+    is_master: 0
+    script: 1
     pose_key: 

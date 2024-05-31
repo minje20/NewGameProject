@@ -1929,18 +1929,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _npcKeys:
-  - TEST_NPC_2
-  - TEST_NPC_2
+  - man
   _enterScriptCodeList:
-  - visit_0_enter
-  - visit_1_enter
+  - visit_man_enter
+  - visit_man_enter
   _exitScriptCodeList:
-  - BadKey: visit_0_exit_bad
-    GoodKey: visit_0_exit_good
-    PerfectKey: visit_0_exit_perfect
-  - BadKey: visit_1_exit
-    GoodKey: visit_1_exit
-    PerfectKey: visit_1_exit
+  - BadKey: visit_man_exit_perfect
+    GoodKey: visit_man_exit_perfect
+    PerfectKey: visit_man_exit_perfect
   _controller: {fileID: 925680854}
   _iceBadScoreToNumber: 35
   _iceGoodScoreToNumber: 50

@@ -39,11 +39,12 @@ public class Npc : MonoBehaviour
     {
         if (_behaviours == null) return;
 
-        if (key == "")
+        if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
         {
             return;
         }
 
+        
         foreach (BaseNpcBehaviour behaviour in _behaviours)
         {
             behaviour.Stop();
@@ -52,6 +53,9 @@ public class Npc : MonoBehaviour
         {
             if (behaviour.PlayAnimation(key)) return;
         }
+        
+        Debug.LogWarning($"매칭되는 key({key})가 없습니다.");
+        _spriteBehaviour.SetDefault();
     }
 
     public void SetDefault()
