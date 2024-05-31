@@ -23,6 +23,18 @@ public class NpcData: ScriptableObject
 
         public Vector3 Offset => _offset;
     }
+    [Serializable]
+    public class SpriteAniKeyPair
+    {
+        [SerializeField] private AnimationClip _clip;
+        [SerializeField] private string _key;
+        [SerializeField] private Vector3 _offset;
+
+        public AnimationClip Clip => _clip;
+        public string Key => _key;
+
+        public Vector3 Offset => _offset;
+    }
 
     [Serializable]
     public class SpineKeyPair
@@ -56,11 +68,21 @@ public class NpcData: ScriptableObject
     
     [field: SerializeField]
     private List<SpriteKeyPair> _sprites;
+    
+    [field: SerializeField]
+    private List<SpriteAniKeyPair> _spriteAnis;
+
+    [field: SerializeField] 
+    private AnimationClip _defaultAniClip;
 
     public string Key => _key;
     public List<SpriteKeyPair> Sprites => _sprites;
     public Sprite DefaultSprite => _defaultSprite;
     public List<SpineKeyPair> SpineAsset => _spineAssets;
+
+    public List<SpriteAniKeyPair> SpriteAnis => _spriteAnis;
+
+    public AnimationClip DefaultAniClip => _defaultAniClip;
 
     public static NpcData CreateErrorData(string key = "")
     {

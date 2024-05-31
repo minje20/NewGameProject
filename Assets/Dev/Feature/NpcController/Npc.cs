@@ -32,6 +32,7 @@ public class Npc : MonoBehaviour
 
         _behaviours.Add(_spriteBehaviour = BaseNpcBehaviour.Create<NpcSpriteBehaviour>(gameObject, NpcData));
         _behaviours.Add(BaseNpcBehaviour.Create<NpcSpineBehaviour>(gameObject, NpcData));
+        _behaviours.Add(BaseNpcBehaviour.Create<NpcSpriteAnimationBehaviour>(gameObject, NpcData));
     }
     
     public void PlayAnimation(string key)

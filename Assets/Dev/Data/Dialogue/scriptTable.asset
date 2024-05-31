@@ -134,7 +134,7 @@ MonoBehaviour:
     script_code: visit_1_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: ENTER TEST 0"
-    pose_key: 
+    pose_key: idle
   - order: 1
     script_code: visit_1_enter
     is_master: 1
@@ -144,7 +144,7 @@ MonoBehaviour:
     script_code: visit_1_enter
     is_master: 0
     script: "\uCC44\uD50C\uB9B0: ENTER TEST 2"
-    pose_key: 
+    pose_key: smile
   - order: 0
     script_code: visit_1_exit_perfect
     is_master: 1
